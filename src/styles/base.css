@@ -1,8 +1,17 @@
+html, body, .App, #root {
+  height: 100%; }
+
 .first-screen {
   display: flex;
   height: 100%;
   background: url(../img/index-bg.jpg) no-repeat center;
   background-size: cover; }
+
+.flex {
+  display: flex; }
+
+.mb-6 {
+  margin-bottom: 9rem; }
 
 .logo {
   display: flex;
@@ -13,20 +22,16 @@
 .logo-image {
   width: 50px; }
 
-.nav-icon {
-  width: 25px;
+.icon {
   margin: 10px;
   opacity: 0.7;
   cursor: pointer; }
 
-.nav-icon:hover {
+.nav-icon {
+  width: 25px; }
+
+.icon:hover {
   opacity: 1; }
-
-.flex {
-  display: flex; }
-
-.mb-6 {
-  margin-bottom: 9rem; }
 
 .search-field {
   display: inline-block;
@@ -38,7 +43,7 @@
   opacity: 0;
   transition: width 0.4s linear, opacity 0.14s linear 0.3s; }
 
-html, body, .App, #root {
-  height: 100%; }
+.down-icon {
+  width: 50px; }
 
 /*# sourceMappingURL=base.css.map */
