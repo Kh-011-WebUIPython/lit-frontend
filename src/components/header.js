@@ -5,7 +5,7 @@ import login from '../img/login.svg';
 import registration from '../img/registration.svg';
 
 class Header extends Component {
-    render () {
+    render() {
         return (
             <div className='container'>
                 <div className='flex justify-content-between align-items-center'>
@@ -29,14 +29,26 @@ class LitLogo extends Component {
 }
 
 class Nav extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {'searchField': false};
+    }
+
+    changeState = () => this.setState({'searchField': !this.state.searchField});
+
+
+    getClassName = () => 'form-control search-field' + (this.state.searchField ? '' : ' search-field-invisible');
+
+
     render() {
         return (
             <div>
-                <img src={search} alt="Search" className="nav-icon"/>
+                <input type="text" className={this.getClassName()} placeholder='Search'/>
+                <img src={search} alt="Search" className="nav-icon" onClick={this.changeState}/>
                 <img src={login} alt="Login" className="nav-icon"/>
                 <img src={registration} alt="Registration" className="nav-icon"/>
             </div>
-        )
+        );
     }
 }
 
