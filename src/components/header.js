@@ -43,10 +43,11 @@ class Nav extends Component {
     render() {
         return (
             <div>
-                <input type="text" className={this.getClassName()} placeholder='Search'/>
-                <img src={search} alt="Search" className="nav-icon" onClick={this.changeState}/>
-                <img src={login} alt="Login" className="nav-icon"/>
-                <img src={registration} alt="Registration" className="nav-icon"/>
+                <input type="text" className={this.getClassName()} placeholder='Search' onBlur={this.changeState}/>
+                <img src={search} alt="Search" data-toggle="tooltip" title="Search" className="nav-icon"
+                     onClick={this.changeState}/>
+                <img src={login} alt="Sign In" data-toggle="tooltip" title="Sign In" className="nav-icon"/>
+                <img src={registration} alt="Sign Up" data-toggle="tooltip" title="Sign up" className="nav-icon"/>
             </div>
         );
     }
@@ -54,4 +55,3 @@ class Nav extends Component {
 
 export default Header;
 
-// todo: add reset.css
