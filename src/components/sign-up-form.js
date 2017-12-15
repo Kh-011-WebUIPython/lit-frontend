@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Button, Form, FormGroup, Label, Input, FormText  } from 'reactstrap';
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -21,31 +22,32 @@ class SignUpForm extends Component {
         });
     };
 
+    // todo: rewrite with reactstrap
     render() {
         return (
-            <form className="w-50 ml-auto mr-auto p-5">
-                <div className="form-group">
-                    <label>Username</label>
-                    <input name="username" type="text" className="form-control" onChange={this.handleInputChange}
+            <Form className="w-50 ml-auto mr-auto p-5">
+                <FormGroup>
+                    <Label for="username">Username</Label>
+                    <Input name="username" type="text" id="username" onChange={this.handleInputChange}
                            required="True"/>
-                </div>
-                <div className="form-group">
-                    <label>E-mail</label>
-                    <input name="e-mail" type="email" className="form-control" onChange={this.handleInputChange}
+                </FormGroup>
+                <FormGroup>
+                    <Label>E-mail</Label>
+                    <Input name="e-mail" type="email" onChange={this.handleInputChange}
                            required="True"/>
-                </div>
-                <div className="form-group">
-                    <label>Password</label>
-                    <input name="password" type="password" className="form-control" onChange={this.handleInputChange}
-                           required="True" />
-                </div>
-                <div className="form-group">
-                    <label>Repeat password</label>
-                    <input name="rPassword" type="password" className="form-control" onChange={this.handleInputChange}
+                </FormGroup>
+                <FormGroup>
+                    <Label>Password</Label>
+                    <Input name="password" type="password" onChange={this.handleInputChange}
                            required="True"/>
-                </div>
-                <button className="btn btn-dark" type="submit">Sign Up</button>
-            </form>
+                </FormGroup>
+                <FormGroup>
+                    <Label>Repeat password</Label>
+                    <Input name="rPassword" type="password" onChange={this.handleInputChange}
+                           required="True"/>
+                </FormGroup>
+                <Button color="primary">Sign Up</Button>
+            </Form>
         );
     }
 }
