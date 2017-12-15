@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
-import Header from './components/header';
+import React, {Component} from 'react';
+import FirstScreen from './components/first-screen';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header>
-            <Header/>
-        </header>
-
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                <FirstScreen/>
+            </div>
+        );
+    }
 }
 
 export default App;
