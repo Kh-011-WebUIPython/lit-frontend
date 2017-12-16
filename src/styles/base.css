@@ -20,7 +20,8 @@ html, body, .App, #root {
   z-index: 999; }
 
 .w-100vw {
-  width: calc(100vw - 17px); }
+  width: 100vw;
+  max-width: 100%; }
 
 .s-dark {
   background-color: #f1f1f1; }
@@ -65,7 +66,8 @@ html, body, .App, #root {
   width: 50px; }
 
 .card-300 {
-  width: 300px; }
+  max-width: 300px;
+  width: 100%; }
 
 .br-50 {
   border-radius: 50%;
@@ -80,5 +82,8 @@ html, body, .App, #root {
 
 .slick-next:before, .slick-prev:before {
   color: #000; }
+
+.slick-list {
+  text-align: center; }
 
 /*# sourceMappingURL=base.css.map */
