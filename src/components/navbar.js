@@ -10,7 +10,7 @@ import SignInForm from "./sign-in-form";
 class NavBar extends Component {
 
     render() {
-        let className = `position-${this.props.isFixed ? 'fixed bg-dark' : 'absolute'} w-100vw z-999`;
+        let className = `position-${this.props.isFixed ? 'fixed nav-dark' : 'absolute'} w-100vw z-999`;
         return (
             <div className={className}>
                 <Navbar className="container">
