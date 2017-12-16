@@ -22,7 +22,7 @@ class SignInForm extends Component {
 
     render() {
         return (
-            <Form className="ml-auto mr-auto p-5">
+            <Form className="ml-auto mr-auto">
                 <FormGroup>
                     <Label>Username</Label>
                     <Input name="username" type="text" id="username" onChange={this.handleInputChange}

@@ -47,7 +47,7 @@ class SignUpForm extends Component {
     render() {
         let {username, password, email} = this.state.isValid;
         return (
-            <Form className="ml-auto mr-auto p-5">
+            <Form className="ml-auto mr-auto">
                 <FormGroup>
                     <Label>Username</Label>
                     <Input name="username" type="text" onChange={this.handleInputChange}
