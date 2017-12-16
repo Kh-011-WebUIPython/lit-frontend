@@ -19,6 +19,9 @@ html, body, .App, #root {
 .z-999 {
   z-index: 999; }
 
+.w-100vw {
+  width: calc(100vw - 17px); }
+
 .logo {
   display: flex;
   justify-content: center;
