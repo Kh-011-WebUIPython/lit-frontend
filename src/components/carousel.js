@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import Slider from 'react-slick';
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, Button } from 'reactstrap';
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, Button
+} from 'reactstrap';
 
 const DevCard = (props) => {
     return (
         <div className="card-300 d-inline-block ml-5 mr-5">
             <Card>
-                <CardImg top width="100%" src="https://picsum.photos/300/180" alt="Card image cap" />
+                <CardImg top width="100%" src={props.bgimg} alt="Card image cap"/>
                 <CardBody>
-                    <img src="https://picsum.photos/150/150" alt="" className="br-50"/>
+                    <img src={props.avatar} alt="" className="br-50"/>
                     <CardTitle>{props.name}</CardTitle>
                     <CardText>{props.description}</CardText>
                     <Button>Button</Button>
@@ -33,35 +35,14 @@ class DevCarousel extends Component {
             {
                 name: 'Name Surname',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, sit!',
-            },
-            {
-                name: 'Name Surname',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, sit!',
-            },
-            {
-                name: 'Name Surname',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laboriosam tempore velit?',
-            },
-            {
-                name: 'Name Surname',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laboriosam tempore velit?',
-            },
-            {
-                name: 'Name Surname',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laboriosam tempore velit?',
-            },
-            {
-                name: 'Name Surname',
-                description: 'Lorem ipsum dolor sit amet',
-            },
-            {
-                name: 'Name Surname',
-                description: 'Lorem ipsum dolor sit amet',
+                avatar: 'https://picsum.photos/150/150',
+                bgimg: 'https://picsum.photos/300/180',
             },
         ];
         return (
             <Slider {...settings}>
-                {devs.map((item, index) => <DevCard key={index} name={item.name + index} description={item.description}/>)}
+                {devs.map((item, index) => <DevCard key={index} name={item.name + index} description={item.description}
+                                                    avatar={item.avatar} bgimg={item.bgimg}/>)}
             </Slider>
         );
     }
