@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import FirstScreen from './components/first-screen';
 import AboutLit from './components/about-lit'
-import SignUpForm from './components/sign-up-form';
+// import SignUpForm from './components/sign-up-form';
 import NavBar from './components/navbar';
 import AboutDevs from './components/about-devs';
+import FormSection from './components/form-section';
 
 class App extends Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class App extends Component {
 
     handleScroll = (e) => {
         let height = document.documentElement.clientHeight;
-        this.setState({scrolled: window.scrollY > height / 2});
+        this.setState({scrolled: window.scrollY > height});
     };
 
     render() {
@@ -27,8 +28,7 @@ class App extends Component {
                 <FirstScreen/>
                 {/*<AboutLit/>*/}
                 <AboutDevs/>
-
-                {/*<SignUpForm/>*/}
+                <FormSection/>
             </div>
         );
     }

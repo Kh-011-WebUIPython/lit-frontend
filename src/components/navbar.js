@@ -10,7 +10,7 @@ import SignInForm from "./sign-in-form";
 class NavBar extends Component {
 
     render() {
-        let className = `position-${this.props.isFixed ? 'fixed nav-dark' : 'absolute'} w-100vw z-999`;
+        let className = `position-${this.props.isFixed ? 'fixed nav-dark' : 'absolute'} w-100vw z-999 nav-tr`;
         return (
             <div className={className}>
                 <Navbar className="container">
@@ -53,9 +53,7 @@ class Nav extends Component {
                 <input type="text" className={this.getClassName()} placeholder='Search' onBlur={this.changeState}/>
                 <img src={search} alt="Search" data-toggle="tooltip" title="Search" className="icon nav-icon"
                      onClick={this.changeState}/>
-                {/*<img src={login} alt="Sign In" data-toggle="tooltip" title="Sign In" className="icon nav-icon"/>*/}
                 <ModalSign src={login} alt="Sign In" title="Sign In"/>
-                {/*<img src={registration} alt="Sign Up" data-toggle="tooltip" title="Sign up" className="icon nav-icon"/>*/}
                 <ModalSign src={registration} alt="Sign Up" title="Sign Up"/>
             </div>
         );
