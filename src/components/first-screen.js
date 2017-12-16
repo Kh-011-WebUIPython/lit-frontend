@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import NavBar from './navbar';
 import down from '../img/down.svg';
 
 // todo: form validation
@@ -19,10 +18,9 @@ class FirstScreen extends Component {
     render() {
         return (
                 <div className="first-screen flex-column justify-content-between">
-                    <NavBar/>
-                    <div className="flex flex-column align-items-center">
+                    <div className="flex flex-column align-items-center flex-grow-2 justify-content-center">
                         <h1 className="display-1 text-muted">LIT</h1>
-                        <h2 className="display-4 text-muted mb-6">Welcome to Chaos World</h2>
+                        <h2 className="display-4 text-muted">Welcome to Chaos World</h2>
                     </div>
                     <img src={down} alt="Down" className="icon down-icon ml-auto mr-auto mb-4"
                     onClick={this.scroll}/>

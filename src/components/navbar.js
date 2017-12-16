@@ -9,14 +9,15 @@ import SignInForm from "./sign-in-form";
 
 class NavBar extends Component {
 
-    getClassName = () => `container ${this.props.scrolled && 'sticky-top'}`;
-
     render() {
+        let className = `position-${this.props.isFixed ? 'fixed bg-dark' : 'absolute'} w-100 z-999`;
         return (
-            <Navbar className={this.getClassName()}>
-                <LitLogo/>
-                <Nav/>
-            </Navbar>
+            <div className={className}>
+                <Navbar className="container">
+                    <LitLogo/>
+                    <Nav/>
+                </Navbar>
+            </div>
         );
     }
 }
@@ -76,7 +77,7 @@ class ModalSign extends React.Component {
             <div className="d-inline-block">
                 <img src={this.props.src} alt={this.props.alt} data-toggle="tooltip" title={this.props.title}
                      className="icon nav-icon" onClick={this.toggle}/>
-                <Modal isOpen={this.state.modal} fade={false} toggle={this.toggle} className={this.props.className}>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>{this.props.title}</ModalHeader>
                     <ModalBody>
                         {this.props.title.indexOf('Up') !== -1 ? <SignUpForm/> : <SignInForm/>}

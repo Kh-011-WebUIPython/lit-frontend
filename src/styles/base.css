@@ -10,8 +10,14 @@ html, body, .App, #root {
 .flex {
   display: flex; }
 
+.flex-grow-2 {
+  flex-grow: 2; }
+
 .mb-6 {
   margin-bottom: 9rem; }
+
+.z-999 {
+  z-index: 999; }
 
 .logo {
   display: flex;
