@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
-import Header from './header';
 
 class AboutLit extends Component {
     render() {
         return (
-            <div className="first-screen flex-column justify-content-between">
-                <Header/>
-                <div className="flex flex-column align-items-center">
-                    <h1 className="display-1 text-muted bg-dark-0">LIT</h1>
-                    <h2 className="display-4 text-muted bg-dark-0 mb-6">Welcome to Chaos World</h2>
+            <div className="flex-column justify-content-between">
+                <div className="flex flex-column">
+                    <h1 className="display-4 text-dark m-1">About LIT</h1>
+                    <p className="display-8 text-dark">The project “LIT” is a version control system. Project tracks all changes in local files and compares these files with files stored on the remote server. Basically “LIT” can be used as source code management, but you can store any files you want. </p>
                 </div>
             </div>
         );

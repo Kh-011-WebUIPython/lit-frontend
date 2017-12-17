@@ -41,4 +41,53 @@
 html, body, .App, #root {
   height: 100%; }
 
+.first-screen {
+  display: flex;
+  height: 100%;
+  background: url(../img/index-bg.jpg) no-repeat center;
+  background-size: cover; }
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0; }
+
+.logo-image {
+  width: 50px; }
+
+.nav-icon {
+  width: 25px;
+  margin: 10px;
+  opacity: 0.7;
+  cursor: pointer; }
+
+.nav-icon:hover {
+  opacity: 1; }
+
+.flex {
+  display: flex; }
+
+.mb-6 {
+  margin-bottom: 9rem; }
+
+.search-field {
+  display: inline-block;
+  width: 300px;
+  transition: width 0.4s linear, opacity 0s linear; }
+
+.search-field-invisible {
+  width: 0;
+  opacity: 0;
+  transition: width 0.4s linear, opacity 0.14s linear 0.3s; }
+
+h1 {
+  margin: 10rem; }
+
+h2 {
+  margin: 10rem; }
+
+h3 {
+  margin: 2rem; }
+
 /*# sourceMappingURL=base.css.map */
