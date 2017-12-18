@@ -1,43 +1,3 @@
-.first-screen {
-  display: flex;
-  height: 100%;
-  background: url(../img/index-bg.jpg) no-repeat center;
-  background-size: cover; }
-
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 0; }
-
-.logo-image {
-  width: 50px; }
-
-.nav-icon {
-  width: 25px;
-  margin: 10px;
-  opacity: 0.7;
-  cursor: pointer; }
-
-.nav-icon:hover {
-  opacity: 1; }
-
-.flex {
-  display: flex; }
-
-.mb-6 {
-  margin-bottom: 9rem; }
-
-.search-field {
-  display: inline-block;
-  width: 300px;
-  transition: width 0.4s linear, opacity 0s linear; }
-
-.search-field-invisible {
-  width: 0;
-  opacity: 0;
-  transition: width 0.4s linear, opacity 0.14s linear 0.3s; }
-
 html, body, .App, #root {
   height: 100%; }
 
@@ -47,6 +7,25 @@ html, body, .App, #root {
   background: url(../img/index-bg.jpg) no-repeat center;
   background-size: cover; }
 
+.flex {
+  display: flex; }
+
+.flex-grow-2 {
+  flex-grow: 2; }
+
+.mb-6 {
+  margin-bottom: 9rem; }
+
+.z-999 {
+  z-index: 999; }
+
+.w-100vw {
+  width: 100vw;
+  max-width: 100%; }
+
+.s-dark {
+  background-color: #f1f1f1; }
+
 .logo {
   display: flex;
   justify-content: center;
@@ -56,20 +35,22 @@ html, body, .App, #root {
 .logo-image {
   width: 50px; }
 
-.nav-icon {
-  width: 25px;
+.nav-tr {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+.icon {
   margin: 10px;
   opacity: 0.7;
   cursor: pointer; }
 
-.nav-icon:hover {
+.nav-icon {
+  width: 25px; }
+
+.icon:hover {
   opacity: 1; }
 
-.flex {
-  display: flex; }
-
-.mb-6 {
-  margin-bottom: 9rem; }
+.nav-dark {
+  background-color: #0a0e17; }
 
 .search-field {
   display: inline-block;
@@ -81,13 +62,37 @@ html, body, .App, #root {
   opacity: 0;
   transition: width 0.4s linear, opacity 0.14s linear 0.3s; }
 
-h1 {
-  margin: 10rem; }
+.down-icon {
+  width: 50px; }
 
-h2 {
-  margin: 10rem; }
+.card-300 {
+  max-width: 300px;
+  width: 100%; }
 
-h3 {
-  margin: 2rem; }
+.br-50 {
+  border-radius: 50%;
+  border: solid 5px #ffffff; }
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -100px; }
+
+.slick-next:before, .slick-prev:before {
+  color: #000; }
+
+.slick-list {
+  text-align: center; }
+
+.aboutLit p {
+  font-size: 1.5rem;
+  line-height: 2rem; }
+
+.howBegin span, .howBegin code {
+  line-height: 2rem; }
+.howBegin code {
+  background: gainsboro; }
 
 /*# sourceMappingURL=base.css.map */
