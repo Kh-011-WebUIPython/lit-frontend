@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Sans");
-* {
-  font-family: "PT Sans", sans-serif; }
-
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
 html, body, .App, #root {
   height: 100%; }
 
@@ -88,6 +86,9 @@ html, body, .App, #root {
 
 .slick-list {
   text-align: center; }
+
+.text-cursive {
+  font-family: "Indie Flower", cursive; }
 
 .aboutLit p {
   font-size: 1.5rem;

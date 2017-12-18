@@ -26,8 +26,8 @@ class LitLogo extends Component {
     render() {
         return (
             <NavbarBrand className="logo">
-                <img src={logo} alt="LIT logo" className="logo-image"/>
-                <h1 className="text-muted">LIT</h1>
+                <img src={logo} alt="LIT logo" className="logo-image mr-2"/>
+                <h1 className="text-muted text-cursive">LIT</h1>
             </NavbarBrand>
         )
     }
