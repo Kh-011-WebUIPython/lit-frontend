@@ -24,8 +24,7 @@ html, body, .App, #root {
   z-index: 999; }
 
 .w-100vw {
-  width: 100vw;
-  max-width: 100%; }
+  width: calc(100vw - 17px); }
 
 .s-dark {
   background-color: #f1f1f1; }
@@ -94,9 +93,26 @@ html, body, .App, #root {
   font-size: 1.5rem;
   line-height: 2rem; }
 
-.howBegin span, .howBegin code {
-  line-height: 2rem; }
-.howBegin code {
+.monospaced {
+  font-family: "SFMono-Regular", monospace;
+  color: #bd4147; }
+
+.bg-grey {
   background: gainsboro; }
+
+.f-9 {
+  font-size: 0.9rem; }
+
+.do-smth-grt {
+  width: 100%;
+  height: 500px;
+  background-image: url(../img/do-smth-grt.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  -ms-background-position-y: center;
+  background-position-y: center; }
+
+* {
+  font-family: "PT Sans", sans-serif; }
 
 /*# sourceMappingURL=base.css.map */
