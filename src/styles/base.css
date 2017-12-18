@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=PT+Sans");
 html, body, .App, #root {
   height: 100%; }
 
@@ -107,5 +108,8 @@ html, body, .App, #root {
   background-size: cover;
   -ms-background-position-y: center;
   background-position-y: center; }
+
+* {
+  font-family: "PT Sans", sans-serif; }
 
 /*# sourceMappingURL=base.css.map */
