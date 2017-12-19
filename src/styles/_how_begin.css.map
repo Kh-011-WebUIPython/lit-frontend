@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAEE,8BAAU;EACR,WAAW,EAAE,IAAI;AAEnB,cAAI;EACF,UAAU,EAAE,SAAS",
-"sources": ["_how_begin.sass"],
-"names": [],
-"file": "_how_begin.css"
-}

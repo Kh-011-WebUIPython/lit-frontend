@@ -34,8 +34,7 @@ html, body, .App, #root {
   padding: 20px 0; }
 
 .logo-image {
-  width: 50px;
-  height: 50px; }
+  width: 50px; }
 
 .nav-tr {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
@@ -113,6 +112,15 @@ html, body, .App, #root {
   background-size: cover;
   -ms-background-position-y: center;
   background-position-y: center; }
+
+.search .form-group {
+  margin: 0 !important; }
+
+.w-300 {
+  width: 300px; }
+
+button {
+  cursor: pointer; }
 
 * {
   font-family: "PT Sans", sans-serif; }

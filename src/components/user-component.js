@@ -14,19 +14,19 @@ class UserComponent extends Component {
     render() {
         return (
 
-            <div className="card-300 d-inline-block ml-lg-5 mr-lg-5">
+            <div className="card-300 mb-4">
                 <Card>
                     <div className="card card-inverse">
-                        <div class="card-img-overlay">
-                            <div class="flex justify-content-between">
-                                <button type="button" class="btn btn-light btn-sm"> Settings</button>
-                                <button type="button" class="btn btn-light btn-sm"> Sign out</button>
+                        <div className="card-img-overlay">
+                            <div className="flex justify-content-between">
+                                <button type="button" className="btn btn-light btn-sm"> Settings</button>
+                                <button type="button" className="btn btn-light btn-sm"> Sign out</button>
                             </div>
                         </div>
                     </div>
-                    <CardImg top width="100%"  /*src={user_backgroun_image}*/  src="https://picsum.photos/300/180"  alt="Card image cap"/>
+                    <CardImg top width="100%"  /*src={user_background_image}*/  src="https://picsum.photos/300/180"  alt="Card image cap"/>
                     <CardBody>
-                        <img /*src = {user_avatar}*/src="https://picsum.photos/150/150" alt="dfgh" className="br-50"/>
+                        <img /*src = {user_avatar}*/ src="https://picsum.photos/150/150" alt="dfgh" className="br-50"/>
                         <CardTitle>{username}</CardTitle>
                         <CardText>{user_repository_count}</CardText>
                     </CardBody>

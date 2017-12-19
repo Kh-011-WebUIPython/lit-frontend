@@ -16,12 +16,12 @@ class Search extends Component {
 
     render() {
         return (
-            <div className="search flex">
+            <div className="flex w-100 align-items-center justify-content-between mb-4">
                 <img src={logo} alt="LIT logo" className="logo-image"/>
-                <Form className="ml-auto mr-auto">
+                <Form className="search">
                     <FormGroup>
-                        <Input name="seacrh" type="text"
-                               placeholder="seacrh"
+                        <Input name="seacrh" type="text" className="mt-2"
+                               placeholder="search"
                                onChange={this.handleInputChange}/>
                     </FormGroup>
                 </Form>
