@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 class SignInForm extends Component {
     constructor(props) {
@@ -25,15 +26,17 @@ class SignInForm extends Component {
             <Form className="ml-auto mr-auto">
                 <FormGroup>
                     <Label>Username</Label>
-                    <Input name="username" type="text" id="username" onChange={this.handleInputChange}
+                    <Input name="username" type="text" id="username"
+                           onChange={this.handleInputChange}
                            required="True"/>
                 </FormGroup>
                 <FormGroup>
                     <Label>Password</Label>
-                    <Input name="password" type="password" onChange={this.handleInputChange}
+                    <Input name="password" type="password"
+                           onChange={this.handleInputChange}
                            required="True"/>
                 </FormGroup>
-                <Button color="primary">Sign In</Button>
+                <Link to='/User'><Button color="primary">Sign In</Button></Link>
             </Form>
         );
     }

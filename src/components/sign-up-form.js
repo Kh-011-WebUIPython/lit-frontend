@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import {Link} from "react-router-dom";
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -42,7 +43,8 @@ class SignUpForm extends Component {
 
     isEmail = () => /.*@.*/.test(this.state.email);
 
-    isPassword = () => this.state.password.length >= 8 && this.state.password === this.state.rPassword;
+    isPassword = () => this.state.password.length >= 8 && this.state.password ===
+        this.state.rPassword;
 
     render() {
         let {username, password, email} = this.state.isValid;
@@ -60,15 +62,18 @@ class SignUpForm extends Component {
                 </FormGroup>
                 <FormGroup>
                     <Label>Password</Label>
-                    <Input name="password" type="password" onChange={this.handleInputChange}
+                    <Input name="password" type="password"
+                           onChange={this.handleInputChange}
                            valid={password} required="True"/>
                 </FormGroup>
                 <FormGroup>
                     <Label>Repeat password</Label>
-                    <Input name="rPassword" type="password" onChange={this.handleInputChange}
+                    <Input name="rPassword" type="password"
+                           onChange={this.handleInputChange}
                            valid={password} required="True"/>
                 </FormGroup>
-                <Button color="primary" onClick={this.validate}>Sign Up</Button>
+                <Link to='/User'><Button color="primary" onClick={this.validate}>Sign
+                    In</Button></Link>
             </Form>
         );
     }
