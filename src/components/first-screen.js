@@ -19,8 +19,8 @@ class FirstScreen extends Component {
         return (
                 <div className="first-screen flex-column justify-content-between">
                     <div className="flex flex-column align-items-center flex-grow-2 justify-content-center">
-                        <h1 className="display-1 text-muted">LIT</h1>
-                        <h2 className="display-4 text-muted">Welcome to Chaos World</h2>
+                        {/*<h1 className="display-1 text-muted text-cursive">LIT</h1>*/}
+                        <h2 className="display-1 text-muted text-cursive text-center">Welcome to chaos World</h2>
                     </div>
                     <img src={down} alt="Down" className="icon down-icon ml-auto mr-auto mb-4"
                     onClick={this.scroll}/>

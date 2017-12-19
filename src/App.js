@@ -6,6 +6,7 @@ import HowBegin from './components/how_begin'
 import NavBar from './components/navbar';
 import AboutDevs from './components/about-devs';
 import FormSection from './components/form-section';
+import HowBegin from './components/howto-start'
 
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
                 <NavBar isFixed={this.state.scrolled}/>
                 <FirstScreen/>
                 <AboutLit/>
+                <section className="do-smth-grt"></section>
                 <HowBegin/>
                 <AboutDevs/>
                 <FormSection/>
