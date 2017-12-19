@@ -1,22 +1,36 @@
 import React, {Component} from 'react';
-import {TabContent, TabPane, Nav, NavItem, NavLink, Row, Col} from 'reactstrap';
+import {
+    TabContent,
+    TabPane,
+    Nav,
+    NavItem,
+    NavLink,
+    Row,
+    Col,
+    Card,
+    Button,
+    CardHeader,
+    CardFooter,
+    CardBody,
+    CardTitle,
+    CardText
+} from 'reactstrap';
 import classnames from 'classnames';
+import {Link} from 'react-router-dom';
+import crown from '../img/crown.svg';
 
 class Example extends Component {
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
         this.state = {
             activeTab: '1'
         };
     }
 
-    toggle(tab) {
+    toggle = (tab) => {
         if (this.state.activeTab !== tab) {
-            this.setState({
-                activeTab: tab
-            });
+            this.setState({activeTab: tab});
         }
     }
 
@@ -29,9 +43,8 @@ class Example extends Component {
                             className={classnames({active: this.state.activeTab === '1'})}
                             onClick={() => {
                                 this.toggle('1');
-                            }}
-                        >
-                            Tab1
+                            }}>
+                            User's repositories
                         </NavLink>
                     </NavItem>
                     <NavItem>
@@ -39,22 +52,17 @@ class Example extends Component {
                             className={classnames({active: this.state.activeTab === '2'})}
                             onClick={() => {
                                 this.toggle('2');
-                            }}
-                        >
-                            Moar Tabs
+                            }}>
+                            Repositories user contribute to
                         </NavLink>
                     </NavItem>
                 </Nav>
                 <TabContent activeTab={this.state.activeTab}>
-                    <TabPane tabId="1">
-                        <Row>
-                            <RepoList repos={repoList}/>
-                        </Row>
+                    <TabPane tabId="1" className="border border-top-0 p-2">
+                        <RepoList repos={repoList}/>
                     </TabPane>
-                    <TabPane tabId="2">
-                        <Row>
-                            <RepoList repos={repoListAuthors}/>
-                        </Row>
+                    <TabPane tabId="2" className="border border-top-0 p-2">
+                        <RepoList repos={repoListAuthors}/>
                     </TabPane>
                 </TabContent>
             </div>
@@ -69,9 +77,11 @@ class RepoListItem extends Component {
     render() {
         let {title, description, author} = this.props.item;
         return (
-            <div>
-                {author && <h2>{author}</h2>}
-                <h2>{title}</h2>
+            <div className="border p-2 mt-2">
+                <div className="flex justify-content-between">
+                    <h2><Link to='/#'>{title}</Link></h2>
+                    {author && <Author>{author}</Author>}
+                </div>
                 <p>{description}</p>
             </div>
         );
@@ -85,6 +95,17 @@ class RepoList extends Component {
                 {this.props.repos.map((item, key) => <RepoListItem item={item} key={key}/>)}
             </div>
         );
+    }
+}
+
+class Author extends Component {
+    render() {
+        return(
+            <div className="flex align-items-center">
+                <img src={crown} className="img-2"/>
+                <h5><Link to="/Dimasik">{this.props.children}</Link></h5>
+            </div>
+        )
     }
 }
 
