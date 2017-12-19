@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import FirstScreen from './components/first-screen';
 import AboutLit from './components/about-lit'
+import HowBegin from './components/how_begin'
 // import SignUpForm from './components/sign-up-form';
 import NavBar from './components/navbar';
 import AboutDevs from './components/about-devs';
 import FormSection from './components/form-section';
+
 
 class App extends Component {
     constructor(props) {
@@ -26,7 +28,8 @@ class App extends Component {
             <div className="App">
                 <NavBar isFixed={this.state.scrolled}/>
                 <FirstScreen/>
-                {/*<AboutLit/>*/}
+                <AboutLit/>
+                <HowBegin/>
                 <AboutDevs/>
                 <FormSection/>
             </div>

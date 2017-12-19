@@ -86,4 +86,13 @@ html, body, .App, #root {
 .slick-list {
   text-align: center; }
 
+.aboutLit p {
+  font-size: 1.5rem;
+  line-height: 2rem; }
+
+.howBegin span, .howBegin code {
+  line-height: 2rem; }
+.howBegin code {
+  background: gainsboro; }
+
 /*# sourceMappingURL=base.css.map */
