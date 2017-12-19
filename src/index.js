@@ -10,11 +10,9 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 ReactDOM.render((
     <BrowserRouter>
-        <main>
-            <Switch>
-                <Route exact path='/' component={App}/>
-                <Route path='/user' component={User}/>
-            </Switch>
-        </main>
+        <Switch>
+            <Route exact path='/' component={App}/>
+            <Route path='/user' component={User}/>
+        </Switch>
     </BrowserRouter>
 ), document.getElementById('root'));
