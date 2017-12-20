@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import ContentNewRepo from './content-new-repo';
+import CreateRepoForm from './create-repo-from';
 import Page from './page';
 
 const CreateRepoPage = props => {
     return (
         <Page>
-            <ContentNewRepo/>
+            <h1 className="display-4 pb-2">Create a new repository</h1>
+            <CreateRepoForm/>
         </Page>
     );
 }
