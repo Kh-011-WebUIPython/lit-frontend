@@ -19,7 +19,7 @@ import classnames from 'classnames';
 import {Link} from 'react-router-dom';
 import crown from '../img/crown.svg';
 
-class Example extends Component {
+class RepoTabs extends Component {
     constructor(props) {
         super(props);
 
@@ -71,13 +71,13 @@ class Example extends Component {
 }
 
 
-export default Example;
+export default RepoTabs;
 
 class RepoListItem extends Component {
     render() {
         let {title, description, author} = this.props.item;
         return (
-            <div className="border p-2 mt-2">
+            <div className="border p-2 pl-3 pb-3 mt-2">
                 <div className="flex justify-content-between">
                     <h2><Link to='/#'>{title}</Link></h2>
                     {author && <Author>{author}</Author>}
@@ -88,26 +88,25 @@ class RepoListItem extends Component {
     }
 }
 
-class RepoList extends Component {
-    render() {
-        return (
-            <div>
-                {this.props.repos.map((item, key) => <RepoListItem item={item} key={key}/>)}
-            </div>
-        );
-    }
+const RepoList = props => {
+    return (
+        <div>
+            {props.repos.map((item, key) => <RepoListItem item={item} key={key}/>)}
+        </div>
+    );
 }
 
-class Author extends Component {
-    render() {
-        return(
-            <div className="flex align-items-center">
-                <img src={crown} className="img-2"/>
-                <h5><Link to="/Dimasik">{this.props.children}</Link></h5>
-            </div>
-        )
-    }
+
+const Author = props => {
+    return (
+        <div className="flex align-items-center">
+            <img src={crown} className="img-2"/>
+            <h5><Link to={`/${props.children}`}>{props.children}</Link></h5>
+        </div>
+    );
 }
+
+// DATA
 
 const repoList = [
     {

@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
-import Exapmle from './repository-list';
 
-class Content extends Component {
-    render() {
-        return (
-            <div className="container pt-5 w-100">
-                <Exapmle/>
-
-            </div>
-        );
-    }
+const Content = (props) => {
+    return (
+        <div className="container pt-5 w-100">
+            {props.children}
+        </div>
+    );
 }
 
 export default Content;
