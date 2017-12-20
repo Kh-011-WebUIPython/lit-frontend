@@ -3,7 +3,7 @@ import Search from './components/search'
 import ContentNewRepo from './components/content-new-repo';
 import UserComponent from './components/user-component';
 import {Button} from 'reactstrap';
-
+import Content from './components/content'
 
 class NewRepository extends Component {
     render() {
@@ -14,7 +14,9 @@ class NewRepository extends Component {
                     <UserComponent/>
                     <Button color="primary">Create a new repo</Button>
                 </aside>
-                <ContentNewRepo/>
+                <Content>
+                    <ContentNewRepo/>
+                </Content>
             </div>
         );
     }

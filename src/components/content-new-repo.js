@@ -31,34 +31,34 @@ class ContentNewRepo extends Component {
         var EMAIL_VALIDATION_REGEX = /^[-a-z0-9~!$%^&*_=+}{'?]+(\.[-a-z0-9~!$%^&*_=+}{'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
 
 
-
-
         return (
-            <div className="container pt-5 w-100">
+            <div>
                 <h2>Create a new repository</h2>
                 <Form>
-                    <FormGroup className="py-2">
-                        <Label className="py-2">Repository name</Label>
+                    <FormGroup>
+                        <Label>Repository name</Label>
                         <Input name="name"
                                type="text"
                                onChange={this.handleInputChange}
                                required="True"/>
                     </FormGroup>
-                    <FormGroup className="py-2">
-                        <Label className="py-2">Repository description</Label>
+                    <FormGroup>
+                        <Label>Repository description</Label>
                         <Input name="description"
                                type="textarea"
                                onChange={this.handleInputChange}
                                required="True"/>
                     </FormGroup>
-                    <FormGroup className="py-2">
-                        <Label className="py-2">Add contributors for repositories</Label>
+                    <FormGroup>
+                        <Label>Add contributors for repositories</Label>
                         <TagsInput
                             name="contributors"
                             className="tag-email"
                             inputProps={
-                                {className: "form-control react-tagsinput-input",
-                                placeholder: "add contributors"}
+                                {
+                                    className: "form-control react-tagsinput-input",
+                                    placeholder: "add contributors"
+                                }
                             }
                             value={this.state.tags}
                             addKeys={[9, 13, 32, 186,
