@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import NewRepository from './NewRepository'
-import UserPage from './UserPage';
+import NewRepository from './components/create-repo-page'
+import UserPage from './components/user-page';
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/reset.css';
 import './styles/base.css';
