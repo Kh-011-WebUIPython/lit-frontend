@@ -101,7 +101,7 @@ const Author = props => {
     return (
         <div className="flex align-items-center">
             <img src={crown} className="img-2"/>
-            <h5><Link to={`/${props.children}`}>{props.children}</Link></h5>
+            <h5 className="pl-2"><Link to={`/${props.children}`}>{props.children}</Link></h5>
         </div>
     );
 }
