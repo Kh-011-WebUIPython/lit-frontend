@@ -3,8 +3,9 @@ import Search from './components/search'
 import Content from './components/content';
 import UserComponent from './components/user-component';
 import {Button} from 'reactstrap';
+import RepoTabs from './components/repository-list'
 
-class User extends Component {
+class UserPage extends Component {
     render() {
         return (
             <div className="flex h-100">
@@ -13,10 +14,12 @@ class User extends Component {
                     <UserComponent/>
                     <Button color="primary">Create a new repo</Button>
                 </aside>
-                <Content/>
+                <Content>
+                    <RepoTabs/>
+                </Content>
             </div>
         );
     }
 }
 
-export default User;
+export default UserPage;

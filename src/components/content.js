@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 
-class Content extends Component {
-    render() {
-        return (
-            <div className="content p-5">
-
-
-            </div>
-        );
-    }
+const Content = (props) => {
+    return (
+        <div className="container pt-5 w-100">
+            {props.children}
+        </div>
+    );
 }
 
 export default Content;
