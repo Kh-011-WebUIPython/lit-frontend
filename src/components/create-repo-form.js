@@ -37,6 +37,7 @@ class CreateRepoForm extends Component {
                            onChange={this.handleInputChange}/>
                 </FormGroup>
                 <Link to='/empty_repository'><Button color="primary">Create</Button></Link>
+                <Link to='/user'><Button className="ml-5" color="primary">Cancel</Button></Link>
             </Form>
         );
     }

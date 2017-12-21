@@ -36,7 +36,8 @@ class RepositorySettingsForm extends Component {
                     <Label>Add contributors for repositories</Label>
                     <EmailInput/>
                 </FormGroup>
-                <Link to='/User'><Button color="primary">Update</Button></Link>
+                <Link to='/user'><Button color="primary">Update</Button></Link>
+                <Link to='/user'><Button className="ml-5" color="primary">Cancel</Button></Link>
             </Form>
         );
     }
