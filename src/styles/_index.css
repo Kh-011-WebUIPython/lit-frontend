@@ -111,4 +111,9 @@ html, body, .App, #root {
   -ms-background-position-y: center;
   background-position-y: center; }
 
+.file_upload {
+  position: absolute;
+  top: 0;
+  visibility: hidden; }
+
 /*# sourceMappingURL=_index.css.map */

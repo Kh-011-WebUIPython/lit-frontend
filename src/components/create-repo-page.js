@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CreateRepoForm from './create-repo-from';
+import CreateRepoForm from './create-repo-form';
 import Page from './page';
 
 const CreateRepoPage = props => {
