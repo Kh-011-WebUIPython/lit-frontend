@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import NewRepository from './components/create-repo-page'
-import EmptyRepository from './components/empty-repo-page'
-import UserSettingsPage from './components/user-settings-page'
+import NewRepository from './components/create-repo-page';
+import EmptyRepository from './components/empty-repo-page';
+import UserSettingsPage from './components/user-settings-page';
 import UserPage from './components/user-page';
+import RepositorySettings from './components/repo-settings-page';
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/reset.css';
 import './styles/base.css';
@@ -18,7 +19,7 @@ ReactDOM.render((
             <Route path='/user' component={UserPage}/>
             <Route path='/user_settings' component={UserSettingsPage}/>
             <Route path='/new_repository' component={NewRepository}/>
-            {/*<Route path='/repository_settings' component={RepositorySettings}/>*/}
+            <Route path='/repository_settings' component={RepositorySettings}/>
             <Route path='/empty_repository' component={EmptyRepository}/>
             {/*<Route path='/repository' component={Repository}/>*/}
             {/*<Route path='/branches' component={ListBranches}/>*/}

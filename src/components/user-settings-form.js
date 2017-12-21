@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 class UserSettingsForm extends Component {
 
@@ -16,8 +17,6 @@ class UserSettingsForm extends Component {
     clickInput = () => {
         this.refs.file_upload.click()
     }
-
-
 
 
     handleInputChange = (event) => {
@@ -64,8 +63,8 @@ class UserSettingsForm extends Component {
 
                     </FormGroup>
 
-                    <Label className="mt-4"><Button
-                        color="primary">Confirm</Button></Label>
+                    <Link to="/user"><Button
+                        color="primary">Confirm</Button></Link>
 
                 </Form>
             </div>
