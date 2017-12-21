@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Card, CardBody, CardImg, CardText, CardTitle} from 'reactstrap';
-import {Link} from 'react-router-dom';
+import {Link} from "react-router-dom";
+
 
 const username = "User name";
 const user_avatar = "";
@@ -18,7 +19,7 @@ class UserComponent extends Component {
                     <div className="card card-inverse">
                         <div className="card-img-overlay">
                             <div className="flex justify-content-between">
-                                <button type="button" className="btn btn-light btn-sm">Settings</button>
+                                <Link to='/user_settings'><button type="button" className="btn btn-light btn-sm">Settings</button></Link>
                                 <button type="button" className="btn btn-light btn-sm">Sign out</button>
                             </div>
                         </div>
@@ -26,10 +27,7 @@ class UserComponent extends Component {
                     <CardImg top width="100%"  /*src={user_background_image}*/ src="https://picsum.photos/300/180"
                              alt="Card image cap"/>
                     <CardBody>
-                        <Link to="/user">
-                            <img /*src = {user_avatar}*/ src="https://picsum.photos/150/150" alt="Avatar"
-                                                         className="br-50"/>
-                        </Link>
+                        <img /*src = {user_avatar}*/ src="https://picsum.photos/150/150" alt="Avatar" className="br-50"/>
                         <CardTitle>{username}</CardTitle>
                         <CardText>{user_repository_count}</CardText>
                     </CardBody>
