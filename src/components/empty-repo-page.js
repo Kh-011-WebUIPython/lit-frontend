@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import EmptyRepoForm from './empty-repo-form';
 import Page from './page';
 
-const EmptyRepoPage = props => {
+const EmptyRepository = props => {
     return (
         <Page>
             <EmptyRepoForm/>
@@ -10,4 +10,4 @@ const EmptyRepoPage = props => {
     );
 }
 
-export default EmptyRepoPage;
+export default EmptyRepository;
