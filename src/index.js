@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import NewRepository from './components/create-repo-page'
 import EmptyRepository from './components/empty-repo-page'
+import UserSettingsPage from './components/user-settings-page'
 import UserPage from './components/user-page';
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/reset.css';
@@ -15,7 +16,7 @@ ReactDOM.render((
         <Switch>
             <Route exact path='/' component={App}/>
             <Route path='/user' component={UserPage}/>
-            {/*<Route path='/user_settings' component={UserSettings}/>*/}
+            <Route path='/user_settings' component={UserSettingsPage}/>
             <Route path='/new_repository' component={NewRepository}/>
             {/*<Route path='/repository_settings' component={RepositorySettings}/>*/}
             <Route path='/empty_repository' component={EmptyRepository}/>
