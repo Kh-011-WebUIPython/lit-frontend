@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './styles/reset.css';
 import './styles/base.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import RepositoryPage from "./components/repo-page";
 
 
 ReactDOM.render((
@@ -21,7 +22,7 @@ ReactDOM.render((
             <Route path='/new_repository' component={NewRepository}/>
             <Route path='/repository_settings' component={RepositorySettings}/>
             <Route path='/empty_repository' component={EmptyRepository}/>
-            {/*<Route path='/repository' component={Repository}/>*/}
+            <Route path='/repository' component={RepositoryPage}/>
             {/*<Route path='/branches' component={ListBranches}/>*/}
             {/*<Route path='/commits' component={ListCommits}/>*/}
             {/*<Route path='/commit' component={Commit}/>*/}
