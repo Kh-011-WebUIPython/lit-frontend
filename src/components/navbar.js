@@ -3,14 +3,16 @@ import logo from '../logo.svg';
 import search from '../img/search.svg';
 import login from '../img/login.svg';
 import registration from '../img/registration.svg';
-import {Navbar, NavbarBrand, Modal, ModalBody, ModalHeader} from 'reactstrap';
+import {Modal, ModalBody, ModalHeader, Navbar, NavbarBrand} from 'reactstrap';
 import SignUpForm from "./sign-up-form";
 import SignInForm from "./sign-in-form";
+import {Link} from 'react-router-dom';
 
 class NavBar extends Component {
 
     render() {
-        let className = `position-${this.props.isFixed ? 'fixed nav-dark' : 'absolute'} w-100vw z-999 nav-tr`;
+        let className = `position-${this.props.isFixed ? 'fixed nav-dark' :
+            'absolute'} w-100vw z-999 nav-tr`;
         return (
             <div className={className}>
                 <Navbar className="container">
@@ -26,8 +28,10 @@ class LitLogo extends Component {
     render() {
         return (
             <NavbarBrand className="logo">
-                <img src={logo} alt="LIT logo" className="logo-image mr-2"/>
-                <h1 className="text-muted text-cursive">LIT</h1>
+                <Link to='/'><img src={logo} alt="LIT logo"
+                                  className="logo-image mr-2"/></Link>
+                <Link to='/'><h1 className="text-muted text-cursive">LIT</h1>
+                </Link>
             </NavbarBrand>
         )
     }
@@ -44,14 +48,17 @@ class Nav extends Component {
     changeState = () => this.setState({'searchField': !this.state.searchField});
 
 
-    getClassName = () => 'form-control search-field' + (this.state.searchField ? '' : ' search-field-invisible');
+    getClassName = () => 'form-control search-field' +
+        (this.state.searchField ? '' : ' search-field-invisible');
 
 
     render() {
         return (
             <div>
-                <input type="text" className={this.getClassName()} placeholder='Search' onBlur={this.changeState}/>
-                <img src={search} alt="Search" data-toggle="tooltip" title="Search" className="icon nav-icon"
+                <input type="text" className={this.getClassName()}
+                       placeholder='Search' onBlur={this.changeState}/>
+                <img src={search} alt="Search" data-toggle="tooltip"
+                     title="Search" className="icon nav-icon"
                      onClick={this.changeState}/>
                 <ModalSign src={login} alt="Sign In" title="Sign In"/>
                 <ModalSign src={registration} alt="Sign Up" title="Sign Up"/>
@@ -73,12 +80,16 @@ class ModalSign extends React.Component {
     render() {
         return (
             <div className="d-inline-block">
-                <img src={this.props.src} alt={this.props.alt} data-toggle="tooltip" title={this.props.title}
+                <img src={this.props.src} alt={this.props.alt}
+                     data-toggle="tooltip" title={this.props.title}
                      className="icon nav-icon" onClick={this.toggle}/>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>{this.props.title}</ModalHeader>
+                <Modal isOpen={this.state.modal} toggle={this.toggle}
+                       className={this.props.className}>
+                    <ModalHeader
+                        toggle={this.toggle}>{this.props.title}</ModalHeader>
                     <ModalBody>
-                        {this.props.title.indexOf('Up') !== -1 ? <SignUpForm/> : <SignInForm/>}
+                        {this.props.title.indexOf('Up') !== -1 ? <SignUpForm/> :
+                            <SignInForm/>}
                     </ModalBody>
                 </Modal>
             </div>

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import FirstScreen from './components/first-screen';
 import AboutLit from './components/about-lit'
-// import SignUpForm from './components/sign-up-form';
 import NavBar from './components/navbar';
 import AboutDevs from './components/about-devs';
 import FormSection from './components/form-section';
 import HowBegin from './components/howto-start'
+
 
 class App extends Component {
     constructor(props) {
