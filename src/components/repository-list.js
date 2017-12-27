@@ -79,7 +79,7 @@ class RepoListItem extends Component {
         return (
             <div className="border p-2 pl-3 pb-3 mt-2">
                 <div className="flex justify-content-between">
-                    <h2><Link to='/#'>{title}</Link></h2>
+                    <h2><Link to='/repository'>{title}</Link></h2>
                     {author && <Author>{author}</Author>}
                 </div>
                 <p>{description}</p>
