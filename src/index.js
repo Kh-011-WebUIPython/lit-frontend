@@ -11,6 +11,7 @@ import './styles/reset.css';
 import './styles/base.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import RepositoryPage from "./components/repo-page";
+import ListBranchesPage from "./components/list-branches-page";
 
 
 ReactDOM.render((
@@ -23,7 +24,7 @@ ReactDOM.render((
             <Route path='/repository_settings' component={RepositorySettings}/>
             <Route path='/empty_repository' component={EmptyRepository}/>
             <Route path='/repository' component={RepositoryPage}/>
-            {/*<Route path='/branches' component={ListBranches}/>*/}
+            <Route path='/branches' component={ListBranchesPage}/>
             {/*<Route path='/commits' component={ListCommits}/>*/}
             {/*<Route path='/commit' component={Commit}/>*/}
             {/*<Route path='/file' component={File}/>*/}
