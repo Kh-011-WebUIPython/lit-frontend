@@ -8,7 +8,7 @@ const RepositorySettings = props => {
         <Page>
             <div>
                 <NavBarRepo/>
-                <h3 className="display-4 pb-2">Update a repository</h3>
+                <h2 className="pb-2">Update a repository</h2>
                 <RepositorySettingsForm/>
             </div>
         </Page>
