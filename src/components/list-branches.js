@@ -8,52 +8,59 @@ import trash from '../img/trash.svg';
 
 
 class ListBranches extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            branches: [
+                {
+                    title: 'Development',
+                    status: 'active'
+                },
+                {
+                    title: 'feature/KW-1/something-do-it',
+                    status: 'closed'
+                },
+                {
+                    title: 'feature/KW-2/something-do-it',
+                    status: 'active'
+                },
+                {
+                    title: 'feature/KW-3/something-do-it',
+                    status: 'active'
+                },
+                {
+                    title: 'feature/KW-4/something-do-it',
+                    status: 'closed'
+                },
+                {
+                    title: 'feature/KW-5/something-do-it',
+                    status: 'active'
+                },
+                {
+                    title: 'feature/KW-6/something-do-it',
+                    status: 'active'
+                },
+                {
+                    title: 'feature/KW-7/something-do-it',
+                    status: 'closed'
+                }
+            ]
+        }
+    }
+
+    changeClassStatus = (status) => ((status == 'closed') ?
+        'bg-danger' : 'bg-success');
 
     render() {
 
-        let branches = [
-            {
-                title: 'Development',
-                status: 'active'
-            },
-            {
-                title: 'feature/KW-1/something-do-it',
-                status: 'closed'
-            },
-            {
-                title: 'feature/KW-2/something-do-it',
-                status: 'active'
-            },
-            {
-                title: 'feature/KW-3/something-do-it',
-                status: 'active'
-            },
-            {
-                title: 'feature/KW-4/something-do-it',
-                status: 'closed'
-            },
-            {
-                title: 'feature/KW-5/something-do-it',
-                status: 'active'
-            },
-            {
-                title: 'feature/KW-6/something-do-it',
-                status: 'active'
-            },
-            {
-                title: 'feature/KW-7/something-do-it',
-                status: 'closed'
-            }
-        ]
-
         return (
             <ListGroup className='container'>
-                {branches.map((item) => <ListGroupItem key={item.title}
-                                                       className="row flex flex-row justify-content-between">
+                {this.state.branches.map((item) => <ListGroupItem key={item.title}
+                                                       className="flex justify-content-between">
                         <Link
                             to='/repository' className=''>{item.title}</Link>
                         <div>
-                            <Badge pill>{item.status}</Badge>
+                            <Badge pill className={this.changeClassStatus(item.status)}>{item.status}</Badge>
                             <ModalDelete src={trash} alt="Delete branch"
                                          title="Delete branch"/>
                         </div>
