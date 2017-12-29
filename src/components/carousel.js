@@ -82,9 +82,9 @@ class DevCarousel extends Component {
         ];
         return (
             <Slider {...settings}>
-                {devs.map((item, index) => <div><DevCard key={index} name={item.name + index}
-                                                         description={item.description}
-                                                         avatar={item.avatar} bgimg={item.bgimg}/></div>)}
+                {devs.map((item, index) => <div key={index}><DevCard name={item.name + index}
+                                                                     description={item.description}
+                                                                     avatar={item.avatar} bgimg={item.bgimg}/></div>)}
             </Slider>
         );
     }

@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
 import FirstScreen from './components/first-screen';
 import AboutLit from './components/about-lit'
 import NavBar from './components/navbar';

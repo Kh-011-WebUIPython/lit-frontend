@@ -1,6 +1,32 @@
 import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {Link} from "react-router-dom";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {Field, reduxForm, SubmissionError} from 'redux-form'
+
+import {signUp} from "../actions";
+
+const renderField = ({id, input, label, type, name}) => (
+    <FormGroup>
+        <Label for={id}>{label}</Label>
+        <Input name={name} type={type} id={id} {...input} required="True"/>
+    </FormGroup>
+)
+
+async function submit(values) {
+    const response = await fetch('https://jsonplaceholder.typicode.com/p123osts', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+    });
+    // todo: form validation
+    if (response.status >= 400) {
+        throw new SubmissionError('Submit Failed');
+    }
+}
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -17,16 +43,6 @@ class SignUpForm extends Component {
             }
         };
     }
-
-    handleInputChange = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
-    };
 
     validate = () => {
         this.setState({
@@ -48,35 +64,41 @@ class SignUpForm extends Component {
 
     render() {
         let {username, password, email} = this.state.isValid;
+        const {handleSubmit} = this.props;
         return (
-            <Form className="ml-auto mr-auto">
-                <FormGroup>
-                    <Label>Username</Label>
-                    <Input name="username" type="text" onChange={this.handleInputChange}
-                           valid={username} required="True"/>
-                </FormGroup>
-                <FormGroup>
-                    <Label>E-mail</Label>
-                    <Input name="email" type="email" onChange={this.handleInputChange}
-                           valid={email} required="True"/>
-                </FormGroup>
-                <FormGroup>
-                    <Label>Password</Label>
-                    <Input name="password" type="password"
-                           onChange={this.handleInputChange}
-                           valid={password} required="True"/>
-                </FormGroup>
-                <FormGroup>
-                    <Label>Repeat password</Label>
-                    <Input name="rPassword" type="password"
-                           onChange={this.handleInputChange}
-                           valid={password} required="True"/>
-                </FormGroup>
-                <Link to='/User'><Button color="primary" onClick={this.validate}>Sign
-                    In</Button></Link>
+            <Form className="ml-auto mr-auto" onSubmit={handleSubmit(submit)}>
+                <Field
+                    id={`username${this.props.id}`}
+                    name="username"
+                    type="text"
+                    component={renderField}
+                    label="Username"
+                />
+                <Field
+                    id={`email${this.props.id}`}
+                    name="email"
+                    type="email"
+                    component={renderField}
+                    label="E-mail"
+                />
+                <Field
+                    id={`password${this.props.id}`}
+                    name="password"
+                    type="password"
+                    component={renderField}
+                    label="Password"
+                />
+                <Field
+                    id={`rPassword${this.props.id}`}
+                    name="rPassword"
+                    type="password"
+                    component={renderField}
+                    label="Password"
+                />
+                <Button color="primary" type="submit">Sign In</Button>
             </Form>
         );
     }
 }
 
-export default SignUpForm;
+export default reduxForm({form: 'signUp'})(SignUpForm);

@@ -7,7 +7,7 @@ class FormSection extends Component {
             <section>
                 <div className="container p-5">
                     <h1 className="display-4 pb-2">Try LIT out</h1>
-                    <SignUpForm/>
+                    <SignUpForm id='1'/>
                 </div>
             </section>
         );

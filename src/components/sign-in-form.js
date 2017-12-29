@@ -1,45 +1,57 @@
 import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {Field, reduxForm, SubmissionError} from 'redux-form'
+
+import {signIn} from "../actions";
+
+const renderField = ({id, input, label, type, name}) => (
+    <FormGroup>
+        <Label for={id} >{label}</Label>
+        <Input name={name} type={type} id={id} {...input} required="True"/>
+    </FormGroup>
+)
+
+async function submit(values) {
+    const response = await fetch('https://jsonplaceholder.typicode.com/p123osts', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+    });
+    // todo: form validation
+    if (response.status >= 400) {
+        throw new SubmissionError('Submit Failed');
+    }
+}
 
 class SignInForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            password: '',
-        };
-    }
-
-    handleInputChange = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
-    };
 
     render() {
+        const {isAuthorized, handleSubmit} = this.props;
         return (
-            <Form className="ml-auto mr-auto">
-                <FormGroup>
-                    <Label>Username</Label>
-                    <Input name="username" type="text" id="username"
-                           onChange={this.handleInputChange}
-                           required="True"/>
-                </FormGroup>
-                <FormGroup>
-                    <Label>Password</Label>
-                    <Input name="password" type="password"
-                           onChange={this.handleInputChange}
-                           required="True"/>
-                </FormGroup>
-                <Link to='/User'><Button color="primary">Sign In</Button></Link>
+            <Form className="ml-auto mr-auto" onSubmit={handleSubmit(submit)}>
+                <Field
+                    id="username"
+                    name="username"
+                    type="text"
+                    component={renderField}
+                    label="Username"
+                />
+                <Field
+                    id="password"
+                    name="password"
+                    type="password"
+                    component={renderField}
+                    label="Password"
+                />
+                <Button color="primary" type="submit">Sign In</Button>
             </Form>
         );
     }
 }
 
-export default SignInForm;
+export default reduxForm({form: 'signIn'})(SignInForm);

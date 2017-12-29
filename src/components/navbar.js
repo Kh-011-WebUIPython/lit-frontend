@@ -77,6 +77,10 @@ class ModalSign extends React.Component {
 
     toggle = () => this.setState({modal: !this.state.modal});
 
+    signIn = (values) => {
+        console.log(values);
+    }
+
     render() {
         return (
             <div className="d-inline-block">
@@ -88,8 +92,8 @@ class ModalSign extends React.Component {
                     <ModalHeader
                         toggle={this.toggle}>{this.props.title}</ModalHeader>
                     <ModalBody>
-                        {this.props.title.indexOf('Up') !== -1 ? <SignUpForm/> :
-                            <SignInForm/>}
+                        {this.props.title.indexOf('Up') !== -1 ? <SignUpForm id='0'/> :
+                            <SignInForm onSubmit={this.signIn}/>}
                     </ModalBody>
                 </Modal>
             </div>
