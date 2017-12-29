@@ -29,7 +29,7 @@ class NavBarRepo extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/repository">Branches</NavLink>
+                                <NavLink href="/branches">Branches</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="/repository">Commits</NavLink>
