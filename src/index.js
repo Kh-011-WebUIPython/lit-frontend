@@ -25,7 +25,7 @@ ReactDOM.render((
             <Route path='/empty_repository' component={EmptyRepository}/>
             <Route path='/repository' component={RepositoryPage}/>
             <Route path='/branches' component={ListBranchesPage}/>
-            {/*<Route path='/commits' component={ListCommitsPage}/>*/}
+            <Route path='/commits' component={ListCommitsPage}/>
             {/*<Route path='/commit' component={Commit}/>*/}
             {/*<Route path='/file' component={File}/>*/}
             {/*<Route path='/open_pl' component={OpenPullRequest}/>*/}
