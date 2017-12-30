@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {Link} from "react-router-dom";
 
+// todo: rewrite with redux form
+
 class CreateRepoForm extends Component {
 
     constructor() {

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import EmptyRepoForm from './empty-repo-form';
 import Page from './page';
 

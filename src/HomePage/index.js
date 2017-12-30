@@ -10,7 +10,7 @@ import FormSection from './HomePage/form-section';
 import HowBegin from './HomePage/howto-start'
 
 
-class App extends Component {
+class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {scrolled: false}
@@ -40,4 +40,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default HomePAge;

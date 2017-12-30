@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Search from './components/search'
+import Search from './HomePage/search'
 import Content from './components/content';
 import UserComponent from './components/user-component';
 import {Button} from 'reactstrap';

@@ -1,20 +1,5 @@
 import React, {Component} from 'react';
-import {
-    TabContent,
-    TabPane,
-    Nav,
-    NavItem,
-    NavLink,
-    Row,
-    Col,
-    Card,
-    Button,
-    CardHeader,
-    CardFooter,
-    CardBody,
-    CardTitle,
-    CardText
-} from 'reactstrap';
+import {TabContent, TabPane, Nav, NavItem, NavLink} from 'reactstrap';
 import classnames from 'classnames';
 import {Link} from 'react-router-dom';
 import crown from '../img/crown.svg';
@@ -100,7 +85,7 @@ const RepoList = props => {
 const Author = props => {
     return (
         <div className="flex align-items-center">
-            <img src={crown} className="img-2"/>
+            <img src={crown} alt="owner" className="img-2"/>
             <h5 className="pl-2"><Link to={`/${props.children}`}>{props.children}</Link></h5>
         </div>
     );

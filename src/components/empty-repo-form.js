@@ -2,16 +2,12 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Code from './code'
 
-
 class EmptyRepoForm extends Component {
-
     clickInput = () => {
         this.refs.file_upload.click()
     }
 
     render() {
-
-
         return (
             <div>
                 <Link to='/User'><h2 className="py-4">RepoName</h2></Link>
