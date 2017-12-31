@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
-import {Link} from "react-router-dom";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 
-import {signUp} from "../actions";
+import {signUp} from "../actions/actions";
 
 const renderField = ({id, input, label, type, name}) => (
     <FormGroup>

@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
 
-import FirstScreen from './HomePage/first-screen';
-import AboutLit from './HomePage/about-lit'
-import NavBar from './HomePage/navbar';
-import AboutDevs from './HomePage/about-devs';
-import FormSection from './HomePage/form-section';
-import HowBegin from './HomePage/howto-start'
-
+import FirstScreen from './first-screen';
+import AboutLit from './about-lit'
+import NavBar from './navbar';
+import HowToStart from './howto-start'
+import AboutDevs from './about-devs';
+import FormSection from './form-section';
 
 class HomePage extends Component {
     constructor(props) {
@@ -32,7 +29,7 @@ class HomePage extends Component {
                 <FirstScreen/>
                 <AboutLit/>
                 <section className="do-smth-grt"></section>
-                <HowBegin/>
+                <HowToStart/>
                 <AboutDevs/>
                 <FormSection/>
             </div>
@@ -40,4 +37,4 @@ class HomePage extends Component {
     }
 }
 
-export default HomePAge;
+export default HomePage;

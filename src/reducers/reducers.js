@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import { reducer as formReducer } from 'redux-form'
 
-import { SIGN_IN, SIGN_UP } from './actions';
+import { SIGN_IN, SIGN_UP } from '../actions/actions';
 
 
 const initialState = {
@@ -21,16 +21,18 @@ function signIn(state = initialState, action) {
 function signUp(state = initialState, action) {
     switch (action.type) {
         case SIGN_UP:
-            // myFetch();
             return Object.assign({}, state, {isFetching: true,});
+        default:
+            return state;
 
     }
 }
 
 
-const allReducers = combineReducers({ signIn, form: formReducer });
+const allReducers = combineReducers({ signIn, signUp, form: formReducer });
 
 export default allReducers
+
 /*
 function fetchPosts(subreddit) {
     return dispatch => {

@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
-import {Link} from 'react-router-dom';
+import {Field, reduxForm, SubmissionError} from 'redux-form'
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {Field, reduxForm, SubmissionError} from 'redux-form'
 
-import {signIn} from "../actions";
+import {signIn} from "../actions/actions";
 
 const renderField = ({id, input, label, type, name}) => (
     <FormGroup>
@@ -22,7 +21,6 @@ async function submit(values) {
         },
         body: JSON.stringify(values)
     });
-    // todo: form validation
     if (response.status >= 400) {
         throw new SubmissionError('Submit Failed');
     }
