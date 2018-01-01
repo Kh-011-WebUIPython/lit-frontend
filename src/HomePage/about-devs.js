@@ -1,6 +1,6 @@
 import React from 'react';
 import DevCarousel from './dev-carousel';
-import devs from '../constants/about-devs';
+import devs from '../_constants/about-devs';
 
 const AboutDevs = props => {
     return (

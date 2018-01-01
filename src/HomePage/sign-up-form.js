@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 
-import {signUp} from "../actions/actions";
+import {signUp} from "../_actions/actions";
 
 const renderField = ({id, input, label, type, name}) => (
     <FormGroup>

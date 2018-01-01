@@ -4,18 +4,18 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import {createLogger} from 'redux-logger';
 
-import NewRepository from './components/create-repo-page';
-import EmptyRepository from './components/empty-repo-page';
-import UserSettingsPage from './components/user-settings-page';
-import UserPage from './components/user-page';
-import RepositorySettings from './components/repo-settings-page';
+import NewRepository from './_components/create-repo-page';
+import EmptyRepository from './_components/empty-repo-page';
+import UserSettingsPage from './_components/user-settings-page';
+import UserPage from './_components/user-page';
+import RepositorySettings from './_components/repo-settings-page';
 import HomePage from './HomePage/index';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './styles/reset.css';
-import './styles/base.css';
+import './_styles/reset.css';
+import './_styles/base.css';
 
-import allReducers from './reducers/reducers';
+import allReducers from './_reducers/reducers';
 
 const logger = createLogger();
 

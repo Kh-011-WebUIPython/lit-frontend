@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import { reducer as formReducer } from 'redux-form'
 
-import { SIGN_IN, SIGN_UP } from '../actions/actions';
+import { SIGN_IN, SIGN_UP } from '../_actions/actions';
 
 
 const initialState = {

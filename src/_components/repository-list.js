@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {TabContent, TabPane, Nav, NavItem, NavLink} from 'reactstrap';
 import classnames from 'classnames';
 import {Link} from 'react-router-dom';
-import crown from '../img/crown.svg';
+import crown from '../_img/crown.svg';
 
 class RepoTabs extends Component {
     constructor(props) {

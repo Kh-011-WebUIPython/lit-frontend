@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import down from '../img/down.svg';
+import down from '../_img/down.svg';
 
 class FirstScreen extends Component {
 

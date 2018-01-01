@@ -1,5 +1,5 @@
 import React from 'react';
-import Code from '../components/code'
+import Code from '../_components/code'
 
 const HowToStart = props => {
     return (

@@ -1,7 +1,10 @@
+html, body, .App, #root {
+  height: 100%; }
+
 .first-screen {
   display: flex;
   height: 100%;
-  background: url(../img/index-bg.jpg) no-repeat center;
+  background: url(../_img/index-bg.jpg) no-repeat center;
   background-size: cover; }
 
 .flex {
@@ -85,4 +88,32 @@
 .text-cursive {
   font-family: "Indie Flower", cursive; }
 
-/*# sourceMappingURL=_header.css.map */
+.aboutLit p {
+  font-size: 1.5rem;
+  line-height: 2rem; }
+
+.monospaced {
+  font-family: "SFMono-Regular", monospace;
+  color: #bd4147; }
+
+.bg-grey {
+  background: gainsboro; }
+
+.f-9 {
+  font-size: 0.9rem; }
+
+.do-smth-grt {
+  width: 100%;
+  height: 500px;
+  background-image: url(../_img/do-smth-grt.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  -ms-background-position-y: center;
+  background-position-y: center; }
+
+.file_upload {
+  position: absolute;
+  top: 0;
+  visibility: hidden; }
+
+/*# sourceMappingURL=_index.css.map */

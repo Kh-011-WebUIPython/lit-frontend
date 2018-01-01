@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import search from '../img/search.svg';
-import login from '../img/login.svg';
-import registration from '../img/registration.svg';
+import search from '../_img/search.svg';
+import login from '../_img/login.svg';
+import registration from '../_img/registration.svg';
 import ModalSign from './modal-sign';
 
 export default class NavLinks extends Component {
