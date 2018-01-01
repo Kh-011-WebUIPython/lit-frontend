@@ -1,8 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import {createLogger} from 'redux-logger';
 
 import NewRepository from './_components/create-repo-page';
 import EmptyRepository from './_components/empty-repo-page';
