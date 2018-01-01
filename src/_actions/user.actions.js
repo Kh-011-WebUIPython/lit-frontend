@@ -16,11 +16,11 @@ function login(username, password) {
             .then(
                 user => {
                     dispatch(success(user));
-                    history.push('/');
+                    // history.push('/');
                 },
                 error => {
                     dispatch(failure(error));
-                    dispatch(alertActions.error(error));
+                    // dispatch(alertActions.error(error));
                 }
             );
     };
@@ -43,8 +43,7 @@ function register(user) {
             .then(
                 user => {
                     dispatch(success());
-                    // теоретически, тут должен быть переход на страницу пользователя
-                    history.push('/login');
+                    // history.push('/login');
                     // dispatch(alertActions.success('Registration successful'));
                 },
                 error => {
