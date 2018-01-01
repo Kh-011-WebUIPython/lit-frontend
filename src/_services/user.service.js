@@ -1,32 +1,28 @@
-import { authHeader } from '../_helpers';
+import {authHeader} from '../_helpers';
 
 export const userService = {
     login,
     logout,
     register,
+    getAll,
     getById,
     update,
+    delete: _delete
 };
 
-function login(username, password) {
+const LIT_URL = 'http://litvcs.win:8080/api/v1';
+
+async function login(userData) {
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(userData)
     };
 
-    return fetch('/auth/login', requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                return Promise.reject(response.statusText);
-            }
-
-            return response.json();
-        })
+    return await fetch(LIT_URL + '/auth/login/', {...requestOptions})
+        .then(handleResponse)
         .then(user => {
-            // login successful if there's a token key in the response
             if (user && user.key) {
-                // store user details and token key in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
             }
 
@@ -35,20 +31,17 @@ function login(username, password) {
 }
 
 function logout() {
-    // todo: мне не нравится логаут в сваггере, обсудить с Максом
-    // remove user from local storage to log user out
     localStorage.removeItem('user');
 }
 
-// todo: wtf?! get на users
-// function getAll() {
-//     const requestOptions = {
-//         method: 'GET',
-//         headers: authHeader()
-//     };
-//
-//     return fetch('/users', requestOptions).then(handleResponse);
-// }
+function getAll() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(LIT_URL + '/users', requestOptions).then(handleResponse);
+}
 
 function getById(id) {
     const requestOptions = {
@@ -56,27 +49,31 @@ function getById(id) {
         headers: authHeader()
     };
 
-    return fetch('/users/' + _id, requestOptions).then(handleResponse);
+    return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
 }
 
-function register(user) {
+async function register(user) {
     const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(user)
     };
+    const registerData = await fetch(LIT_URL + '/users/', {...requestOptions}).then(handleResponse);
+    const loginData = login({username: user.username, password: user.password});
 
-    return fetch('/users', requestOptions).then(handleResponse);
+    return {registerData: registerData, loginData: loginData};
 }
 
 function update(user) {
     const requestOptions = {
         method: 'PUT',
-        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        headers: {...authHeader(), 'Content-Type': 'application/json'},
         body: JSON.stringify(user)
     };
 
-    return fetch('/users/' + user.id, requestOptions).then(handleResponse);;
+    return fetch(LIT_URL + '/users/' + user.id, {...requestOptions}).then(handleResponse);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -86,7 +83,7 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch('/users/' + id, requestOptions).then(handleResponse);;
+    return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
 }
 
 
