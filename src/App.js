@@ -15,11 +15,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './_styles/reset.css';
 import './_styles/base.css';
 
-import allReducers from './_reducers/reducers';
-
-const logger = createLogger();
-
-const store = createStore(allReducers, applyMiddleware(logger));
+import {store} from './_helpers';
 
 const App = props => {
     return (
