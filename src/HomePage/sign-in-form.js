@@ -4,7 +4,7 @@ import {Field, reduxForm, SubmissionError} from 'redux-form'
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
-import {signIn} from "../_actions/actions";
+import {userActions} from "../_actions";
 
 const renderField = ({id, input, label, type, name}) => (
     <FormGroup>
@@ -13,25 +13,22 @@ const renderField = ({id, input, label, type, name}) => (
     </FormGroup>
 )
 
-async function submit(values) {
-    const response = await fetch('https://jsonplaceholder.typicode.com/p123osts', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-    });
-    if (response.status >= 400) {
-        throw new SubmissionError('Submit Failed');
-    }
-}
-
 class SignInForm extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+
+    submit(values, dispatch) {
+        console.log(this);
+        const userData = {username: values.username, password: values.password};
+        dispatch(userActions.login(userData));
+    }
 
     render() {
-        const {isAuthorized, handleSubmit} = this.props;
+        const {handleSubmit} = this.props;
         return (
-            <Form className="ml-auto mr-auto" onSubmit={handleSubmit(submit)}>
+            <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
                 <Field
                     id="username"
                     name="username"

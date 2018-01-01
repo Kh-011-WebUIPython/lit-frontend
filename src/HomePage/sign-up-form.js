@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {Link} from 'react-router-dom';
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 
-import {signUp} from "../_actions/actions";
+import {userActions} from '../_actions';
 
 const renderField = ({id, input, label, type, name}) => (
     <FormGroup>
@@ -13,59 +14,21 @@ const renderField = ({id, input, label, type, name}) => (
     </FormGroup>
 )
 
-async function submit(values) {
-    const response = await fetch('https://jsonplaceholder.typicode.com/p123osts', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-    });
-    // todo: form validation
-    if (response.status >= 400) {
-        throw new SubmissionError('Submit Failed');
-    }
-}
-
 class SignUpForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            username: '',
-            email: '',
-            password: '',
-            rPassword: '',
-            isValid: {
-                username: null,
-                email: null,
-                password: null,
-            }
-        };
     }
 
-    validate = () => {
-        this.setState({
-            ...this.state,
-            isValid: {
-                username: this.isUsername(),
-                email: this.isEmail(),
-                password: this.isPassword(),
-            }
-        });
-    };
-
-    isUsername = () => /^[a-z][a-z0-9_\-.]{3,25}$/i.test(this.state.username);
-
-    isEmail = () => /.*@.*/.test(this.state.email);
-
-    isPassword = () => this.state.password.length >= 8 && this.state.password ===
-        this.state.rPassword;
+    submit(values, dispatch) {
+        console.log(this);
+        const userData = {username: values.username, password: values.password, email: values.email};
+        dispatch(userActions.register(userData));
+    }
 
     render() {
-        let {username, password, email} = this.state.isValid;
         const {handleSubmit} = this.props;
         return (
-            <Form className="ml-auto mr-auto" onSubmit={handleSubmit(submit)}>
+            <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
                 <Field
                     id={`username${this.props.id}`}
                     name="username"
@@ -94,7 +57,7 @@ class SignUpForm extends Component {
                     component={renderField}
                     label="Password"
                 />
-                <Button color="primary" type="submit">Sign In</Button>
+                <Button color="primary" type="submit">Sign Up</Button>
             </Form>
         );
     }
