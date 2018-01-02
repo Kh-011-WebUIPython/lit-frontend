@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import NavBarRepo from "./navbar-repo";
-import ListFiles from "./list-files";
+import NavBarRepo from './navbar-repo';
+import ListFiles from './list-files';
 import BranchDropdown from './branch-dropdown';
 import {Button} from 'reactstrap';
 

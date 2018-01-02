@@ -1,6 +1,6 @@
 import React from 'react';
 import Page from './page';
-import ListBranchesForm from "./list-branches-form";
+import ListBranchesForm from './list-branches-form';
 
 const ListBranchesPage = props => {
     return (

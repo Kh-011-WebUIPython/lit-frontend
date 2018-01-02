@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import NavBarRepo from "./navbar-repo";
-import ListBranches from "./list-branches";
+import NavBarRepo from './navbar-repo';
+import ListBranches from './list-branches';
 
 class ListBranchesForm extends Component {
 
