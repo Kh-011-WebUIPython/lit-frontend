@@ -14,28 +14,32 @@ import './_styles/reset.css';
 import './_styles/base.css';
 
 import {store} from './_helpers';
+import RepositoryPage from './_components/repo-page';
+import ListBranchesPage from './_components/list-branches-page';
 
 const App = props => {
     return (
         <Provider store={store}>
-        <BrowserRouter>
-            <Switch>
-                <Route exact path='/' component={HomePage}/>
-                <Route path='/user' component={UserPage}/>
-                <Route path='/user_settings' component={UserSettingsPage}/>
-                <Route path='/new_repository' component={NewRepository}/>
-                <Route path='/repository_settings' component={RepositorySettings}/>
-                <Route path='/empty_repository' component={EmptyRepository}/>
-                {/*<Route path='/repository' component={Repository}/>*/}
-                {/*<Route path='/branches' component={ListBranches}/>*/}
-                {/*<Route path='/commits' component={ListCommits}/>*/}
-                {/*<Route path='/commit' component={Commit}/>*/}
-                {/*<Route path='/file' component={File}/>*/}
-                {/*<Route path='/open_pl' component={OpenPullRequest}/>*/}
-                {/*<Route path='/pull_request' component={PullRequest}/>*/}
-            </Switch>
-        </BrowserRouter>
-    </Provider>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path='/' component={HomePage}/>
+                    <Route path='/user' component={UserPage}/>
+                    <Route path='/user_settings' component={UserSettingsPage}/>
+                    <Route path='/new_repository' component={NewRepository}/>
+                    <Route path='/repository_settings'
+                           component={RepositorySettings}/>
+                    <Route path='/empty_repository'
+                           component={EmptyRepository}/>
+                    <Route path='/repository' component={RepositoryPage}/>
+                    <Route path='/branches' component={ListBranchesPage}/>
+                    {/*<Route path='/commits' component={ListCommits}/>*/}
+                    {/*<Route path='/commit' component={Commit}/>*/}
+                    {/*<Route path='/file' component={File}/>*/}
+                    {/*<Route path='/open_pl' component={OpenPullRequest}/>*/}
+                    {/*<Route path='/pull_request' component={PullRequest}/>*/}
+                </Switch>
+            </BrowserRouter>
+        </Provider>
     );
 }
 
