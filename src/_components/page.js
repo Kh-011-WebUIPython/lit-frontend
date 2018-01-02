@@ -14,7 +14,7 @@ const UserPage = props => {
                     repo</Button></Link>
             </aside>
             <div className="container pt-5 w-100">
-                {this.props.children}
+                {props.children}
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Modal, ModalBody, ModalHeader} from 'reactstrap';
-import SignUpForm from "./sign-up-form";
-import SignInForm from "./sign-in-form";
+import SignUpForm from './sign-up-form';
+import SignInForm from './sign-in-form';
 
 export default class ModalSign extends Component {
     constructor(props) {
@@ -12,10 +12,6 @@ export default class ModalSign extends Component {
     }
 
     toggle = () => this.setState({modal: !this.state.modal});
-
-    signIn = (values) => {
-        console.log(values);
-    }
 
     render() {
         return (
@@ -29,7 +25,7 @@ export default class ModalSign extends Component {
                         toggle={this.toggle}>{this.props.title}</ModalHeader>
                     <ModalBody>
                         {this.props.title.indexOf('Up') !== -1 ? <SignUpForm id='0'/> :
-                            <SignInForm onSubmit={this.signIn}/>}
+                            <SignInForm/>}
                     </ModalBody>
                 </Modal>
             </div>

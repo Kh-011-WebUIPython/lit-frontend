@@ -16,7 +16,8 @@ function login(username, password) {
             .then(
                 user => {
                     dispatch(success(user));
-                    // history.push('/');
+                    // todo: find out why the hell it is so
+                    history.push(`/${username.username}`);
                 },
                 error => {
                     dispatch(failure(error));

@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from '../logo.svg';
 import {NavbarBrand} from 'reactstrap';
-import {Link} from 'react-router-dom';
 
 const LitLogo = (props) => {
     return (
