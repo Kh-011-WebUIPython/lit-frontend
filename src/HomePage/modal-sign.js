@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Modal, ModalBody, ModalHeader} from 'reactstrap';
-import SignUpForm from './sign-up-form';
-// import SignInForm from './sign-in-form';
+import SignUp from './_containers/sign-up';
 import SignIn from './_containers/sign-in';
 
 export default class ModalSign extends Component {
@@ -25,7 +24,7 @@ export default class ModalSign extends Component {
                     <ModalHeader
                         toggle={this.toggle}>{this.props.title}</ModalHeader>
                     <ModalBody>
-                        {this.props.title.indexOf('Up') !== -1 ? <SignUpForm id='0'/> :
+                        {this.props.title.indexOf('Up') !== -1 ? <SignUp id='0'/> :
                             <SignIn/>}
                     </ModalBody>
                 </Modal>
