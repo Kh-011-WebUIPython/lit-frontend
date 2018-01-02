@@ -12,6 +12,7 @@ import './styles/base.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import RepositoryPage from "./components/repo-page";
 import ListBranchesPage from "./components/list-branches-page";
+import ListCommitsPage from "./components/list-commits-page";
 
 
 ReactDOM.render((
