@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import NewRepository from './_components/create-repo-page';
 import EmptyRepository from './_components/empty-repo-page';
@@ -47,4 +48,11 @@ class App extends Component {
     }
 }
 
-export default App;
+function mapStateToProps(state) {
+    const { alert } = state;
+    return {
+        alert
+    };
+}
+
+export default connect(mapStateToProps)(App);

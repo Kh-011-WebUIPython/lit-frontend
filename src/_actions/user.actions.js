@@ -45,13 +45,10 @@ function register(user) {
             .then(
                 user => {
                     dispatch(success());
-                    // history.push('/login');
-                    // dispatch(alertActions.success('Registration successful'));
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch an action that shows an error message
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.error(error));
                 }
             );
     };
