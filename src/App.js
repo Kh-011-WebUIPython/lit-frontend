@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import NewRepository from './_components/create-repo-page';
@@ -8,12 +8,24 @@ import UserPage from './_components/user-page';
 import RepositorySettings from './_components/repo-settings-page';
 import HomePage from './HomePage/index';
 
+import { history } from './_helpers';
+import { alertActions } from './_actions';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import './_styles/reset.css';
 import './_styles/base.css';
 
-const App = props => {
-    return (
+class App extends Component {
+    constructor(props) {
+        super(props);
+        const { dispatch } = this.props;
+        history.listen((location, action) => {
+            // clear alert on location change
+            dispatch(alertActions.clear());
+        });
+    }
+    render() {
+        return (
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/' component={HomePage}/>
@@ -31,7 +43,8 @@ const App = props => {
                     {/*<Route path='/pull_request' component={PullRequest}/>*/}
                 </Switch>
             </BrowserRouter>
-    );
+        );
+    }
 }
 
 export default App;
