@@ -5,7 +5,7 @@ import UserComponent from './user-component';
 import {Button} from 'reactstrap';
 import RepoTabs from './repository-list'
 import {Link} from 'react-router-dom';
-import UserSettings from "./_components/user-settings";
+import UserSettings from './_components/user-settings';
 
 class UserPage extends Component {
     render() {

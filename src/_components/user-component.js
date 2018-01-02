@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Card, CardBody, CardImg, CardText, CardTitle} from 'reactstrap';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 
 const username = "User name";
