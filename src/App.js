@@ -1,40 +1,42 @@
-import React, {Component} from 'react';
-import FirstScreen from './components/first-screen';
-import AboutLit from './components/about-lit'
-import NavBar from './components/navbar';
-import AboutDevs from './components/about-devs';
-import FormSection from './components/form-section';
-import HowBegin from './components/howto-start'
+import React from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Provider} from 'react-redux';
 
+import NewRepository from './_components/create-repo-page';
+import EmptyRepository from './_components/empty-repo-page';
+import UserSettingsPage from './_components/user-settings-page';
+import UserPage from './_components/user-page';
+import RepositorySettings from './_components/repo-settings-page';
+import HomePage from './HomePage/index';
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {scrolled: false}
-    }
+import 'bootstrap/dist/css/bootstrap.css';
+import './_styles/reset.css';
+import './_styles/base.css';
 
-    componentDidMount = () => window.addEventListener('scroll', this.handleScroll);
+import {store} from './_helpers';
 
-    componentWillUnmount = () => window.removeEventListener('scroll', this.handleScroll);
-
-    handleScroll = (e) => {
-        let height = document.documentElement.clientHeight;
-        this.setState({scrolled: window.scrollY > height});
-    };
-
-    render() {
-        return (
-            <div className="App">
-                <NavBar isFixed={this.state.scrolled}/>
-                <FirstScreen/>
-                <AboutLit/>
-                <section className="do-smth-grt"></section>
-                <HowBegin/>
-                <AboutDevs/>
-                <FormSection/>
-            </div>
-        );
-    }
+const App = props => {
+    return (
+        <Provider store={store}>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path='/' component={HomePage}/>
+                <Route path='/user' component={UserPage}/>
+                <Route path='/user_settings' component={UserSettingsPage}/>
+                <Route path='/new_repository' component={NewRepository}/>
+                <Route path='/repository_settings' component={RepositorySettings}/>
+                <Route path='/empty_repository' component={EmptyRepository}/>
+                {/*<Route path='/repository' component={Repository}/>*/}
+                {/*<Route path='/branches' component={ListBranches}/>*/}
+                {/*<Route path='/commits' component={ListCommits}/>*/}
+                {/*<Route path='/commit' component={Commit}/>*/}
+                {/*<Route path='/file' component={File}/>*/}
+                {/*<Route path='/open_pl' component={OpenPullRequest}/>*/}
+                {/*<Route path='/pull_request' component={PullRequest}/>*/}
+            </Switch>
+        </BrowserRouter>
+    </Provider>
+    );
 }
 
 export default App;
