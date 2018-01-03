@@ -10,8 +10,9 @@ const Page = props => {
             <aside className="flex flex-column w-300 p-3 s-dark">
                 <Search/>
                 <UserComponent/>
-                <Link to="/new_repository"><Button color="primary" className="w-100">Create a new
-                    repo</Button></Link>
+                <Link to="/new_repository"><Button color="primary"
+                                                   className="w-100">Create a
+                    new repository</Button></Link>
             </aside>
             <div className="container pt-5 w-100">
                 {props.children}
