@@ -6,37 +6,49 @@ import {Button} from 'reactstrap';
 
 let commits = [
     {
-        avatar: 'https://picsum.photos/30/30',
+        avatar: 'https://picsum.photos/50/50',
         title: 'something do it',
         time: '12:12:123456',
         hash: '12ds343g'
     },
     {
-        avatar: 'https://picsum.photos/30/30',
+        avatar: 'https://picsum.photos/50/50',
         title: 'something do it',
         time: '12:12:123456',
         hash: '12ds343g'
     },
     {
-        avatar: 'https://picsum.photos/30/30',
+        avatar: 'https://picsum.photos/50/50',
         title: 'something do it',
         time: '12:12:123456',
         hash: '12ds343g'
     },
     {
-        avatar: 'https://picsum.photos/30/30',
+        avatar: 'https://picsum.photos/50/50',
         title: 'something do it',
         time: '12:12:123456',
         hash: '12ds343g'
     },
     {
-        avatar: 'https://picsum.photos/30/30',
+        avatar: 'https://picsum.photos/50/50',
         title: 'something do it',
         time: '12:12:123456',
         hash: '12ds343g'
     },
     {
-        avatar: 'https://picsum.photos/30/30',
+        avatar: 'https://picsum.photos/50/50',
+        title: 'something do it',
+        time: '12:12:123456',
+        hash: '12ds343g'
+    },
+    {
+        avatar: 'https://picsum.photos/50/50',
+        title: 'something do it',
+        time: '12:12:123456',
+        hash: '12ds343g'
+    },
+    {
+        avatar: 'https://picsum.photos/50/50',
         title: 'something do it',
         time: '12:12:123456',
         hash: '12ds343g'
@@ -52,11 +64,13 @@ class AboutCommit extends Component {
 
         return (
 
-            <div>
-                <div>
+            <div className="flex justify-content-between">
+                <div className="flex">
                     <img src={this.props.data.avatar} alt="" className="br-50"/>
-                    <Link to='/commits'>{this.props.data.title}</Link>
-                    <span>{this.props.data.time}</span>
+                    <div className="flex flex-column justify-content-around">
+                        <Link to='/commits'>{this.props.data.title}</Link>
+                        <span>{this.props.data.time}</span>
+                    </div>
                 </div>
                 <div>
                     <Button>{this.props.data.hash}</Button>
@@ -76,7 +90,7 @@ class ListCommits extends Component {
 
         return (
 
-            <div>
+            <div className="container pre-scrollable">
                 <span> January 1, 2018</span>
                 {data.map((item, index) => <AboutCommit key={index}
                                                         data={item}/>
@@ -101,7 +115,7 @@ class ListCommitsForm extends Component {
                     <Link to='/repository'><h2 className="py-4">RepoName</h2>
                     </Link>
                     <div className="border-dark">
-                        <span>Current branch:</span>
+                        <span className="mr-2">Current branch:</span>
                         <BranchDropdown/>
                         <ListCommits data={commits}/>
 

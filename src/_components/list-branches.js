@@ -54,7 +54,7 @@ class ListBranches extends Component {
     render() {
 
         return (
-            <ListGroup className='container'>
+            <ListGroup className="container pre-scrollable">
                 {this.state.branches.map((item) => <ListGroupItem key={item.title}
                                                        className="flex justify-content-between">
                         <Link

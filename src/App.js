@@ -16,6 +16,7 @@ import './_styles/base.css';
 import {store} from './_helpers';
 import RepositoryPage from './_components/repo-page';
 import ListBranchesPage from './_components/list-branches-page';
+import ListCommitsPage from './_components/list-commits-page';
 
 const App = props => {
     return (
@@ -32,7 +33,7 @@ const App = props => {
                            component={EmptyRepository}/>
                     <Route path='/repository' component={RepositoryPage}/>
                     <Route path='/branches' component={ListBranchesPage}/>
-                    {/*<Route path='/commits' component={ListCommits}/>*/}
+                    <Route path='/commits' component={ListCommitsPage}/>
                     {/*<Route path='/commit' component={Commit}/>*/}
                     {/*<Route path='/file' component={File}/>*/}
                     {/*<Route path='/open_pl' component={OpenPullRequest}/>*/}
