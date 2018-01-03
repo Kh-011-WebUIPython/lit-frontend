@@ -21,14 +21,23 @@ class SignUpForm extends Component {
 
     submit(values, dispatch) {
         const userData = {username: values.username, password: values.password, email: values.email};
+
+        if (!/^[a-z][a-z0-9_\-.]{3,25}$/i.test(userData.username)) {
+            dispatch(alertActions.error('Your login should start with letter and contain only latin letters, numbers, _-.'));
+            return;
+        }
+
         if (values.password !== values.rPassword) {
             dispatch(alertActions.error('Passwords are not equal'));
-        } else if (values.password.length < 8) {
-            dispatch(alertActions.error('Password should be 8 characters length at least'))
+            return;
         }
-        else {
-            dispatch(userActions.register(userData));
+
+        if (values.password.length < 8) {
+            dispatch(alertActions.error('Password should be 8 characters length at least'));
+            return;
         }
+
+        dispatch(userActions.register(userData));
     }
 
     render() {

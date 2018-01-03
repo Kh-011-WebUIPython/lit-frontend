@@ -37,14 +37,16 @@ function logout() {
     return { type: userConstants.LOGOUT };
 }
 
-function register(user) {
+function register(userData) {
     return dispatch => {
-        dispatch(request(user));
+        dispatch(request(userData));
 
-        userService.register(user)
+        userService.register(userData)
             .then(
                 user => {
                     dispatch(success());
+                    //todo: why not working
+                    login({username: userData.username, password: userData.password});
                 },
                 error => {
                     dispatch(failure(error));
