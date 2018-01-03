@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import NavBarRepo from "./navbar-repo";
-import BranchDropdown from "./branch-dropdown";
+import NavBarRepo from './navbar-repo';
+import BranchDropdown from './branch-dropdown';
 import {Button} from 'reactstrap';
+import RepositoryTeam from './repo-team';
 
 let commits = [
     {
@@ -66,14 +67,16 @@ class AboutCommit extends Component {
 
             <div className="flex justify-content-between">
                 <div className="flex">
-                    <img src={this.props.data.avatar} alt="" className="br-50"/>
+                    <Link to='/user'><img src={this.props.data.avatar} alt=""
+                                          className="br-50"/></Link>
                     <div className="flex flex-column justify-content-around">
                         <Link to='/commits'>{this.props.data.title}</Link>
                         <span>{this.props.data.time}</span>
                     </div>
                 </div>
                 <div>
-                    <Button>{this.props.data.hash}</Button>
+                    <Link
+                        to='/user'><Button>{this.props.data.hash}</Button></Link>
                 </div>
             </div>
         );
@@ -112,8 +115,7 @@ class ListCommitsForm extends Component {
             <div>
                 <NavBarRepo/>
                 <div>
-                    <Link to='/repository'><h2 className="py-4">RepoName</h2>
-                    </Link>
+                    <RepositoryTeam/>
                     <div className="border-dark">
                         <span className="mr-2">Current branch:</span>
                         <BranchDropdown/>
