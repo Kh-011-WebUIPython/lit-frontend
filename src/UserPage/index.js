@@ -1,6 +1,6 @@
 import React from 'react';
-import RepoTabs from './repository-list'
-import Page from './page';
+import RepoTabs from './repo-tabs';
+import Page from '../_components/page';
 
 const UserPage = props => {
     return (
@@ -8,7 +8,7 @@ const UserPage = props => {
             <RepoTabs/>
         </Page>
     );
-}
+};
 
 
 export default UserPage;
