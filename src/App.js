@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {Provider} from 'react-redux';
+import { connect } from 'react-redux';
 
 import NewRepository from './_components/create-repo-page';
 import EmptyRepository from './_components/empty-repo-page';
@@ -9,29 +9,34 @@ import UserPage from './_components/user-page';
 import RepositorySettings from './_components/repo-settings-page';
 import HomePage from './HomePage/index';
 
+import { history } from './_helpers';
+import { alertActions } from './_actions';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import './_styles/reset.css';
 import './_styles/base.css';
 
-import {store} from './_helpers';
-import RepositoryPage from './_components/repo-page';
-import ListBranchesPage from './_components/list-branches-page';
-
-const App = props => {
-    return (
-        <Provider store={store}>
+class App extends Component {
+    constructor(props) {
+        super(props);
+        const { dispatch } = this.props;
+        history.listen((location, action) => {
+            // clear alert on location change
+            dispatch(alertActions.clear());
+        });
+    }
+    render() {
+        return (
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/' component={HomePage}/>
                     <Route path='/user' component={UserPage}/>
                     <Route path='/user_settings' component={UserSettingsPage}/>
                     <Route path='/new_repository' component={NewRepository}/>
-                    <Route path='/repository_settings'
-                           component={RepositorySettings}/>
-                    <Route path='/empty_repository'
-                           component={EmptyRepository}/>
-                    <Route path='/repository' component={RepositoryPage}/>
-                    <Route path='/branches' component={ListBranchesPage}/>
+                    <Route path='/repository_settings' component={RepositorySettings}/>
+                    <Route path='/empty_repository' component={EmptyRepository}/>
+                    {/*<Route path='/repository' component={Repository}/>*/}
+                    {/*<Route path='/branches' component={ListBranches}/>*/}
                     {/*<Route path='/commits' component={ListCommits}/>*/}
                     {/*<Route path='/commit' component={Commit}/>*/}
                     {/*<Route path='/file' component={File}/>*/}
@@ -39,8 +44,15 @@ const App = props => {
                     {/*<Route path='/pull_request' component={PullRequest}/>*/}
                 </Switch>
             </BrowserRouter>
-        </Provider>
-    );
+        );
+    }
 }
 
-export default App;
+function mapStateToProps(state) {
+    const { alert } = state;
+    return {
+        alert
+    };
+}
+
+export default connect(mapStateToProps)(App);

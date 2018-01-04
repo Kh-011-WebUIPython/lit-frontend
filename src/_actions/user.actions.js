@@ -1,6 +1,7 @@
 import { userConstants } from '../_constants';
 import { userService } from '../_services';
 import { history } from '../_helpers';
+import { alertActions } from './';
 
 export const userActions = {
     login,
@@ -16,11 +17,12 @@ function login(username, password) {
             .then(
                 user => {
                     dispatch(success(user));
-                    // history.push('/');
+                    // todo: find out why the hell it is so
+                    history.push(`/${username.username}`);
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.error(error));
                 }
             );
     };
@@ -35,21 +37,20 @@ function logout() {
     return { type: userConstants.LOGOUT };
 }
 
-function register(user) {
+function register(userData) {
     return dispatch => {
-        dispatch(request(user));
+        dispatch(request(userData));
 
-        userService.register(user)
+        userService.register(userData)
             .then(
                 user => {
                     dispatch(success());
-                    // history.push('/login');
-                    // dispatch(alertActions.success('Registration successful'));
+                    //todo: why not working
+                    login({username: userData.username, password: userData.password});
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch an action that shows an error message
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.error(error));
                 }
             );
     };
