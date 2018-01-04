@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
-import {
-    Badge, Button, ListGroup, ListGroupItem, Modal, ModalBody, ModalFooter,
-    ModalHeader
-} from 'reactstrap';
+import {Badge, Button, ListGroup, ListGroupItem, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import trash from '../img/trash.svg';
+import trash from '../_img/trash.svg';
 
 
 class ListBranches extends Component {
