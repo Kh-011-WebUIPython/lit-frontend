@@ -111,7 +111,7 @@ html, body, .App, #root {
   -ms-background-position-y: center;
   background-position-y: center; }
 
-.file_upload {
+.file-upload {
   position: absolute;
   top: 0;
   visibility: hidden; }

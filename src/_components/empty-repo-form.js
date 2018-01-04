@@ -37,7 +37,7 @@ class EmptyRepoForm extends Component {
                         <button className="btn btn-primary"
                                 onClick={this.clickInput}>Upload files
                         </button>
-                        <input type="file" className="file_upload"
+                        <input type="file" className="file-upload"
                                ref="file_upload"/>
                     </li>
                 </ul>

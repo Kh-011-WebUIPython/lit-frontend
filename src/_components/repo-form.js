@@ -14,7 +14,7 @@ class RepositoryForm extends Component {
 
         return (
 
-            <div>
+            <div className="container-scroll">
                 <NavBarRepo/>
                 <div>
                     <RepositoryTeam/>

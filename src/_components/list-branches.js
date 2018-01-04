@@ -48,7 +48,7 @@ class ListBranches extends Component {
         }
     }
 
-    changeClassStatus = (status) => ((status == 'closed') ?
+    changeClassStatus = (status) => ((status === 'closed') ?
         'bg-danger' : 'bg-success');
 
     render() {
