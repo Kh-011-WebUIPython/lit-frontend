@@ -1,7 +1,9 @@
 {
-"version": 3,
-"mappings": "AACE,WAAC;EACC,SAAS,EAAE,MAAM;EACjB,WAAW,EAAE,IAAI",
-"sources": ["_about_lit.sass"],
-"names": [],
-"file": "_about_lit.css"
+  "version": 3,
+  "mappings": "AACE,WAAC;EACC,SAAS,EAAE,MAAM;EACjB,WAAW,EAAE,IAAI",
+  "sources": [
+    "_about_lit.sass"
+  ],
+  "names": [],
+  "file": "_about_lit.css"
 }

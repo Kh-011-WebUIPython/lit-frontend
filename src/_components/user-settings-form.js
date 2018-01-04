@@ -3,19 +3,18 @@ import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 class UserSettingsForm extends Component {
-
-    constructor() {
-        super()
-        this.state = {tags: []}
-    }
+    clickInput = () => {
+        this.refs.file_upload.click()
+    };
 
     handleChange(tags) {
         this.setState({tags})
 
     }
 
-    clickInput = () => {
-        this.refs.file_upload.click()
+    constructor(props) {
+        super(props);
+        this.state = {tags: []}
     }
 
 
@@ -30,8 +29,6 @@ class UserSettingsForm extends Component {
     };
 
     render() {
-
-
         return (
             <div>
                 <h2 className="mb-2">Settings</h2>

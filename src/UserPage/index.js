@@ -1,14 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
 import RepoTabs from './repo-tabs';
 import Page from '../_components/page';
+import {connect} from 'react-redux';
+import {userpageActions} from '../_actions/userpage.actions';
 
-const UserPage = props => {
-    return (
-        <Page>
-            <RepoTabs/>
-        </Page>
-    );
-};
+class UserPage extends Component {
+    componentDidMount() {
+        const {dispatch} = this.props;
+        dispatch(userpageActions.getUserInfo());
+    }
 
+    render() {
+        return (
+            <Page>
+                <RepoTabs/>
+            </Page>
+        );
+    }
+}
 
-export default UserPage;
+const ConnectedUserPage = connect()(UserPage);
+
+export default ConnectedUserPage;

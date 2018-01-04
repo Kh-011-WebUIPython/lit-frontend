@@ -25,7 +25,7 @@ class RepoTabs extends Component {
                 <Nav tabs>
                     <NavItem>
                         <NavLink
-                            className={isFirstActive && 'active'}
+                            className={isFirstActive ? 'active' : ''}
                             onClick={() => {
                                 this.toggle('0');
                             }}>
@@ -34,7 +34,7 @@ class RepoTabs extends Component {
                     </NavItem>
                     <NavItem>
                         <NavLink
-                            className={!isFirstActive && 'active'}
+                            className={!isFirstActive ? 'active' : ''}
                             onClick={() => {
                                 this.toggle('1');
                             }}>

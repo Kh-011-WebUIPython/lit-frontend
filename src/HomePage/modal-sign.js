@@ -4,14 +4,14 @@ import SignUp from './_containers/sign-up';
 import SignIn from './_containers/sign-in';
 
 export default class ModalSign extends Component {
+    toggle = () => this.setState({modal: !this.state.modal});
+
     constructor(props) {
         super(props);
         this.state = {
             modal: false
         };
     }
-
-    toggle = () => this.setState({modal: !this.state.modal});
 
     render() {
         return (

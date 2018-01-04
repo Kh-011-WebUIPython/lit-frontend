@@ -5,9 +5,8 @@ import {Link} from "react-router-dom";
 // todo: rewrite with redux form
 
 class CreateRepoForm extends Component {
-
-    constructor() {
-        super()
+    constructor(props) {
+        super(props);
         this.state = {
             repoTitle: '',
             repoDescription: '',

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import {Alert, Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {Field, reduxForm} from 'redux-form'
-import {Alert} from 'reactstrap';
 
 import {alertActions, userActions} from '../_actions';
 
@@ -10,7 +9,7 @@ const renderField = ({id, input, label, type, name}) => (
         <Label for={id}>{label}</Label>
         <Input name={name} type={type} id={id} {...input} required="True"/>
     </FormGroup>
-)
+);
 
 //todo: find a spinner
 class SignInForm extends Component {

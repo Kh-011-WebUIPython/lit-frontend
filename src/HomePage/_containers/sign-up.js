@@ -1,4 +1,4 @@
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import SignUpForm from '../sign-up-form'
 
 const mapStateToProps = state => {
@@ -6,11 +6,11 @@ const mapStateToProps = state => {
         registering: state.registration.registering,
         alert: state.alert,
     }
-}
+};
 
 const SignUp = connect(
     mapStateToProps,
     // mapDispatchToProps
-)(SignUpForm)
+)(SignUpForm);
 
 export default SignUp

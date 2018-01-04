@@ -1,10 +1,13 @@
 .search .form-group {
-  margin: 0 !important; }
+    margin: 0 !important;
+}
 
 .w-300 {
-  width: 300px; }
+    width: 300px;
+}
 
 button {
-  cursor: pointer; }
+    cursor: pointer;
+}
 
 /*# sourceMappingURL=_user.css.map */
