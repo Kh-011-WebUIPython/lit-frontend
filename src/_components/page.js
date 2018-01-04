@@ -4,7 +4,7 @@ import UserComponent from './user-component';
 import {Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
 
-const UserPage = props => {
+const Page = props => {
     return (
         <div className="flex h-100">
             <aside className="flex flex-column w-300 p-3 s-dark">
@@ -20,4 +20,4 @@ const UserPage = props => {
     );
 }
 
-export default UserPage;
+export default Page;
