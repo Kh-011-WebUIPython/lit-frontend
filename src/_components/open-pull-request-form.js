@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import NavBarRepo from './navbar-repo';
 import BranchDropdown from './branch-dropdown';
 import RepositoryTeam from './repo-team';
-import handshake from '../_img/handshake2.svg'
+import handshake from '../_img/handshake.svg'
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {Link} from 'react-router-dom';
 

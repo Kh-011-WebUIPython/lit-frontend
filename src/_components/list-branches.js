@@ -4,7 +4,7 @@ import {
     ModalHeader
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
-import trash from '../img/trash.svg';
+import trash from '../_img/trash.svg';
 
 
 class ListBranches extends Component {
