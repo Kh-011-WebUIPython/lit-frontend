@@ -119,6 +119,9 @@ html, body, .App, #root {
   top: 0;
   visibility: hidden; }
 
+.handshake-4 {
+  height: 4rem; }
+
 .search .form-group {
   margin: 0 !important; }
 
