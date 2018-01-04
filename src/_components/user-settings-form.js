@@ -49,7 +49,7 @@ class UserSettingsForm extends Component {
                         <button className="btn btn-primary"
                                 onClick={this.clickInput}>Change avatar
                         </button>
-                        <input type="file" className="file_upload"
+                        <input type="file" className="file-upload"
                                ref="file_upload"/>
                     </FormGroup>
 
@@ -58,7 +58,7 @@ class UserSettingsForm extends Component {
                         <button className="btn btn-primary"
                                 onClick={this.clickInput}>Change background
                         </button>
-                        <input type="file" className="file_upload"
+                        <input type="file" className="file-upload"
                                ref="file_upload"/>
 
                     </FormGroup>

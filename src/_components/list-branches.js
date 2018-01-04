@@ -48,13 +48,13 @@ class ListBranches extends Component {
         }
     }
 
-    changeClassStatus = (status) => ((status == 'closed') ?
+    changeClassStatus = (status) => ((status === 'closed') ?
         'bg-danger' : 'bg-success');
 
     render() {
 
         return (
-            <ListGroup className='container'>
+            <ListGroup className="container pre-scrollable">
                 {this.state.branches.map((item) => <ListGroupItem key={item.title}
                                                        className="flex justify-content-between">
                         <Link
