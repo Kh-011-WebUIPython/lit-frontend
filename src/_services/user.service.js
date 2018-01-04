@@ -6,6 +6,7 @@ export const userService = {
     register,
     getAll,
     getById,
+    getByToken,
     update,
     delete: _delete
 };
@@ -84,6 +85,17 @@ function _delete(id) {
     };
 
     return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
+}
+
+async function getByToken() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    console.log(requestOptions);
+
+    return await fetch(LIT_URL + '/auth/user/', {...requestOptions}).then(handleResponse);
 }
 
 
