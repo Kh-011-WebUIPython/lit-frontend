@@ -12,7 +12,15 @@ function getUserInfo() {
         userService.getByToken()
             .then(
                 userinfo => {
-                    dispatch(success(userinfo));
+                    userService.getById(userinfo.pk)
+                        .then(
+                            userinfo => {
+                                dispatch(success(userinfo))
+                            },
+                            error => {
+                                dispatch(failure(error));
+                            }
+                        )
                 },
                 error => {
                     dispatch(failure(error));

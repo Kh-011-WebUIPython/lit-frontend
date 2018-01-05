@@ -4,16 +4,16 @@ import {history} from '../_helpers';
 import {alertActions} from '.';
 
 export const userActions = {
-    login,
-    logout,
+    signIn,
+    signOut,
     register,
 };
 
-function login(username, password) {
+function signIn(username, password) {
     return dispatch => {
         dispatch(request({username}));
 
-        userService.login(username, password)
+        userService.signIn(username, password)
             .then(
                 user => {
                     dispatch(success(user));
@@ -28,21 +28,21 @@ function login(username, password) {
     };
 
     function request(user) {
-        return {type: userConstants.LOGIN_REQUEST, user}
+        return {type: userConstants.SIGNIN_REQUEST, user}
     }
 
     function success(user) {
-        return {type: userConstants.LOGIN_SUCCESS, user}
+        return {type: userConstants.SIGNIN_SUCCESS, user}
     }
 
     function failure(error) {
-        return {type: userConstants.LOGIN_FAILURE, error}
+        return {type: userConstants.SIGNIN_FAILURE, error}
     }
 }
 
-function logout() {
-    userService.logout();
-    return {type: userConstants.LOGOUT};
+function signOut() {
+    userService.signOut();
+    return {type: userConstants.SIGNOUT};
 }
 
 function register(userData) {
@@ -54,8 +54,8 @@ function register(userData) {
                 user => {
                     dispatch(success());
                     //todo: why not working
-                    //todo: try to dispatch login action
-                    login({username: userData.username, password: userData.password});
+                    //todo: try to dispatch signIn action
+                    signIn({username: userData.username, password: userData.password});
                 },
                 error => {
                     dispatch(failure(error));

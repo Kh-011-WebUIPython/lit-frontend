@@ -1,8 +1,8 @@
 import {authHeader} from '../_helpers';
 
 export const userService = {
-    login,
-    logout,
+    signIn,
+    signOut,
     register,
     getAll,
     getById,
@@ -13,7 +13,7 @@ export const userService = {
 
 const LIT_URL = 'http://litvcs.win:8080/api/v1';
 
-async function login(userData) {
+async function signIn(userData) {
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -31,7 +31,7 @@ async function login(userData) {
         });
 }
 
-function logout() {
+function signOut() {
     localStorage.removeItem('user');
 }
 
@@ -62,9 +62,9 @@ async function register(user) {
         body: JSON.stringify(user)
     };
     const registerData = await fetch(LIT_URL + '/users/', {...requestOptions}).then(handleResponse);
-    const loginData = login({username: user.username, password: user.password});
+    const signInData = signIn({username: user.username, password: user.password});
 
-    return {registerData: registerData, loginData: loginData};
+    return {registerData: registerData, signInData: signInData};
 }
 
 function update(user) {
@@ -89,15 +89,13 @@ function _delete(id) {
 
 async function getByToken() {
     const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
+        method: 'get',
+        headers: authHeader(),
     };
 
-    console.log(requestOptions);
-
     return await fetch(LIT_URL + '/auth/user/', {...requestOptions}).then(handleResponse);
-}
 
+}
 
 function handleResponse(response) {
     if (!response.ok) {
