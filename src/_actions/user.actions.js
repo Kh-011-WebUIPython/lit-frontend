@@ -17,8 +17,7 @@ function signIn(username, password) {
             .then(
                 user => {
                     dispatch(success(user));
-                    // todo: find out why the hell it is so
-                    history.push(`/${username.username}`);
+                    history.push(`/`);
                 },
                 error => {
                     dispatch(failure(error));
@@ -53,9 +52,7 @@ function register(userData) {
             .then(
                 user => {
                     dispatch(success());
-                    //todo: why not working
-                    //todo: try to dispatch signIn action
-                    signIn({username: userData.username, password: userData.password});
+                    dispatch(userActions.signIn({username: userData.username, password: userData.password}))
                 },
                 error => {
                     dispatch(failure(error));
