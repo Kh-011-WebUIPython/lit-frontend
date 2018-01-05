@@ -122,6 +122,9 @@ html, body, .App, #root {
 .handshake-4 {
   height: 4rem; }
 
+.nav-item {
+  cursor: pointer; }
+
 .search .form-group {
   margin: 0 !important; }
 

@@ -18,6 +18,7 @@ import RepositoryPage from './_components/repo-page';
 import ListBranchesPage from './_components/list-branches-page';
 import ListCommitsPage from './_components/list-commits-page';
 import OpenPullRequestPage from './_components/open-pull-request-page';
+import SearchPage from './_components/search-page';
 
 const App = props => {
     return (
@@ -37,8 +38,10 @@ const App = props => {
                     <Route path='/commits' component={ListCommitsPage}/>
                     {/*<Route path='/commit' component={Commit}/>*/}
                     {/*<Route path='/file' component={File}/>*/}
-                    <Route path='/open_pull_request' component={OpenPullRequestPage}/>
+                    <Route path='/open_pull_request'
+                           component={OpenPullRequestPage}/>
                     {/*<Route path='/pull_request' component={PullRequest}/>*/}
+                    <Route path='/search' component={SearchPage}/>
                 </Switch>
             </BrowserRouter>
         </Provider>

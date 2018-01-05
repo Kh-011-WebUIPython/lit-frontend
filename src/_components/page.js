@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '../HomePage/search'
+import Search from '../HomePage/search-component'
 import UserComponent from './user-component';
 import {Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
