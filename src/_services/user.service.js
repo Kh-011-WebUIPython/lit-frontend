@@ -66,10 +66,8 @@ async function register(user) {
         },
         body: JSON.stringify(user)
     };
-    const registerData = await fetch(LIT_URL + '/users/', {...requestOptions}).then(handleResponse);
-    const signInData = signIn({username: user.username, password: user.password});
+    return await fetch(LIT_URL + '/users/', {...requestOptions}).then(handleResponse);
 
-    return {registerData: registerData, signInData: signInData};
 }
 
 function update(user) {
