@@ -27,10 +27,12 @@ class App extends Component {
     }
 
     render() {
+        const {loggedIn} = this.props.authentication;
+        console.log(loggedIn);
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route exact path='/' component={HomePage}/>
+                    <Route exact path='/' component={loggedIn ? UserPage : HomePage}/>
                     <Route path='/:user' component={UserPage}/>
                     <Route path='/user_settings' component={UserSettingsPage}/>
                     <Route path='/new_repository' component={NewRepository}/>
@@ -50,8 +52,8 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-    const {alert} = state;
-    return {alert};
+    const {alert, authentication} = state;
+    return {alert, authentication};
 }
 
 export default connect(mapStateToProps)(App);

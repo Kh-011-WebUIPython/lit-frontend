@@ -21,7 +21,7 @@ class SignInForm extends Component {
 
     submit(values, dispatch) {
         const userData = {username: values.username, password: values.password};
-        dispatch(userActions.login(userData));
+        dispatch(userActions.signIn(userData));
     }
 
     render() {

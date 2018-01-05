@@ -2,18 +2,11 @@ import React, {Component} from 'react';
 import {Card, CardBody, CardImg, CardText, CardTitle} from 'reactstrap';
 import {Link} from "react-router-dom";
 
-
-const username = "User name";
-// const user_avatar = "";
-// const user_backgroun_image = "";
-const user_repository_count = "User repository count ";
-
+const userRepositoryCount = "User repository count ";
 
 class UserComponent extends Component {
-
     render() {
         return (
-
             <div className="card-300 mb-4">
                 <Card>
                     <div className="card card-inverse">
@@ -23,18 +16,20 @@ class UserComponent extends Component {
                                     <button type="button" className="btn btn-light btn-sm">Settings</button>
                                 </Link>
                                 <Link to='/'>
-                                    <button type="button" className="btn btn-light btn-sm">Sign out</button>
+                                    <button type="button" onClick={this.props.signOut}
+                                            className="btn btn-light btn-sm">Sign out
+                                    </button>
                                 </Link>
                             </div>
                         </div>
                     </div>
-                    <CardImg top width="100%"  /*src={user_background_image}*/ src="https://picsum.photos/300/180"
-                             alt="Card image cap"/>
+                    <CardImg top width="100%" src="https://picsum.photos/300/180" alt="Card image cap"/>
                     <CardBody>
-                        <Link to='/user'><img /*src = {user_avatar}*/ src="https://picsum.photos/150/150" alt="Avatar"
-                                                                      className="br-50"/></Link>
-                        <CardTitle>{username}</CardTitle>
-                        <CardText>{user_repository_count}</CardText>
+                        <Link to='/user'><img
+                            src={this.props.avatar ? this.props.avatar : 'https://picsum.photos/150/150'}
+                            alt="Avatar" className="br-50"/></Link>
+                        <CardTitle>{this.props.username}</CardTitle>
+                        <CardText>{userRepositoryCount}</CardText>
                     </CardBody>
                 </Card>
             </div>

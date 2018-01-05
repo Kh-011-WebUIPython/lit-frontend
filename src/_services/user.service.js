@@ -32,7 +32,12 @@ async function signIn(userData) {
 }
 
 function signOut() {
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+    };
     localStorage.removeItem('user');
+    fetch(LIT_URL + '/auth/logout/', {...requestOptions});
 }
 
 function getAll() {
