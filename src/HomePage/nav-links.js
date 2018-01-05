@@ -5,19 +5,16 @@ import registration from '../_img/registration.svg';
 import ModalSign from './modal-sign';
 
 export default class NavLinks extends Component {
+    changeState = () => this.setState({'searchField': !this.state.searchField});
+
+    // todo: focus on input after it opens
+    getClassName = () => 'form-control search-field' +
+        (this.state.searchField ? '' : ' search-field-invisible');
+
     constructor(props) {
         super(props);
         this.state = {'searchField': false};
     }
-
-    // todo: focus on input after it opens
-
-    changeState = () => this.setState({'searchField': !this.state.searchField});
-
-
-    getClassName = () => 'form-control search-field' +
-        (this.state.searchField ? '' : ' search-field-invisible');
-
 
     render() {
         return (

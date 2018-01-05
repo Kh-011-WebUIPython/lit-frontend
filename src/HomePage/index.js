@@ -8,19 +8,17 @@ import AboutDevs from './about-devs';
 import FormSection from './form-section';
 
 class HomePage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {scrolled: false}
-    }
-
     componentDidMount = () => window.addEventListener('scroll', this.handleScroll);
-
     componentWillUnmount = () => window.removeEventListener('scroll', this.handleScroll);
-
     handleScroll = (e) => {
         let height = document.documentElement.clientHeight;
         this.setState({scrolled: window.scrollY > height});
     };
+
+    constructor(props) {
+        super(props);
+        this.state = {scrolled: false}
+    }
 
     render() {
         return (

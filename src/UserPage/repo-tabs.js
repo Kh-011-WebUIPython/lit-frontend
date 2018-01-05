@@ -1,52 +1,52 @@
-import React, {Component} from 'react';
-import {TabContent, TabPane, Nav, NavItem, NavLink} from 'reactstrap';
-import classnames from 'classnames';
-import {Link} from 'react-router-dom';
-import crown from '../_img/crown.svg';
+import React, {Component} from "react";
+import {Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
+import RepoList from './repo-list';
 
 class RepoTabs extends Component {
+    toggle = tab => {
+        this.setState({
+            activeTab: tab,
+        });
+
+    };
+
     constructor(props) {
         super(props);
 
         this.state = {
-            activeTab: '1'
+            activeTab: '0'
         };
     }
 
-    toggle = (tab) => {
-        if (this.state.activeTab !== tab) {
-            this.setState({activeTab: tab});
-        }
-    }
-
     render() {
+        const isFirstActive = this.state.activeTab === '0';
         return (
             <div>
                 <Nav tabs>
                     <NavItem>
                         <NavLink
-                            className={classnames({active: this.state.activeTab === '1'})}
+                            className={isFirstActive ? 'active' : ''}
                             onClick={() => {
-                                this.toggle('1');
+                                this.toggle('0');
                             }}>
                             User's repositories
                         </NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink
-                            className={classnames({active: this.state.activeTab === '2'})}
+                            className={!isFirstActive ? 'active' : ''}
                             onClick={() => {
-                                this.toggle('2');
+                                this.toggle('1');
                             }}>
                             Repositories user contribute to
                         </NavLink>
                     </NavItem>
                 </Nav>
                 <TabContent activeTab={this.state.activeTab}>
-                    <TabPane tabId="1" className="border border-top-0 p-2">
+                    <TabPane tabId="0" className="border border-top-0 p-2">
                         <RepoList repos={repoList}/>
                     </TabPane>
-                    <TabPane tabId="2" className="border border-top-0 p-2">
+                    <TabPane tabId="1" className="border border-top-0 p-2">
                         <RepoList repos={repoListAuthors}/>
                     </TabPane>
                 </TabContent>
@@ -58,40 +58,6 @@ class RepoTabs extends Component {
 
 export default RepoTabs;
 
-class RepoListItem extends Component {
-    render() {
-        let {title, description, author} = this.props.item;
-        return (
-            <div className="border p-2 pl-3 pb-3 mt-2">
-                <div className="flex justify-content-between">
-                    <h2><Link to='/repository'>{title}</Link></h2>
-                    {author && <Author>{author}</Author>}
-                </div>
-                <p>{description}</p>
-            </div>
-        );
-    }
-}
-
-const RepoList = props => {
-    return (
-        <div>
-            {props.repos.map((item, key) => <RepoListItem item={item} key={key}/>)}
-        </div>
-    );
-}
-
-
-const Author = props => {
-    return (
-        <div className="flex align-items-center">
-            <img src={crown} alt="owner" className="img-2"/>
-            <h5 className="pl-2"><Link to={`/${props.children}`}>{props.children}</Link></h5>
-        </div>
-    );
-}
-
-// DATA
 
 const repoList = [
     {

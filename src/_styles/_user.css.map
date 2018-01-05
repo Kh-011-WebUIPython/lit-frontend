@@ -1,7 +1,9 @@
 {
-"version": 3,
-"mappings": "AACE,mBAAW;EACT,MAAM,EAAE,YAAY;;AAExB,MAAM;EACJ,KAAK,EAAE,KAAK;;AAEd,MAAM;EACJ,MAAM,EAAE,OAAO",
-"sources": ["_user.sass"],
-"names": [],
-"file": "_user.css"
+  "version": 3,
+  "mappings": "AACE,mBAAW;EACT,MAAM,EAAE,YAAY;;AAExB,MAAM;EACJ,KAAK,EAAE,KAAK;;AAEd,MAAM;EACJ,MAAM,EAAE,OAAO",
+  "sources": [
+    "_user.sass"
+  ],
+  "names": [],
+  "file": "_user.css"
 }

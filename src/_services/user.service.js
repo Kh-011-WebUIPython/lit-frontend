@@ -1,18 +1,19 @@
 import {authHeader} from '../_helpers';
 
 export const userService = {
-    login,
-    logout,
+    signIn,
+    signOut,
     register,
     getAll,
     getById,
+    getByToken,
     update,
     delete: _delete
 };
 
 const LIT_URL = 'http://litvcs.win:8080/api/v1';
 
-async function login(userData) {
+async function signIn(userData) {
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -30,8 +31,13 @@ async function login(userData) {
         });
 }
 
-function logout() {
+function signOut() {
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+    };
     localStorage.removeItem('user');
+    fetch(LIT_URL + '/auth/logout/', {...requestOptions});
 }
 
 function getAll() {
@@ -61,9 +67,9 @@ async function register(user) {
         body: JSON.stringify(user)
     };
     const registerData = await fetch(LIT_URL + '/users/', {...requestOptions}).then(handleResponse);
-    const loginData = login({username: user.username, password: user.password});
+    const signInData = signIn({username: user.username, password: user.password});
 
-    return {registerData: registerData, loginData: loginData};
+    return {registerData: registerData, signInData: signInData};
 }
 
 function update(user) {
@@ -86,6 +92,15 @@ function _delete(id) {
     return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
 }
 
+async function getByToken() {
+    const requestOptions = {
+        method: 'get',
+        headers: authHeader(),
+    };
+
+    return await fetch(LIT_URL + '/auth/user/', {...requestOptions}).then(handleResponse);
+
+}
 
 function handleResponse(response) {
     if (!response.ok) {

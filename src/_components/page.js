@@ -9,7 +9,7 @@ const Page = props => {
         <div className="flex h-100">
             <aside className="flex flex-column w-300 p-3 s-dark">
                 <Search/>
-                <UserComponent/>
+                <UserComponent username={props.username} avatar={props.avatar} signOut={props.signOut}/>
                 <Link to="/new_repository"><Button color="primary" className="w-100">Create a new
                     repo</Button></Link>
             </aside>
@@ -18,6 +18,6 @@ const Page = props => {
             </div>
         </div>
     );
-}
+};
 
 export default Page;
