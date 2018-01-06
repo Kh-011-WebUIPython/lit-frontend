@@ -33,8 +33,8 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/' component={loggedIn ? UserPage : HomePage}/>
+                    <Route path='/settings' component={UserSettingsPage}/>
                     <Route path='/:user' component={UserPage}/>
-                    <Route path='/user_settings' component={UserSettingsPage}/>
                     <Route path='/new_repository' component={NewRepository}/>
                     <Route path='/repository_settings' component={RepositorySettings}/>
                     <Route path='/empty_repository' component={EmptyRepository}/>
