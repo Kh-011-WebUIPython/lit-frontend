@@ -51,7 +51,7 @@ function register(userData) {
 
         userService.register(userData)
             .then(
-                user => {
+                () => {
                     dispatch(success());
                     dispatch(userActions.signIn({username: userData.username, password: userData.password}))
                 },
@@ -84,11 +84,11 @@ function update(userData) {
                 user => {
                     userData.id = user.pk;
                     userService.update(userData)
-                })
-            .then(
-                user => {
-                    dispatch(success());
-                    history.push(`/`);
+                        .then(
+                            () => {
+                                dispatch(success());
+                                history.push(`/`);
+                            });
                 },
                 error => {
                     dispatch(failure(error));
