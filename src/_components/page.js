@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Search from '../UserPage/search'
-import UserInfo from '../UserInfoBlock';
+import UserInfo from '../UserInfoBlock/user-info';
 import {Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {userActions, userpageActions} from "../_actions";

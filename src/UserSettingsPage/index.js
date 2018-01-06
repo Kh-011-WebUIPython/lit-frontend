@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
-import RepoTabs from './repo-tabs';
+import UserSettingsForm from './_containers/form';
 import UserInfoBlock from '../UserInfoBlock';
 import {connect} from "react-redux";
 import {userActions, userpageActions} from "../_actions";
 
-class UserPage extends Component {
+class UserSettingsPage extends Component {
     componentDidMount() {
         this.props.getUserInfo();
     };
 
     render() {
-        const {avatar, username, signOut} = this.props;
+        const {avatar, username, email, signOut, pk} = this.props;
         return (
             <div className="flex h-100">
                 <UserInfoBlock avatar={avatar} username={username} signOut={signOut}/>
                 <div className="container pt-5 w-100">
-                    <RepoTabs/>
+                    <UserSettingsForm avatar={avatar} email={email} id={pk}/>
                 </div>
             </div>
         );
@@ -24,7 +24,7 @@ class UserPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        ...state.userinfo
+        ...state.userinfo, alert: state.alert
     };
 };
 
@@ -39,6 +39,6 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-const ConnectedUserPage = connect(mapStateToProps, mapDispatchToProps)(UserPage);
+const ConnectedUserSettingsPage = connect(mapStateToProps, mapDispatchToProps)(UserSettingsPage);
 
-export default ConnectedUserPage;
+export default ConnectedUserSettingsPage;

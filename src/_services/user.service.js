@@ -70,14 +70,14 @@ async function register(user) {
 
 }
 
-function update(user) {
+async function update(user) {
     const requestOptions = {
         method: 'PUT',
         headers: {...authHeader(), 'Content-Type': 'application/json'},
         body: JSON.stringify(user)
     };
 
-    return fetch(LIT_URL + '/users/' + user.id, {...requestOptions}).then(handleResponse);
+    return await fetch(LIT_URL + '/users/' + user.id, {...requestOptions}).then(handleResponse);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -97,7 +97,6 @@ async function getByToken() {
     };
 
     return await fetch(LIT_URL + '/auth/user/', {...requestOptions}).then(handleResponse);
-
 }
 
 function handleResponse(response) {

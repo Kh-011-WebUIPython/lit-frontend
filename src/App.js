@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import NewRepository from './_components/create-repo-page';
 import EmptyRepository from './_components/empty-repo-page';
-import UserSettingsPage from './_components/user-settings-page';
+import UserSettingsPage from './UserSettingsPage/index';
 import UserPage from './UserPage/index';
 import RepositorySettings from './_components/repo-settings-page';
 import HomePage from './HomePage/index';

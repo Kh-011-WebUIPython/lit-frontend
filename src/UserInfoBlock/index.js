@@ -1,40 +1,21 @@
 import React, {Component} from 'react';
-import {Card, CardBody, CardImg, CardText, CardTitle} from 'reactstrap';
-import {Link} from "react-router-dom";
+import Search from '../UserPage/search'
+import UserInfo from '../UserInfoBlock/user-info';
+import {Button} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
-const userRepositoryCount = "User repository count ";
-
-class UserInfo extends Component {
+class UserInfoBlock extends Component {
     render() {
         const {avatar, username, signOut} = this.props;
         return (
-            <div className="card-300 mb-4">
-                <Card>
-                    <div className="card card-inverse">
-                        <div className="card-img-overlay">
-                            <div className="flex justify-content-between">
-                                <Link to='/settings'>
-                                    <button type="button" className="btn btn-light btn-sm">Settings</button>
-                                </Link>
-                                <Link to='/'>
-                                    <button type="button" onClick={signOut} className="btn btn-light btn-sm">Sign out
-                                    </button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                    <CardImg top width="100%" src="https://picsum.photos/300/180?image=1045" alt=""/>
-                    <CardBody>
-                        <Link to='/'><img src={avatar ? avatar : 'https://picsum.photos/150/150'}
-                                          alt="Avatar" className="br-50"/></Link>
-                        <CardTitle>{username}</CardTitle>
-                        <CardText>{userRepositoryCount}</CardText>
-                    </CardBody>
-                </Card>
-            </div>
-
+            <aside className="flex flex-column w-300 p-3 s-dark">
+                <Search/>
+                <UserInfo username={username} avatar={avatar} signOut={signOut}/>
+                <Link to="/new_repository"><Button color="primary" className="w-100">Create a new
+                    repo</Button></Link>
+            </aside>
         );
-    }
+    };
 }
 
-export default UserInfo;
+export default UserInfoBlock;
