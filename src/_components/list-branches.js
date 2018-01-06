@@ -89,7 +89,7 @@ class ModalDelete extends Component {
         return (
             <div className="d-inline-block">
                 <img src={this.props.src} alt={this.props.alt}
-                     title={this.props.title}
+                     title={this.props.name}
                      className="icon nav-icon ml-4 m-0" onClick={this.toggle}/>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}
                        className={this.props.className}>

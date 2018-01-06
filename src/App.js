@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import NewRepository from './_components/create-repo-page';
+import NewRepository from './NewRepoPage';
 import EmptyRepository from './_components/empty-repo-page';
 import UserSettingsPage from './UserSettingsPage/index';
 import UserPage from './UserPage/index';
@@ -34,8 +34,8 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' component={loggedIn ? UserPage : HomePage}/>
                     <Route path='/settings' component={UserSettingsPage}/>
+                    <Route path='/create' component={NewRepository}/>
                     <Route path='/:user' component={UserPage}/>
-                    <Route path='/new_repository' component={NewRepository}/>
                     <Route path='/repository_settings' component={RepositorySettings}/>
                     <Route path='/empty_repository' component={EmptyRepository}/>
                     {/*<Route path='/repository' component={Repository}/>*/}
