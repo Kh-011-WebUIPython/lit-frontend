@@ -88,6 +88,7 @@ function update(userData) {
             .then(
                 user => {
                     dispatch(success());
+                    history.push(`/`);
                 },
                 error => {
                     dispatch(failure(error));
