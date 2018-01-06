@@ -119,4 +119,7 @@ html, body, .App, #root {
 .handshake-4 {
   height: 4rem; }
 
+.nav-item {
+  cursor: pointer; }
+
 /*# sourceMappingURL=_index.css.map */
