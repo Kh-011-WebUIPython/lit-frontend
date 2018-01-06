@@ -70,13 +70,13 @@ class AboutCommit extends Component {
                     <Link to='/user'><img src={this.props.data.avatar} alt=""
                                           className="br-50"/></Link>
                     <div className="flex flex-column justify-content-around">
-                        <Link to='/commits'>{this.props.data.title}</Link>
+                        <Link to='/commit'>{this.props.data.title}</Link>
                         <span>{this.props.data.time}</span>
                     </div>
                 </div>
                 <div>
                     <Link
-                        to='/user'><Button>{this.props.data.hash}</Button></Link>
+                        to='/commit'><Button>{this.props.data.hash}</Button></Link>
                 </div>
             </div>
         );
@@ -129,4 +129,4 @@ class ListCommitsForm extends Component {
 }
 
 
-export default ListCommitsForm;
+export {AboutCommit, ListCommitsForm};
