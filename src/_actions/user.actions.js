@@ -7,6 +7,7 @@ export const userActions = {
     signIn,
     signOut,
     register,
+    update,
 };
 
 function signIn(username, password) {
@@ -50,7 +51,7 @@ function register(userData) {
 
         userService.register(userData)
             .then(
-                user => {
+                () => {
                     dispatch(success());
                     dispatch(userActions.signIn({username: userData.username, password: userData.password}))
                 },
@@ -71,5 +72,40 @@ function register(userData) {
 
     function failure(error) {
         return {type: userConstants.REGISTER_FAILURE, error}
+    }
+}
+
+function update(userData) {
+    return dispatch => {
+        dispatch(request(userData));
+
+        userService.getByToken()
+            .then(
+                user => {
+                    userData.id = user.pk;
+                    userService.update(userData)
+                        .then(
+                            () => {
+                                dispatch(success());
+                                history.push(`/`);
+                            });
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            )
+    };
+
+    function request(user) {
+        return {type: userConstants.UPDATE_REQUEST, user}
+    }
+
+    function success(user) {
+        return {type: userConstants.UPDATE_SUCCESS, user}
+    }
+
+    function failure(error) {
+        return {type: userConstants.UPDATE_FAILURE, error}
     }
 }

@@ -1,23 +1,52 @@
-import React from 'react';
-import Search from '../HomePage/search'
-import UserComponent from './user-component';
+import React, {Component} from 'react';
+import Search from '../UserPage/search'
+import UserInfo from '../UserInfoBlock/user-info';
 import {Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import {userActions, userpageActions} from "../_actions";
+import {connect} from 'react-redux';
 
-const Page = props => {
-    return (
-        <div className="flex h-100">
-            <aside className="flex flex-column w-300 p-3 s-dark">
-                <Search/>
-                <UserComponent username={props.username} avatar={props.avatar} signOut={props.signOut}/>
-                <Link to="/new_repository"><Button color="primary" className="w-100">Create a new
-                    repo</Button></Link>
-            </aside>
-            <div className="container pt-5 w-100">
-                {props.children}
+class Page extends Component {
+    componentDidMount() {
+        this.props.getUserInfo();
+    };
+
+    render() {
+        const {avatar, username, signOut, children} = this.props;
+        return (
+            <div className="flex h-100">
+                <aside className="flex flex-column w-300 p-3 s-dark">
+                    <Search/>
+                    <UserInfo username={username} avatar={avatar} signOut={signOut}/>
+                    <Link to="/new_repository"><Button color="primary" className="w-100">Create a new
+                        repo</Button></Link>
+                </aside>
+                <div className="container pt-5 w-100">
+                    {children}
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
+}
+
+
+const mapStateToProps = state => {
+    return {
+        ...state.userinfo
+    };
 };
 
-export default Page;
+const mapDispatchToProps = dispatch => {
+    return {
+        signOut: () => {
+            dispatch(userActions.signOut())
+        },
+        getUserInfo: () => {
+            dispatch(userpageActions.getUserInfo());
+        }
+    }
+};
+
+const ConnectedPage = connect(mapStateToProps, mapDispatchToProps)(Page);
+
+export default ConnectedPage;

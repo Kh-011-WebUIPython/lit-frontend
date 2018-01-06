@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import LitLogo from './lit-logo';
 import {Navbar} from 'reactstrap';
-import Nav from './nav-links';
+import NavLinks from './nav-links';
 
 class NavBar extends Component {
 
@@ -12,7 +12,7 @@ class NavBar extends Component {
             <div className={className}>
                 <Navbar className="container">
                     <LitLogo/>
-                    <Nav/>
+                    <NavLinks/>
                 </Navbar>
             </div>
         );
