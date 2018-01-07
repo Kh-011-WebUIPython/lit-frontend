@@ -10,12 +10,12 @@ class UserSettingsPage extends Component {
     };
 
     render() {
-        const {avatar, username, email, signOut, pk} = this.props;
+        const {avatar, username, email, signOut, pk, _delete} = this.props;
         return (
             <div className="flex h-100">
                 <UserInfoBlock avatar={avatar} username={username} signOut={signOut}/>
                 <div className="container pt-5 w-100">
-                    <UserSettingsForm avatar={avatar} email={email} id={pk}/>
+                    <UserSettingsForm avatar={avatar} email={email} id={pk} delete={_delete}/>
                 </div>
             </div>
         );
@@ -36,7 +36,7 @@ const mapDispatchToProps = dispatch => {
         getUserInfo: () => {
             dispatch(userpageActions.getUserInfo());
         },
-        delete: () => {
+        _delete: () => {
             dispatch(userActions.delete())
         }
     }

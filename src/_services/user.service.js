@@ -86,7 +86,11 @@ function _delete(id) {
     };
 
     return fetch(`${LIT_URL}/users/${id}/`, {...requestOptions})
-        .then(handleResponse)
+        .then(response => {
+            if (!response.ok) {
+                return Promise.reject(response.statusText);
+            }
+        })
         .then(() => localStorage.removeItem('user'));
 }
 

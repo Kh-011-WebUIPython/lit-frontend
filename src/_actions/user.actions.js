@@ -121,7 +121,7 @@ function _delete(userData) {
         userService.getByToken()
             .then(
                 user => {
-                    userService._delete(user.pk)
+                    userService.delete(user.pk)
                         .then(
                             () => {
                                 dispatch(success());
