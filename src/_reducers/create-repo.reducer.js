@@ -3,9 +3,9 @@ import {repoConstants} from '../_constants';
 export function repoCreation(state = {}, action) {
     switch (action.type) {
         case repoConstants.CREATION_REQUEST:
-            return {registering: true};
+            return {creating: true};
         case repoConstants.CREATION_SUCCESS:
-            return {};
+            return {repo: action.repo};
         case repoConstants.CREATION_FAILURE:
             return {};
         default:
