@@ -81,11 +81,17 @@ function update(userData) {
             .then(
                 user => {
                     userData.id = user.pk;
+                    userData.username = user.username;
                     userService.update(userData)
                         .then(
-                            () => {
-                                dispatch(success());
-                            });
+                            user => {
+                                dispatch(success(user));
+                            },
+                            error => {
+                                dispatch(failure(error));
+                                dispatch(alertActions.error(error));
+                            }
+                        )
                 },
                 error => {
                     dispatch(failure(error));
