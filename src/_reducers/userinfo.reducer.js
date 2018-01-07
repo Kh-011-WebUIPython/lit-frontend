@@ -11,6 +11,8 @@ export function userinfo(state = {}, action) {
             return {};
         case userConstants.SIGNOUT:
             return {};
+        case userConstants.DELETE_SUCCESS:
+            return {};
         default:
             return state
     }

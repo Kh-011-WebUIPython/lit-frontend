@@ -16,8 +16,11 @@ export function authentication(state = initialState, action) {
                 user: action.user
             };
         case userpageConstants.USERINFO_FAILURE:
+            return {};
+        case userConstants.DELETE_SUCCESS:
+            return {};
         case userConstants.SIGNIN_FAILURE:
-        // return {};
+            return {};
         case userConstants.SIGNOUT:
             return {};
         default:
