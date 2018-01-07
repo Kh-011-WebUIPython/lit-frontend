@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import NewRepository from './NewRepoPage';
@@ -16,16 +16,29 @@ import './_styles/base.css';
 class App extends Component {
     render() {
         const {loggedIn} = this.props.authentication;
-        console.log(loggedIn);
+
+        const PrivateRoute = ({component: Component, ...rest}) => (
+            <Route {...rest} render={props => (
+                loggedIn ? (
+                    <Component {...props}/>
+                ) : (
+                    <Redirect to={{
+                        pathname: '/',
+                        state: {from: props.location}
+                    }}/>
+                )
+            )}/>
+        );
+
         return (
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/' component={loggedIn ? UserPage : HomePage}/>
-                    <Route exact path='/settings' component={UserSettingsPage}/>
-                    <Route exact path='/create' component={NewRepository}/>
-                    <Route exact path='/:user/:repo/empty' component={EmptyRepoPage}/>
-                    <Route path='/:user' component={UserPage}/>
-                    <Route path='/repository_settings' component={RepositorySettings}/>
+                    <PrivateRoute exact path='/settings' component={UserSettingsPage}/>
+                    <PrivateRoute exact path='/create' component={NewRepository}/>
+                    <PrivateRoute exact path='/:user/:repo/empty' component={EmptyRepoPage}/>
+                    <PrivateRoute path='/:user' component={UserPage}/>
+                    <PrivateRoute path='/repository_settings' component={RepositorySettings}/>
                     {/*<Route path='/repository' component={Repository}/>*/}
                     {/*<Route path='/branches' component={ListBranches}/>*/}
                     {/*<Route path='/commits' component={ListCommits}/>*/}
