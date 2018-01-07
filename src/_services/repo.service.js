@@ -1,10 +1,9 @@
 import {authHeader} from '../_helpers';
+import {LIT_URL} from "../_constants";
 
 export const repoService = {
     create,
 };
-
-const LIT_URL = 'http://litvcs.win:8080/api/v1';
 
 async function create(name, description) {
     const requestOptions = {

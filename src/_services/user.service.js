@@ -1,4 +1,5 @@
 import {authHeader} from '../_helpers';
+import {LIT_URL} from "../_constants";
 
 export const userService = {
     signIn,
@@ -10,8 +11,6 @@ export const userService = {
     update,
     delete: _delete
 };
-
-const LIT_URL = 'http://litvcs.win:8080/api/v1';
 
 async function signIn(userData) {
     const requestOptions = {
@@ -51,8 +50,7 @@ function getAll() {
 
 function getById(id) {
     const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
+        method: 'GET'
     };
 
     return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
