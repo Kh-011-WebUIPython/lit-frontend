@@ -54,6 +54,7 @@ class UserSettingsForm extends Component {
                 <Button color="primary" type="submit">Confirm</Button>
                 {updating &&
                 <img alt="spinner" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/10607/spinner3.gif"/>}
+                <Button color="danger" className="d-block mt-5" onClick={this.props.delete}>Delete profile</Button>
             </Form>
         );
     }

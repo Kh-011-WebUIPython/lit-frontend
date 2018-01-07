@@ -58,7 +58,7 @@ function getById(id) {
 
 async function register(user) {
     const requestOptions = {
-        method: 'post',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -85,12 +85,14 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
+    return fetch(`${LIT_URL}/users/${id}/`, {...requestOptions})
+        .then(handleResponse)
+        .then(() => localStorage.removeItem('user'));
 }
 
 async function getByToken() {
     const requestOptions = {
-        method: 'get',
+        method: 'GET',
         headers: authHeader(),
     };
 

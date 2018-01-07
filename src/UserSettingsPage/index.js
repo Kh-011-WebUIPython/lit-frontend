@@ -35,6 +35,9 @@ const mapDispatchToProps = dispatch => {
         },
         getUserInfo: () => {
             dispatch(userpageActions.getUserInfo());
+        },
+        delete: () => {
+            dispatch(userActions.delete())
         }
     }
 };
