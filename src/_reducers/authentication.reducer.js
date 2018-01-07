@@ -1,4 +1,4 @@
-import {userConstants} from '../_constants';
+import {userConstants, userpageConstants} from '../_constants';
 
 let user = JSON.parse(localStorage.getItem('user'));
 const initialState = user ? {loggedIn: true, user} : {};
@@ -15,8 +15,9 @@ export function authentication(state = initialState, action) {
                 loggedIn: true,
                 user: action.user
             };
+        case userpageConstants.USERINFO_FAILURE:
         case userConstants.SIGNIN_FAILURE:
-            return {};
+        // return {};
         case userConstants.SIGNOUT:
             return {};
         default:
