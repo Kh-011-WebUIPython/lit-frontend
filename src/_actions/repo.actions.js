@@ -1,6 +1,5 @@
 import {repoConstants} from '../_constants';
 import {repoService} from '../_services';
-import {history} from '../_helpers';
 import {alertActions} from '.';
 
 
@@ -16,8 +15,8 @@ function create({name, description}) {
         repoService.create(name, description)
             .then(
                 repo => {
+                    console.log(repo);
                     dispatch(success(repo));
-                    history.push(`/${name}`);
                 },
                 error => {
                     dispatch(failure(error));
