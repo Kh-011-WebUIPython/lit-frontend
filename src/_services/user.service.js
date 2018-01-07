@@ -53,7 +53,7 @@ function getById(id) {
         method: 'GET'
     };
 
-    return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
+    return fetch(`${LIT_URL}/users/${id}/`, {...requestOptions}).then(handleResponse);
 }
 
 async function register(user) {
@@ -75,7 +75,7 @@ async function update(user) {
         body: JSON.stringify(user)
     };
 
-    return await fetch(LIT_URL + '/users/' + user.id, {...requestOptions}).then(handleResponse);
+    return await fetch(`${LIT_URL}/users/${user.id}/`, {...requestOptions}).then(handleResponse);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
