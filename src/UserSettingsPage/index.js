@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
 import UserSettingsForm from './_containers/form';
 import UserInfoBlock from '../UserInfoBlock';
-import {connect} from "react-redux";
 import {userActions, userpageActions} from "../_actions";
+import LoadingPage from '../_components/loading-page';
 
 class UserSettingsPage extends Component {
     componentDidMount() {
@@ -10,7 +11,11 @@ class UserSettingsPage extends Component {
     };
 
     render() {
-        const {avatar, username, email, signOut, pk, _delete} = this.props;
+        if (this.props.userinfo.fetchingUserinfo) {
+            return (<LoadingPage/>)
+        }
+        const {avatar, username, email, pk} = this.props.userinfo;
+        const {signOut, _delete} = this.props;
         return (
             <div className="flex h-100">
                 <UserInfoBlock avatar={avatar} username={username} signOut={signOut}/>
@@ -24,7 +29,7 @@ class UserSettingsPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        ...state.userinfo, alert: state.alert
+        userinfo: state.userinfo, alert: state.alert
     };
 };
 

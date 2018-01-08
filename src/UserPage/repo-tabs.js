@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import RepoList from './repo-list';
+import LoadingPage from '../_components/loading-page';
 
 class RepoTabs extends Component {
     toggle = tab => {
@@ -20,6 +21,13 @@ class RepoTabs extends Component {
 
     render() {
         const isFirstActive = this.state.activeTab === '0';
+
+        if (!this.props.repos) {
+            return(<LoadingPage/>);
+        }
+
+        const {owner, contributor} = this.props.repos;
+        console.log(owner);
         return (
             <div>
                 <Nav tabs>
@@ -44,10 +52,10 @@ class RepoTabs extends Component {
                 </Nav>
                 <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="0" className="border border-top-0 p-2">
-                        <RepoList repos={repoList}/>
+                        <RepoList repos={owner}/>
                     </TabPane>
                     <TabPane tabId="1" className="border border-top-0 p-2">
-                        <RepoList repos={repoListAuthors}/>
+                        <RepoList repos={contributor}/>
                     </TabPane>
                 </TabContent>
             </div>
@@ -59,57 +67,57 @@ class RepoTabs extends Component {
 export default RepoTabs;
 
 
-const repoList = [
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-    },
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-    },
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-    },
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-    },
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-    },
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-    },
-];
-const repoListAuthors = [
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-        'author': 'Dimasik',
-    },
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-        'author': 'Dimasik',
-    },
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-        'author': 'Dimasik',
-    },
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-        'author': 'Dimasik',
-    },
-    {
-        'title': 'Lorem',
-        'description': 'Ipsum dolor sit amet',
-        'author': 'Dimasik',
-    },
-];
-
+// const repoList = [
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//     },
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//     },
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//     },
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//     },
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//     },
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//     },
+// ];
+// const repoListAuthors = [
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//         'author': 'Dimasik',
+//     },
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//         'author': 'Dimasik',
+//     },
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//         'author': 'Dimasik',
+//     },
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//         'author': 'Dimasik',
+//     },
+//     {
+//         'title': 'Lorem',
+//         'description': 'Ipsum dolor sit amet',
+//         'author': 'Dimasik',
+//     },
+// ];
+//

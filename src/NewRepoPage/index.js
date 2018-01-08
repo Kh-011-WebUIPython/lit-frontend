@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {Redirect} from 'react-router-dom';
 import CreateRepoForm from './form';
 import UserInfoBlock from '../UserInfoBlock';
-import {connect} from "react-redux";
 import {userActions, userpageActions} from "../_actions";
-import {Redirect} from 'react-router-dom';
+import LoadingPage from '../_components/loading-page';
 
 class NewRepoPage extends Component {
     componentDidMount() {
@@ -11,8 +12,11 @@ class NewRepoPage extends Component {
     };
 
     render() {
-        console.log(this.props);
-        const {avatar, username, signOut, alert} = this.props;
+        if (this.props.userinfo.fetchingUserinfo) {
+            return (<LoadingPage/>)
+        }
+        const {avatar, username} = this.props.userinfo;
+        const {alert, signOut} = this.props;
         const {repo} = this.props.repoCreation;
 
         if (repo) {
@@ -32,7 +36,7 @@ class NewRepoPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        ...state.userinfo, alert: state.alert, repoCreation: state.repoCreation
+        userinfo: state.userinfo, alert: state.alert, repoCreation: state.repoCreation
     };
 };
 

@@ -7,6 +7,7 @@ import {userinfo} from './userinfo.reducer';
 import {alert} from './alert.reducer';
 import {update} from './update-userinfo.reducer';
 import {repoCreation} from './create-repo.reducer';
+import {repos} from './get-repo.reducer';
 
 const rootReducer = combineReducers({
     authentication,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     alert,
     update,
     repoCreation,
+    repos,
     form: formReducer
 });
 

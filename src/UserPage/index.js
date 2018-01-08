@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import RepoTabs from './repo-tabs';
 import UserInfoBlock from '../UserInfoBlock';
 import {connect} from "react-redux";
-import {userActions, userpageActions} from "../_actions";
+import {repoActions, userActions, userpageActions} from "../_actions";
+import LoadingPage from "../_components/loading-page";
 
 class UserPage extends Component {
     componentDidMount() {
@@ -10,12 +11,16 @@ class UserPage extends Component {
     };
 
     render() {
-        const {avatar, username, signOut} = this.props;
+        if (this.props.userinfo.fetchingUserinfo) {
+            return (<LoadingPage/>)
+        }
+        const {avatar, username, repos} = this.props.userinfo;
+        const {signOut} = this.props;
         return (
             <div className="flex h-100">
                 <UserInfoBlock avatar={avatar} username={username} signOut={signOut}/>
                 <div className="container pt-5 w-100">
-                    <RepoTabs/>
+                    <RepoTabs repos={repos}/>
                 </div>
             </div>
         );
@@ -24,7 +29,7 @@ class UserPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        ...state.userinfo
+        userinfo: state.userinfo
     };
 };
 
@@ -34,7 +39,10 @@ const mapDispatchToProps = dispatch => {
             dispatch(userActions.signOut())
         },
         getUserInfo: () => {
-            dispatch(userpageActions.getUserInfo());
+            dispatch(userpageActions.getUserInfoWithRepos());
+        },
+        getRepos: (id, status) => {
+            dispatch(repoActions.getByUser(id, status))
         }
     }
 };
