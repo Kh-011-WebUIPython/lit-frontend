@@ -18,7 +18,7 @@ class ListBranches extends Component {
                 },
                 {
                     title: 'feature/KW-1/something-do-it',
-                    status: 'closed'
+                    status: 'merged'
                 },
                 {
                     title: 'feature/KW-2/something-do-it',
@@ -30,7 +30,7 @@ class ListBranches extends Component {
                 },
                 {
                     title: 'feature/KW-4/something-do-it',
-                    status: 'closed'
+                    status: 'merged'
                 },
                 {
                     title: 'feature/KW-5/something-do-it',
@@ -42,13 +42,13 @@ class ListBranches extends Component {
                 },
                 {
                     title: 'feature/KW-7/something-do-it',
-                    status: 'closed'
+                    status: 'merged'
                 }
             ]
         }
     }
 
-    changeClassStatus = (status) => ((status === 'closed') ?
+    changeClassStatus = (status) => ((status === 'merged') ?
         'bg-danger' : 'bg-success');
 
     render() {
