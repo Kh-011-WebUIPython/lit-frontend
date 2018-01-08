@@ -3,6 +3,7 @@ import RepoTabs from './repo-tabs';
 import UserInfoBlock from '../UserInfoBlock';
 import {connect} from "react-redux";
 import {userActions, userpageActions} from "../_actions";
+import LoadingPage from "../_components/loading-page";
 
 class UserPage extends Component {
     componentDidMount() {
@@ -10,7 +11,11 @@ class UserPage extends Component {
     };
 
     render() {
-        const {avatar, username, signOut} = this.props;
+        if (this.props.userinfo.fetchingUserinfo) {
+            return (<LoadingPage/>)
+        }
+        const {avatar, username} = this.props.userinfo;
+        const {signOut} = this.props;
         return (
             <div className="flex h-100">
                 <UserInfoBlock avatar={avatar} username={username} signOut={signOut}/>
@@ -24,7 +29,7 @@ class UserPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        ...state.userinfo
+        userinfo: state.userinfo
     };
 };
 
