@@ -7,6 +7,7 @@ export const userActions = {
     signOut,
     register,
     update,
+    delete: _delete
 };
 
 function signIn(username, password) {
@@ -81,11 +82,17 @@ function update(userData) {
             .then(
                 user => {
                     userData.id = user.pk;
+                    userData.username = user.username;
                     userService.update(userData)
                         .then(
-                            () => {
-                                dispatch(success());
-                            });
+                            user => {
+                                dispatch(success(user));
+                            },
+                            error => {
+                                dispatch(failure(error));
+                                dispatch(alertActions.error(error));
+                            }
+                        )
                 },
                 error => {
                     dispatch(failure(error));
@@ -104,5 +111,38 @@ function update(userData) {
 
     function failure(error) {
         return {type: userConstants.UPDATE_FAILURE, error}
+    }
+}
+
+function _delete(userData) {
+    return dispatch => {
+        dispatch(request(userData));
+
+        userService.getByToken()
+            .then(
+                user => {
+                    userService.delete(user.pk)
+                        .then(
+                            () => {
+                                dispatch(success());
+                            });
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            )
+    };
+
+    function request(user) {
+        return {type: userConstants.DELETE_REQUEST, user}
+    }
+
+    function success() {
+        return {type: userConstants.DELETE_SUCCESS}
+    }
+
+    function failure(error) {
+        return {type: userConstants.DELETE_FAILURE, error}
     }
 }

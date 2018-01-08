@@ -53,12 +53,12 @@ function getById(id) {
         method: 'GET'
     };
 
-    return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
+    return fetch(`${LIT_URL}/users/${id}/`, {...requestOptions}).then(handleResponse);
 }
 
 async function register(user) {
     const requestOptions = {
-        method: 'post',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -75,7 +75,7 @@ async function update(user) {
         body: JSON.stringify(user)
     };
 
-    return await fetch(LIT_URL + '/users/' + user.id, {...requestOptions}).then(handleResponse);
+    return await fetch(`${LIT_URL}/users/${user.id}/`, {...requestOptions}).then(handleResponse);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -85,12 +85,18 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
+    return fetch(`${LIT_URL}/users/${id}/`, {...requestOptions})
+        .then(response => {
+            if (!response.ok) {
+                return Promise.reject(response.statusText);
+            }
+        })
+        .then(() => localStorage.removeItem('user'));
 }
 
 async function getByToken() {
     const requestOptions = {
-        method: 'get',
+        method: 'GET',
         headers: authHeader(),
     };
 

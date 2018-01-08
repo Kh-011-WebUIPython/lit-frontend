@@ -28,33 +28,36 @@ class UserSettingsForm extends Component {
         const message = alert.message && (alert.message.toString() === 'Bad Request' ?
             'Sorry, password is incorrect' : 'OMG, something\'s got wrong');
         return (
-            <Form className="w-50" onSubmit={handleSubmit(this.submit)}>
-                {alert.message && <Alert color="danger">{message}</Alert>}
-                <Field
-                    id="email"
-                    name="email"
-                    type="email"
-                    component={renderField}
-                    label="E-mail"
-                />
-                <Field
-                    id="avatar"
-                    name="avatar"
-                    type="text"
-                    component={renderField}
-                    label="Avatar"
-                />
-                <Field
-                    id="password"
-                    name="password"
-                    type="password"
-                    component={renderField}
-                    label="Please, enter your password"
-                />
-                <Button color="primary" type="submit">Confirm</Button>
-                {updating &&
-                <img alt="spinner" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/10607/spinner3.gif"/>}
-            </Form>
+            <div>
+                <Form className="w-50" onSubmit={handleSubmit(this.submit)}>
+                    {alert.message && <Alert color="danger">{message}</Alert>}
+                    <Field
+                        id="email"
+                        name="email"
+                        type="email"
+                        component={renderField}
+                        label="E-mail"
+                    />
+                    <Field
+                        id="avatar"
+                        name="avatar"
+                        type="text"
+                        component={renderField}
+                        label="Avatar"
+                    />
+                    <Field
+                        id="password"
+                        name="password"
+                        type="password"
+                        component={renderField}
+                        label="Please, enter your password"
+                    />
+                    <Button color="primary" type="submit">Confirm</Button>
+                    {updating &&
+                    <img alt="spinner" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/10607/spinner3.gif"/>}
+                </Form>
+                <Button color="danger" className="d-block mt-5" onClick={this.props.delete}>Delete profile</Button>
+            </div>
         );
     }
 }
