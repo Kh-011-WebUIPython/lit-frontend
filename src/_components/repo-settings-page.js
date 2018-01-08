@@ -1,7 +1,7 @@
 import React from 'react';
 import RepositorySettingsForm from './repo-settings-form';
 import Page from './page';
-import NavBarRepo from "./navbar-repo";
+import NavBarRepo from './navbar-repo';
 
 const RepositorySettings = props => {
     return (

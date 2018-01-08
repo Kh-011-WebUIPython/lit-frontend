@@ -8,6 +8,8 @@ import UserSettingsPage from './UserSettingsPage';
 import UserPage from './UserPage/index';
 import RepositorySettings from './_components/repo-settings-page';
 import HomePage from './HomePage';
+import OpenPullRequestPage from './_components/open-pull-request-page';
+import SearchPage from './_components/search-page';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './_styles/reset.css';
@@ -31,8 +33,10 @@ class App extends Component {
                     {/*<Route path='/commits' component={ListCommits}/>*/}
                     {/*<Route path='/commit' component={Commit}/>*/}
                     {/*<Route path='/file' component={File}/>*/}
-                    {/*<Route path='/open_pl' component={OpenPullRequest}/>*/}
+                    <Route path='/open_pull_request'
+                           component={OpenPullRequestPage}/>
                     {/*<Route path='/pull_request' component={PullRequest}/>*/}
+                    <Route path='/search' component={SearchPage}/>
                 </Switch>
             </BrowserRouter>
         );

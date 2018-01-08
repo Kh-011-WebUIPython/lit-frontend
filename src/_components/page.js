@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Search from '../UserPage/search'
+import Search from '../UserInfoBlock/search'
 import UserInfo from '../UserInfoBlock/user-info';
 import {Button} from 'reactstrap';
 import {Link} from 'react-router-dom';

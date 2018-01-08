@@ -14,10 +14,10 @@ class UserSettingsPage extends Component {
         if (this.props.userinfo.fetchingUserinfo) {
             return (<LoadingPage/>)
         }
-                    
+
         const {avatar, username, email, pk} = this.props.userinfo;
         const {signOut, _delete} = this.props;
-                    
+
         return (
             <div className="flex h-100">
                 <UserInfoBlock avatar={avatar} username={username} signOut={signOut}/>
