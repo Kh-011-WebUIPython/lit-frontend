@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import {
-    Badge, Button, ListGroup, ListGroupItem, Modal, ModalBody, ModalFooter,
-    ModalHeader
-} from 'reactstrap';
+import {Badge, Button, ListGroup, ListGroupItem, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import trash from '../_img/trash.svg';
 
@@ -92,7 +89,7 @@ class ModalDelete extends Component {
         return (
             <div className="d-inline-block">
                 <img src={this.props.src} alt={this.props.alt}
-                     title={this.props.title}
+                     title={this.props.name}
                      className="icon nav-icon ml-4 m-0" onClick={this.toggle}/>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}
                        className={this.props.className}>

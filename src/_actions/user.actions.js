@@ -1,60 +1,148 @@
-import { userConstants } from '../_constants';
-import { userService } from '../_services';
-import { history } from '../_helpers';
+import {userConstants} from '../_constants';
+import {userService} from '../_services';
+import {alertActions} from '.';
 
 export const userActions = {
-    login,
-    logout,
+    signIn,
+    signOut,
     register,
+    update,
+    delete: _delete
 };
 
-function login(username, password) {
+function signIn(username, password) {
     return dispatch => {
-        dispatch(request({ username }));
+        dispatch(request({username}));
 
-        userService.login(username, password)
+        userService.signIn(username, password)
             .then(
                 user => {
                     dispatch(success(user));
-                    // history.push('/');
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.error(error));
                 }
             );
     };
 
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+    function request(user) {
+        return {type: userConstants.SIGNIN_REQUEST, user}
+    }
+
+    function success(user) {
+        return {type: userConstants.SIGNIN_SUCCESS, user}
+    }
+
+    function failure(error) {
+        return {type: userConstants.SIGNIN_FAILURE, error}
+    }
 }
 
-function logout() {
-    userService.logout();
-    return { type: userConstants.LOGOUT };
+function signOut() {
+    userService.signOut();
+    return {type: userConstants.SIGNOUT};
 }
 
-function register(user) {
+function register(userData) {
     return dispatch => {
-        dispatch(request(user));
+        dispatch(request(userData));
 
-        userService.register(user)
+        userService.register(userData)
+            .then(
+                () => {
+                    dispatch(success());
+                    dispatch(userActions.signIn({username: userData.username, password: userData.password}))
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request(user) {
+        return {type: userConstants.REGISTER_REQUEST, user}
+    }
+
+    function success(user) {
+        return {type: userConstants.REGISTER_SUCCESS, user}
+    }
+
+    function failure(error) {
+        return {type: userConstants.REGISTER_FAILURE, error}
+    }
+}
+
+function update(userData) {
+    return dispatch => {
+        dispatch(request(userData));
+
+        userService.getByToken()
             .then(
                 user => {
-                    dispatch(success());
-                    // history.push('/login');
-                    // dispatch(alertActions.success('Registration successful'));
+                    userData.id = user.pk;
+                    userData.username = user.username;
+                    userService.update(userData)
+                        .then(
+                            user => {
+                                dispatch(success(user));
+                            },
+                            error => {
+                                dispatch(failure(error));
+                                dispatch(alertActions.error(error));
+                            }
+                        )
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch an action that shows an error message
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.error(error));
                 }
-            );
+            )
     };
 
-    function request(user) { return { type: userConstants.REGISTER_REQUEST, user } }
-    function success(user) { return { type: userConstants.REGISTER_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
+    function request(user) {
+        return {type: userConstants.UPDATE_REQUEST, user}
+    }
+
+    function success(user) {
+        return {type: userConstants.UPDATE_SUCCESS, user}
+    }
+
+    function failure(error) {
+        return {type: userConstants.UPDATE_FAILURE, error}
+    }
+}
+
+function _delete(userData) {
+    return dispatch => {
+        dispatch(request(userData));
+
+        userService.getByToken()
+            .then(
+                user => {
+                    userService.delete(user.pk)
+                        .then(
+                            () => {
+                                dispatch(success());
+                            });
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            )
+    };
+
+    function request(user) {
+        return {type: userConstants.DELETE_REQUEST, user}
+    }
+
+    function success() {
+        return {type: userConstants.DELETE_SUCCESS}
+    }
+
+    function failure(error) {
+        return {type: userConstants.DELETE_FAILURE, error}
+    }
 }

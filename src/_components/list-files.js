@@ -46,7 +46,7 @@ class ListFiles extends Component {
             {
                 title: 'file4'
             }
-        ]
+        ];
 
         return (
             <ListGroup className="container pre-scrollable">

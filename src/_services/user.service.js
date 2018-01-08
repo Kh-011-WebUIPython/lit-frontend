@@ -1,18 +1,18 @@
 import {authHeader} from '../_helpers';
+import {LIT_URL} from "../_constants";
 
 export const userService = {
-    login,
-    logout,
+    signIn,
+    signOut,
     register,
     getAll,
     getById,
+    getByToken,
     update,
     delete: _delete
 };
 
-const LIT_URL = 'http://litvcs.win:8080/api/v1';
-
-async function login(userData) {
+async function signIn(userData) {
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -30,8 +30,13 @@ async function login(userData) {
         });
 }
 
-function logout() {
+function signOut() {
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+    };
     localStorage.removeItem('user');
+    fetch(LIT_URL + '/auth/logout/', {...requestOptions});
 }
 
 function getAll() {
@@ -45,35 +50,32 @@ function getAll() {
 
 function getById(id) {
     const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
+        method: 'GET'
     };
 
-    return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
+    return fetch(`${LIT_URL}/users/${id}/`, {...requestOptions}).then(handleResponse);
 }
 
 async function register(user) {
     const requestOptions = {
-        method: 'post',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(user)
     };
-    const registerData = await fetch(LIT_URL + '/users/', {...requestOptions}).then(handleResponse);
-    const loginData = login({username: user.username, password: user.password});
+    return await fetch(LIT_URL + '/users/', {...requestOptions}).then(handleResponse);
 
-    return {registerData: registerData, loginData: loginData};
 }
 
-function update(user) {
+async function update(user) {
     const requestOptions = {
         method: 'PUT',
         headers: {...authHeader(), 'Content-Type': 'application/json'},
         body: JSON.stringify(user)
     };
 
-    return fetch(LIT_URL + '/users/' + user.id, {...requestOptions}).then(handleResponse);
+    return await fetch(`${LIT_URL}/users/${user.id}/`, {...requestOptions}).then(handleResponse);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -83,9 +85,23 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(LIT_URL + '/users/' + id, {...requestOptions}).then(handleResponse);
+    return fetch(`${LIT_URL}/users/${id}/`, {...requestOptions})
+        .then(response => {
+            if (!response.ok) {
+                return Promise.reject(response.statusText);
+            }
+        })
+        .then(() => localStorage.removeItem('user'));
 }
 
+async function getByToken() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader(),
+    };
+
+    return await fetch(LIT_URL + '/auth/user/', {...requestOptions}).then(handleResponse);
+}
 
 function handleResponse(response) {
     if (!response.ok) {
