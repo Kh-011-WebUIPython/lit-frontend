@@ -48,7 +48,6 @@ function getUserInfoWithRepos() {
     return async (dispatch) => {
         try {
             dispatch(request());
-            []
 
             const userinfo = await userService.getByToken();
             dispatch(repoActions.getByUser(userinfo.pk));
