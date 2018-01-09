@@ -3,7 +3,6 @@ import {Alert, Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {alertActions, userActions} from "../_actions";
 import {Field, reduxForm} from "redux-form";
 
-
 const renderField = ({id, input, label, type, name}) => (
     <FormGroup>
         <Label for={id}>{label}</Label>

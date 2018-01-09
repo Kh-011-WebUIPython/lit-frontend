@@ -1,35 +1,25 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import UserSettingsForm from './_containers/form';
-import UserInfoBlock from '../UserInfoBlock';
-import {userActions, userpageActions} from "../_actions";
 import LoadingPage from '../_components/loading-page';
+import UserSettingsForm from './form';
+import {userActions} from "../_actions";
 
 class UserSettingsPage extends Component {
-    componentDidMount() {
-        this.props.getUserInfo();
-    };
-
     render() {
         if (this.props.userinfo.fetchingUserinfo) {
             return (<LoadingPage/>)
         }
-        const {avatar, username, email, pk} = this.props.userinfo;
-        const {signOut, _delete} = this.props;
+        const {pk} = this.props.userinfo;
+        const {_delete, alert, updating} = this.props;
         return (
-            <div className="flex h-100">
-                <UserInfoBlock avatar={avatar} username={username} signOut={signOut}/>
-                <div className="container pt-5 w-100">
-                    <UserSettingsForm avatar={avatar} email={email} id={pk} delete={_delete}/>
-                </div>
-            </div>
+            <UserSettingsForm id={pk} delete={_delete} alert={alert} updating={updating}/>
         );
     };
 }
 
 const mapStateToProps = state => {
     return {
-        userinfo: state.userinfo, alert: state.alert
+        userinfo: state.userinfo, alert: state.alert, updating: state.update.updating,
     };
 };
 
@@ -37,9 +27,6 @@ const mapDispatchToProps = dispatch => {
     return {
         signOut: () => {
             dispatch(userActions.signOut())
-        },
-        getUserInfo: () => {
-            dispatch(userpageActions.getUserInfo());
         },
         _delete: () => {
             dispatch(userActions.delete())
