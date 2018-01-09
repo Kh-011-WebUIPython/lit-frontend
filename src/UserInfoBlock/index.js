@@ -11,8 +11,9 @@ class UserInfoBlock extends Component {
             <aside className="flex flex-column w-300 p-3 s-dark">
                 <Search/>
                 <UserInfo username={username} avatar={avatar} signOut={signOut}/>
-                <Link to="/create"><Button color="primary" className="w-100">Create a new
-                    repo</Button></Link>
+                <Link to="/create">
+                    <Button color="primary" className="w-100">Create a new repo</Button>
+                </Link>
             </aside>
         );
     };
