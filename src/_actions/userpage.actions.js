@@ -1,5 +1,6 @@
 import {userpageConstants} from '../_constants';
-import {repoService, userService} from '../_services';
+import {userService} from '../_services';
+import {repoActions} from "./repo.actions";
 
 export const userpageActions = {
     getUserInfo,
@@ -44,31 +45,21 @@ function getUserInfo() {
 }
 
 function getUserInfoWithRepos() {
-    return dispatch => {
-        dispatch(request());
+    return async (dispatch) => {
+        try {
+            dispatch(request());
+            []
 
-        userService.getByToken()
-            .then(
-                userinfo => {
-                    userService.getById(userinfo.pk)
-                        .then(
-                            user => {
-                                repoService.getByUser(userinfo.pk)
-                                    .then(
-                                        repos => {
-                                            dispatch(success({...user, repos: handleRepos(repos)}))
-                                        }
-                                    )
-                            },
-                            error => {
-                                dispatch(failure(error));
-                            }
-                        )
-                },
-                error => {
-                    dispatch(failure(error));
-                }
-            );
+            const userinfo = await userService.getByToken();
+            dispatch(repoActions.getByUser(userinfo.pk));
+            const user = await userService.getById(userinfo.pk);
+
+            dispatch(success(user));
+        }
+        catch (e) {
+            dispatch(failure(e))
+        }
+
     };
 
 
@@ -82,22 +73,5 @@ function getUserInfoWithRepos() {
 
     function failure(error) {
         return {type: userpageConstants.USERINFO_FAILURE, error}
-    }
-
-    function handleRepos(repos) {
-        let reposByStatus = {
-            'owner': [],
-            'contributor': [],
-        }
-
-        repos.results.forEach(repo => reposByStatus[repo.status].push(repo.repository_id));
-        reposByStatus.owner = getReposById(reposByStatus.owner);
-        return reposByStatus;
-    }
-
-    function getReposById(ids) {
-        let repos = [];
-        ids.map(id => repoService.getById(id).then(r => repos.push({name: r.name, description: r.description})));
-        return(repos);
     }
 }

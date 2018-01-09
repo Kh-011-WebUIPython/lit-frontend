@@ -5,7 +5,7 @@ import {alertActions} from '.';
 
 export const repoActions = {
     create,
-    getByStatus,
+    getByUser,
 };
 
 
@@ -39,7 +39,7 @@ function create({name, description}) {
     }
 }
 
-function getByStatus(userId, status) {
+function getByUser(userId) {
     return dispatch => {
         dispatch(request());
 
@@ -47,7 +47,7 @@ function getByStatus(userId, status) {
             .then(
                 repos => {
                     console.log(repos);
-                    dispatch(success(repos));
+                    dispatch(success(handleRepos(repos)));
                 },
                 error => {
                     dispatch(failure(error));
@@ -57,14 +57,31 @@ function getByStatus(userId, status) {
     };
 
     function request() {
-        return {type: repoConstants.GET_BY_STATUS_REQUEST}
+        return {type: repoConstants.GET_BY_USER_REQUEST}
     }
 
     function success(repos) {
-        return {type: repoConstants.GET_BY_STATUS_SUCCESS, repos}
+        return {type: repoConstants.GET_BY_USER_SUCCESS, repos}
     }
 
     function failure(error) {
-        return {type: repoConstants.CREATION_FAILURE, error}
+        return {type: repoConstants.GET_BY_USER_FAILURE, error}
+    }
+
+    function handleRepos(repos) {
+        let reposByStatus = {
+            'owner': [],
+            'contributor': [],
+        }
+
+        repos.results.forEach(repo => reposByStatus[repo.status].push(repo.repository_id));
+        reposByStatus.owner = getReposById(reposByStatus.owner);
+        return reposByStatus;
+    }
+
+    function getReposById(ids) {
+        let repos = [];
+        ids.map(id => repoService.getById(id).then(r => repos.push({name: r.name, description: r.description})));
+        return (repos);
     }
 }

@@ -11,16 +11,18 @@ class UserPage extends Component {
     };
 
     render() {
-        if (this.props.userinfo.fetchingUserinfo) {
+        if (this.props.userinfo.fetchingUserinfo || this.props.repos.fetchingRepos) {
             return (<LoadingPage/>)
         }
-        const {avatar, username, repos} = this.props.userinfo;
-        const {signOut} = this.props;
+        const {avatar, username} = this.props.userinfo;
+        const {owner, contributor} = this.props.repos;
+        const {signOut, repos} = this.props;
+        console.log(JSON.stringify(owner));
         return (
             <div className="flex h-100">
                 <UserInfoBlock avatar={avatar} username={username} signOut={signOut}/>
                 <div className="container pt-5 w-100">
-                    <RepoTabs repos={repos}/>
+                    <RepoTabs owner={owner}/>
                 </div>
             </div>
         );
@@ -29,7 +31,7 @@ class UserPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        userinfo: state.userinfo
+        userinfo: state.userinfo, repos: state.repos,
     };
 };
 
