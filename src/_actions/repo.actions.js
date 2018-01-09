@@ -5,6 +5,7 @@ import {alertActions} from '.';
 
 export const repoActions = {
     create,
+    clearCreation,
     getByUser,
 };
 
@@ -37,6 +38,10 @@ function create({name, description}) {
     function failure(error) {
         return {type: repoConstants.CREATION_FAILURE, error}
     }
+}
+
+function clearCreation() {
+    return {type: repoConstants.CREATION_CLEAR}
 }
 
 function getByUser(userId) {

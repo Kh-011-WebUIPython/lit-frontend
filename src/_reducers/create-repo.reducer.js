@@ -8,6 +8,8 @@ export function repoCreation(state = {}, action) {
             return {repo: action.repo};
         case repoConstants.CREATION_FAILURE:
             return {};
+        case repoConstants.CREATION_CLEAR:
+            return {};
         default:
             return state
     }
