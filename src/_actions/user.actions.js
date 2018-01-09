@@ -1,6 +1,7 @@
 import {userConstants} from '../_constants';
 import {userService} from '../_services';
 import {alertActions} from '.';
+import {userpageActions} from "./userpage.actions";
 
 export const userActions = {
     signIn,
@@ -18,6 +19,7 @@ function signIn(username, password) {
             .then(
                 user => {
                     dispatch(success(user));
+                    dispatch(userpageActions.getUserInfo());
                 },
                 error => {
                     dispatch(failure(error));
@@ -75,30 +77,22 @@ function register(userData) {
 }
 
 function update(userData) {
-    return dispatch => {
-        dispatch(request(userData));
+    return async dispatch => {
+        try {
+            dispatch(request(userData));
 
-        userService.getByToken()
-            .then(
-                user => {
-                    userData.id = user.pk;
-                    userData.username = user.username;
-                    userService.update(userData)
-                        .then(
-                            user => {
-                                dispatch(success(user));
-                            },
-                            error => {
-                                dispatch(failure(error));
-                                dispatch(alertActions.error(error));
-                            }
-                        )
-                },
-                error => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
-                }
-            )
+            const userinfo = await userService.getByToken()
+
+            userData.id = userinfo.pk;
+            userData.username = userinfo.username;
+            const updated = await userService.update(userData)
+
+            dispatch(success(updated));
+        } catch (error) {
+            dispatch(failure(error));
+            dispatch(alertActions.error(error));
+        }
+
     };
 
     function request(user) {
@@ -115,23 +109,18 @@ function update(userData) {
 }
 
 function _delete(userData) {
-    return dispatch => {
-        dispatch(request(userData));
+    return async (dispatch) => {
+        try {
+            dispatch(request(userData));
 
-        userService.getByToken()
-            .then(
-                user => {
-                    userService.delete(user.pk)
-                        .then(
-                            () => {
-                                dispatch(success());
-                            });
-                },
-                error => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
-                }
-            )
+            const userinfo = await userService.getByToken();
+            const deletion = await userService.delete(userinfo.pk);
+
+            dispatch(success());
+        } catch (error) {
+            dispatch(failure(error));
+            dispatch(alertActions.error(error));
+        }
     };
 
     function request(user) {
