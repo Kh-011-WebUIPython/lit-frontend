@@ -44,21 +44,20 @@ function clearCreation() {
     return {type: repoConstants.CREATION_CLEAR}
 }
 
-function getByUser(userId) {
-    return dispatch => {
-        dispatch(request());
+function getByUser(id) {
+    return async dispatch => {
+        try {
+            dispatch(request());
 
-        repoService.getByUser(userId)
-            .then(
-                repos => {
-                    console.log(repos);
-                    dispatch(success(handleRepos(repos)));
-                },
-                error => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
-                }
-            );
+            const repos = await repoService.getByUser(id)
+            const normalizedRepos = await handleRepos(repos).then(x => x);
+
+            const reallyNormalized = normalizedRepos.owner.map(r => ({name: r.name, description: r.description}));
+            dispatch(success({owner: reallyNormalized, contributor: []}));
+        } catch (error) {
+            dispatch(failure(error));
+            dispatch(alertActions.error(error));
+        }
     };
 
     function request() {
@@ -73,20 +72,27 @@ function getByUser(userId) {
         return {type: repoConstants.GET_BY_USER_FAILURE, error}
     }
 
-    function handleRepos(repos) {
-        let reposByStatus = {
-            'owner': [],
-            'contributor': [],
-        }
+    async function handleRepos(repos) {
+        const ownerIds = repos.results.filter(user => user.status === 'owner').map(repo => repo.repository_id);
+        const contributorIds = repos.results.filter(user => user.status !== 'owner').map(repo => repo.repository_id);
 
-        repos.results.forEach(repo => reposByStatus[repo.status].push(repo.repository_id));
-        reposByStatus.owner = getReposById(reposByStatus.owner);
-        return reposByStatus;
+        const oPromises = ownerIds.map(getRepoById);
+
+        // const cPromises = contributorIds.map(getRepoById);
+        const owner = await Promise.all(oPromises);
+        return ({owner: owner});
     }
 
-    function getReposById(ids) {
-        let repos = [];
-        ids.map(id => repoService.getById(id).then(r => repos.push({name: r.name, description: r.description})));
-        return (repos);
+    async function getRepoById(id) {
+        return await repoService.getById(id);
+    }
+
+
+    function handleResponse(response) {
+        if (!response.ok) {
+            return Promise.reject(response.statusText);
+        }
+
+        return response.json();
     }
 }

@@ -24,9 +24,7 @@ async function getByUser(id) {
         headers: {'Content-Type': 'application/json',},
     }
 
-    return await fetch(`${LIT_URL}/users/${id}/repositories/`, {...requestOptions})
-        .then(handleResponse);
-    
+    return await fetch(`${LIT_URL}/users/${id}/repositories/`, {...requestOptions}).then(handleResponse);
 }
 
 async function getById(id) {
