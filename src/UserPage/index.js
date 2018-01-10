@@ -14,7 +14,7 @@ class UserPage extends Component {
             return (<LoadingPage/>)
         } else {
             const {repos} = this.props;
-            return (<RepoTabs repos={repos}/>);
+            return (<RepoTabs/>);
         }
     };
 }
