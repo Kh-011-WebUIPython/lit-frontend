@@ -70,7 +70,7 @@ async function register(user) {
 
 async function update(user) {
     const requestOptions = {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {...authHeader(), 'Content-Type': 'application/json'},
         body: JSON.stringify(user)
     };

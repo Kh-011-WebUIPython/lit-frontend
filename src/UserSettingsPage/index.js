@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import LoadingPage from '../_components/loading-page';
 import UserSettingsForm from './form';
 import {userActions} from "../_actions";
 
 class UserSettingsPage extends Component {
     render() {
-        if (this.props.userinfo.fetchingUserinfo) {
-            return (<LoadingPage/>)
-        }
         const {pk} = this.props.userinfo;
         const {_delete, alert, updating} = this.props;
         return (

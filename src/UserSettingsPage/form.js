@@ -6,7 +6,7 @@ import {Field, reduxForm} from "redux-form";
 const renderField = ({id, input, label, type, name}) => (
     <FormGroup>
         <Label for={id}>{label}</Label>
-        <Input name={name} type={type} id={id} {...input} required={type === 'password'}/>
+        <Input name={name} type={type} id={id} {...input} required={false}/>
     </FormGroup>
 );
 
@@ -18,6 +18,7 @@ class UserSettingsForm extends Component {
     }
 
     submit(values, dispatch) {
+        //todo: check if the form is empty
         const userData = {avatar: values.avatar, email: values.email, password: values.password};
         dispatch(userActions.update(userData));
     }

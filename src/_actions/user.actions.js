@@ -88,6 +88,7 @@ function update(userData) {
             const updated = await userService.update(userData)
 
             dispatch(success(updated));
+            dispatch(userpageActions.getUserInfo());
         } catch (error) {
             dispatch(failure(error));
             dispatch(alertActions.error(error));
