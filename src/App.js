@@ -8,6 +8,7 @@ import UserPage from './UserPage';
 import UserSettingsPage from './UserSettingsPage';
 import NewRepoPage from './NewRepoPage';
 import EmptyRepoPage from './EmptyRepoPage';
+import LoadingPage from "./_components/loading-page";
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './_styles/reset.css';
@@ -36,6 +37,10 @@ class App extends Component {
 
         const {avatar, username} = this.props.userinfo;
         const {signOut} = this.props;
+
+        if (this.props.userinfo.fetchingUserinfo) {
+            return (<LoadingPage/>);
+        }
 
         return (
             <BrowserRouter>

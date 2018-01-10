@@ -10,11 +10,10 @@ class UserPage extends Component {
         this.props.getRepos(id);
     }
     render() {
-        console.log(this.props);
-        if (this.props.userinfo.fetchingUserinfo || this.props.repos.fetchingRepos) {
+        if (this.props.repos.fetchingRepos) {
             return (<LoadingPage/>)
         } else {
-            const {signOut, repos} = this.props;
+            const {repos} = this.props;
             return (<RepoTabs repos={repos}/>);
         }
     };
