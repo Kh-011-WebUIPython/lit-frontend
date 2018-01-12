@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {Card, CardBody, CardImg, CardText, CardTitle} from 'reactstrap';
+import {Card, CardBody, CardImg, CardTitle} from 'reactstrap';
 import {Link} from "react-router-dom";
-
-const userRepositoryCount = "User repository count ";
 
 class UserInfo extends Component {
     render() {
@@ -26,9 +24,8 @@ class UserInfo extends Component {
                     <CardImg top width="100%" src="https://picsum.photos/300/180?image=1045" alt=""/>
                     <CardBody>
                         <Link to='/'><img src={avatar ? avatar : 'https://picsum.photos/150/150'}
-                                          alt="Avatar" className="br-50"/></Link>
-                        <CardTitle>{username}</CardTitle>
-                        <CardText>{userRepositoryCount}</CardText>
+                                          alt="Avatar" className="br-50 w-150"/></Link>
+                        <CardTitle className="mb-0">{username}</CardTitle>
                     </CardBody>
                 </Card>
             </div>

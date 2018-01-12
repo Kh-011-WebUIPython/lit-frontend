@@ -8,7 +8,8 @@ import UserPage from './UserPage';
 import UserSettingsPage from './UserSettingsPage';
 import NewRepoPage from './NewRepoPage';
 import EmptyRepoPage from './EmptyRepoPage';
-import LoadingPage from "./_components/loading-page";
+import LoadingPage from './_components/loading-page';
+import Repository from './RepoPage';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './_styles/reset.css';
@@ -51,9 +52,9 @@ class App extends Component {
                         <Route exact path='/settings' component={UserSettingsPage}/>
                         <Route exact path='/create' component={NewRepoPage}/>
                         <Route exact path='/:user/:repo/empty' component={EmptyRepoPage}/>
+                        <Route exact path='/:user/:repo' component={Repository}/>
                         {/*<Route path='/:user' component={UserPage}/>*/}
                         {/*<Route path='/repository_settings' component={RepositorySettings}/>*/}
-                        {/*<Route path='/repository' component={Repository}/>*/}
                         {/*<Route path='/branches' component={ListBranches}/>*/}
                         {/*<Route path='/commits' component={ListCommits}/>*/}
                         {/*<Route path='/commit' component={Commit}/>*/}

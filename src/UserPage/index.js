@@ -13,7 +13,6 @@ class UserPage extends Component {
         if (this.props.repos.fetchingRepos) {
             return (<LoadingPage/>)
         } else {
-            const {repos} = this.props;
             return (<RepoTabs/>);
         }
     };

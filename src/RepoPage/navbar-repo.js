@@ -1,11 +1,5 @@
 import React, {Component} from 'react';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    Nav,
-    NavItem,
-    NavLink} from 'reactstrap';
+import {Collapse, Nav, Navbar, NavbarToggler, NavItem, NavLink} from 'reactstrap';
 
 class NavBarRepo extends Component {
     constructor(props) {

@@ -74,7 +74,7 @@ function getByUser(id) {
 
     async function handleRepos(repos) {
         const ownerIds = repos.results.filter(user => user.status === 'owner').map(repo => repo.repository_id);
-        const contributorIds = repos.results.filter(user => user.status !== 'owner').map(repo => repo.repository_id);
+        // const contributorIds = repos.results.filter(user => user.status !== 'owner').map(repo => repo.repository_id);
 
         const oPromises = ownerIds.map(getRepoById);
 
@@ -85,14 +85,5 @@ function getByUser(id) {
 
     async function getRepoById(id) {
         return await repoService.getById(id);
-    }
-
-
-    function handleResponse(response) {
-        if (!response.ok) {
-            return Promise.reject(response.statusText);
-        }
-
-        return response.json();
     }
 }
