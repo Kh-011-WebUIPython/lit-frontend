@@ -18,7 +18,7 @@ class RepoTabs extends Component {
     const isFirstActive = this.state.activeTab === '0';
 
     if (!this.props.repos.owner) {
-      return (<LoadingPage />);
+      return (<LoadingPage/>);
     }
 
     return (
@@ -27,8 +27,8 @@ class RepoTabs extends Component {
 
           <NavItem>
             <NavLink
-              className={isFirstActive ? 'active' : ''}
-              onClick={() => this.toggle('0')}
+              className={ isFirstActive ? 'active' : '' }
+              onClick={ () => this.toggle('0') }
             >
               User's repositories
             </NavLink>
@@ -36,21 +36,23 @@ class RepoTabs extends Component {
 
           <NavItem>
             <NavLink
-              className={!isFirstActive ? 'active' : ''}
-              onClick={() => this.toggle('1')}
-            />
+              className={ !isFirstActive ? 'active' : '' }
+              onClick={ () => this.toggle('1') }
+            >
+              Repositories user contribute to
+            </NavLink>
           </NavItem>
 
         </Nav>
 
-        <TabContent activeTab={this.state.activeTab}>
+        <TabContent activeTab={ this.state.activeTab }>
 
           <TabPane tabId="0" className="border border-top-0 p-2">
-            <RepoList repos={this.props.repos.owner} />
+            <RepoList repos={ this.props.repos.owner }/>
           </TabPane>
 
           <TabPane tabId="1" className="border border-top-0 p-2">
-            <RepoList repos={this.props.repos.contributor} />
+            <RepoList repos={ this.props.repos.contributor }/>
           </TabPane>
 
         </TabContent>
