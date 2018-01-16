@@ -7,7 +7,10 @@ const UserSettingsPage = (props) => {
   const { pk } = props.userinfo;
   const { _delete, alert, updating } = props;
   return (
-    <UserSettingsForm id={pk} delete={_delete} alert={alert} updating={updating} />
+    <div>
+      <h1 className="mb-2">Settings</h1>
+      <UserSettingsForm id={pk} delete={_delete} alert={alert} updating={updating} />
+    </div>
   );
 };
 

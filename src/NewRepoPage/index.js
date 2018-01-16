@@ -10,11 +10,14 @@ const NewRepoPage = (props) => {
 
   if (repo) {
     this.props.clear();
-    return <Redirect to={ `/${username}/${repo.name}/empty` } push/>;
+    return <Redirect to={`/${username}/${repo.name}/empty`} push />;
   }
 
   return (
-    <CreateRepoForm alert={ alert }/>
+    <div>
+      <h1 className="mb-2">New repository</h1>
+      <CreateRepoForm alert={alert} />
+    </div>
   );
 };
 
