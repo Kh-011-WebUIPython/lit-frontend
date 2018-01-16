@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import DevCard from './dev-card';
 
-const DevCarousel = () => {
+const DevCarousel = (props) => {
   const settings = {
     dots: true,
     autoplay: true,
@@ -18,13 +18,16 @@ const DevCarousel = () => {
   };
   return (
     <Slider {...settings}>
-      { this.props.devs.map((item, index) => (<DevCard
-        name={item.name}
-        description={item.description}
-        avatar={item.avatar}
-        bgimg={item.bgimg}
-        key={index}
-      />)) }
+      { props.devs.map((item, index) => (
+        <div>
+          <DevCard
+            name={item.name}
+            description={item.description}
+            avatar={item.avatar}
+            bgimg={item.bgimg}
+            key={index}
+          />
+        </div>)) }
     </Slider>
   );
 };
