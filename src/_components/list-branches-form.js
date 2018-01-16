@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import NavBarRepo from '../RepoPage/navbar-repo';
 import ListBranches from './list-branches';
+import RepositoryTeam from './repo-team';
 
 class ListBranchesForm extends Component {
 
@@ -14,8 +15,7 @@ class ListBranchesForm extends Component {
             <div>
                 <NavBarRepo/>
                 <div>
-                    <Link to='/repository'><h2 className="py-4">RepoName</h2>
-                    </Link>
+                    <RepositoryTeam/>
                     <div className="border-dark">
                         <ListBranches/>
                     </div>

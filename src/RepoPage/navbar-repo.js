@@ -26,10 +26,10 @@ class NavBarRepo extends Component {
                                 <NavLink href="/branches">Branches</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/repository">Commits</NavLink>
+                                <NavLink href="/commits">Commits</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/repository">Pull request</NavLink>
+                                <NavLink href="/open_pull_request">Pull request</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="/repository_settings">Settings</NavLink>

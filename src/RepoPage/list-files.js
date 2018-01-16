@@ -27,7 +27,7 @@ class ListFiles extends Component {
         ];
 
         return (
-            <ListGroup>
+            <ListGroup className="container pre-scrollable">
                 {files.map((item) => <ListFoldersFiles key={item.title}
                                                               title={item.title}/>
                 )}
