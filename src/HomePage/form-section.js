@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUp from './_containers/sign-up';
+import SignUp from './sign-up-form';
 
 const FormSection = () => (
   <section>

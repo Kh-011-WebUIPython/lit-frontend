@@ -1,6 +1,6 @@
 import React from 'react';
 import DevCarousel from './dev-carousel';
-import devs from '../_constants/about-devs';
+import { devs } from '../_constants';
 
 const AboutDevs = () => (
   <section className="s-dark p-5">
