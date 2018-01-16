@@ -149,9 +149,10 @@ html, body, .App, #root {
 <
 HEAD
 .file-upload {
-  position: absolute;
-  top: 0;
-  visibility: hidden; }
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+}
 
 =
 =
@@ -167,11 +168,12 @@ HEAD
 }
 
 > > > > > > > dev
-
 .handshake-4 {
-  height: 4rem; }
+    height: 4rem;
+}
 
 .nav-item {
-  cursor: pointer; }
+    cursor: pointer;
+}
 
 /*# sourceMappingURL=_index.css.map */

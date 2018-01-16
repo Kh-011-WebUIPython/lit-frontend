@@ -120,10 +120,12 @@ html, body, .App, #root {
   visibility: hidden; }
 
 .handshake-4 {
-  height: 4rem; }
+    height: 4rem;
+}
 
 .nav-item {
-  cursor: pointer; }
+    cursor: pointer;
+}
 
 .search .form-group {
   margin: 0 !important; }

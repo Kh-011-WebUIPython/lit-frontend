@@ -25,7 +25,7 @@ class CommitForm extends Component {
                     <RepositoryTeam/>
                     <div className="border-dark">
                         {commit.map((item, index) => <AboutCommit key={index}
-                                                                data={item}/>
+                                                                  data={item}/>
                         )}
                         <ListFiles/>
                     </div>

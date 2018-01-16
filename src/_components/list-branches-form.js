@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import NavBarRepo from '../RepoPage/navbar-repo';
 import ListBranches from './list-branches';
 import RepositoryTeam from './repo-team';

@@ -5,6 +5,9 @@ import trash from '../_img/trash.svg';
 
 
 class ListBranches extends Component {
+    changeClassStatus = (status) => ((status === 'merged') ?
+        'bg-danger' : 'bg-success');
+
     constructor(props) {
         super(props);
         this.state = {
@@ -44,9 +47,6 @@ class ListBranches extends Component {
             ]
         }
     }
-
-    changeClassStatus = (status) => ((status === 'merged') ?
-        'bg-danger' : 'bg-success');
 
     render() {
 
