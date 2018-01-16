@@ -17,6 +17,7 @@
       0
     ],
     "no-use-before-define": "off",
-    "no-return-await": "off"
+    "no-return-await": "off",
+    "react/no-unescaped-entities": "off"
   }
 }
