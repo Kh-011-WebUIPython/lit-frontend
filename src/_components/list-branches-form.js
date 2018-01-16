@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NavBarRepo from './navbar-repo';
+import NavBarRepo from '../RepoPage/navbar-repo';
 import ListBranches from './list-branches';
 import RepositoryTeam from './repo-team';
 

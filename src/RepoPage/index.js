@@ -4,26 +4,19 @@ import NavBarRepo from './navbar-repo';
 import ListFiles from './list-files';
 import BranchDropdown from './branch-dropdown';
 import {Button} from 'reactstrap';
-import RepositoryTeam from './repo-team';
 
 class RepositoryForm extends Component {
-
-
     render() {
-
-
+        const repoName = this.props.location.pathname.split('/')[2];
         return (
-
-            <div className="container-scroll">
+            <div>
                 <NavBarRepo/>
                 <div>
-                    <RepositoryTeam/>
+                    <Link to='/repository'><h2 className="pb-4">{repoName}</h2></Link>
                     <div className="border-dark">
                         <span className="mr-2">Current branch:</span>
                         <BranchDropdown/>
-                        <Link to='/repository'><Button className="ml-5"
-                                                       color="primary">Pull
-                            request</Button></Link>
+                        <Link to='/repository'><Button className="ml-5" color="primary">Pull request</Button></Link>
                         <ListFiles/>
                     </div>
                 </div>

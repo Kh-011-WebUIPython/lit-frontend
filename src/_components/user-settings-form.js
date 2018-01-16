@@ -4,21 +4,9 @@ import {Link} from 'react-router-dom';
 
 class UserSettingsForm extends Component {
 
-    constructor() {
-        super()
-        this.state = {tags: []}
-    }
-
-    handleChange(tags) {
-        this.setState({tags})
-
-    }
-
     clickInput = () => {
         this.refs.file_upload.click()
     }
-
-
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -28,6 +16,16 @@ class UserSettingsForm extends Component {
             [name]: value
         });
     };
+
+    constructor() {
+        super()
+        this.state = {tags: []}
+    }
+
+    handleChange(tags) {
+        this.setState({tags})
+
+    }
 
     render() {
 

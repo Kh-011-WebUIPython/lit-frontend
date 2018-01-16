@@ -7,10 +7,6 @@ import {userActions, userpageActions} from "../_actions";
 import {connect} from 'react-redux';
 
 class Page extends Component {
-    componentDidMount() {
-        this.props.getUserInfo();
-    };
-
     render() {
         const {avatar, username, signOut, children} = this.props;
         return (

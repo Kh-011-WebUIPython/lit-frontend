@@ -1,51 +1,87 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import NewRepository from './NewRepoPage';
-import EmptyRepoPage from './EmptyRepoPage';
-import UserSettingsPage from './UserSettingsPage';
-import UserPage from './UserPage/index';
-import RepositorySettings from './_components/repo-settings-page';
 import HomePage from './HomePage';
-import OpenPullRequestPage from './_components/open-pull-request-page';
-import SearchPage from './_components/search-page';
+import UserInfoBlock from './UserInfoBlock';
+import UserPage from './UserPage';
+import UserSettingsPage from './UserSettingsPage';
+import NewRepoPage from './NewRepoPage';
+import EmptyRepoPage from './EmptyRepoPage';
+import LoadingPage from './_components/loading-page';
+import Repository from './RepoPage';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './_styles/reset.css';
 import './_styles/base.css';
 
+import {userActions, userpageActions} from "./_actions";
+
 class App extends Component {
+    componentDidMount() {
+        this.props.getUserInfo();
+    }
+
     render() {
         const {loggedIn} = this.props.authentication;
-        console.log(loggedIn);
+
+        if (!loggedIn) {
+            return (
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path='/' component={HomePage}/>
+                        <Redirect to="/"/>
+                    </Switch>
+                </BrowserRouter>
+            );
+        }
+
+        const {avatar, username} = this.props.userinfo;
+        const {signOut} = this.props;
+
+        if (this.props.userinfo.fetchingUserinfo) {
+            return (<LoadingPage/>);
+        }
+
         return (
             <BrowserRouter>
-                <Switch>
-                    <Route exact path='/' component={loggedIn ? UserPage : HomePage}/>
-                    <Route exact path='/settings' component={UserSettingsPage}/>
-                    <Route exact path='/create' component={NewRepository}/>
-                    <Route exact path='/:user/:repo/empty' component={EmptyRepoPage}/>
-                    <Route path='/:user' component={UserPage}/>
-                    <Route path='/repository_settings' component={RepositorySettings}/>
-                    {/*<Route path='/repository' component={Repository}/>*/}
-                    {/*<Route path='/branches' component={ListBranches}/>*/}
-                    {/*<Route path='/commits' component={ListCommits}/>*/}
-                    {/*<Route path='/commit' component={Commit}/>*/}
-                    {/*<Route path='/file' component={File}/>*/}
-                    <Route path='/open_pull_request'
-                           component={OpenPullRequestPage}/>
-                    {/*<Route path='/pull_request' component={PullRequest}/>*/}
-                    <Route path='/search' component={SearchPage}/>
-                </Switch>
+                <div className="flex h-100">
+                    <UserInfoBlock avatar={avatar} username={username} signOut={signOut}/>
+                    <div className="container pt-5 w-100">
+                        <Route exact path='/' component={UserPage}/>
+                        <Route exact path='/settings' component={UserSettingsPage}/>
+                        <Route exact path='/create' component={NewRepoPage}/>
+                        <Route exact path='/:user/:repo/empty' component={EmptyRepoPage}/>
+                        <Route exact path='/:user/:repo' component={Repository}/>
+                        {/*<Route path='/:user' component={UserPage}/>*/}
+                        {/*<Route path='/repository_settings' component={RepositorySettings}/>*/}
+                        {/*<Route path='/branches' component={ListBranches}/>*/}
+                        {/*<Route path='/commits' component={ListCommits}/>*/}
+                        {/*<Route path='/commit' component={Commit}/>*/}
+                        {/*<Route path='/file' component={File}/>*/}
+                        {/*<Route path='/open_pl' component={OpenPullRequest}/>*/}
+                        {/*<Route path='/pull_request' component={PullRequest}/>*/}
+                    </div>
+                </div>
             </BrowserRouter>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const {alert, authentication} = state;
-    return {alert, authentication};
+    const {alert, authentication, userinfo} = state;
+    return {alert, authentication, userinfo};
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+    return {
+        signOut: () => {
+            dispatch(userActions.signOut())
+        },
+        getUserInfo: () => {
+            dispatch(userpageActions.getUserInfo());
+        },
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,55 +1,41 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
-import EmptyRepoForm from './empty-repo-form';
-import UserInfoBlock from '../UserInfoBlock';
-import {userActions, userpageActions} from "../_actions";
-import LoadingPage from '../_components/loading-page';
-
+import Code from '../_components/code'
 
 class EmptyRepoPage extends Component {
-    componentDidMount() {
-        this.props.getUserInfo();
-    };
+    // clickInput = () => {
+    //     this.refs.file_upload.click()
+    // }
 
     render() {
-        if (this.props.userinfo.fetchingUserinfo) {
-            return (<LoadingPage/>)
-        }
-        //location.pathname is /{username}/{repoName}/empty
         const repoName = this.props.location.pathname.split('/')[2];
 
-        const {avatar, username} = this.props.userinfo;
-        const {signOut} = this.props;
         return (
-            <div className="flex h-100">
-                <UserInfoBlock avatar={avatar} username={username} signOut={signOut}/>
-                <div className="container pt-5 w-100">
-                    <EmptyRepoForm repoName={repoName}/>
-                </div>
+            <div>
+                <h2 className="pb-4">{repoName}</h2>
+                <ul className="list-unstyled">
+                    <li>
+                        <h4 className="pb-3">Don't know what to do next? We can help you!</h4>
+                        <h5 className="mb-2">1. You can create a new repository from command line:</h5>
+                        <Code>lit init</Code>
+                        <Code>lit add file_name</Code>
+                        <Code>lit commit -m "Your commit for commit"</Code>
+                        <Code>lit remote add origin https://litvcs.win/lit-project1.git</Code>
+                        <Code>lit push -u origin master</Code>
+                    </li>
+                    <li>
+                        <h5 className="mt-4 mb-2">2. Or you can push already existing project</h5>
+                        <Code>lit remote add origin https://litvcs.win/lit-project1.git</Code>
+                        <Code>lit push -u origin master</Code>
+                    </li>
+                    {/*<li>*/}
+                    {/*<h5 className="mt-4 mb-2">3. Or load files by pressing a button like smoothey-dev</h5>*/}
+                    {/*<button className="btn btn-primary" onClick={this.clickInput}>Upload files</button>*/}
+                    {/*<input type="file" className="file_upload" ref="file_upload"/>*/}
+                    {/*</li>*/}
+                </ul>
             </div>
         );
-    };
+    }
 }
 
-
-const mapStateToProps = state => {
-    return {
-        userinfo: state.userinfo
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        signOut: () => {
-            dispatch(userActions.signOut())
-        },
-        getUserInfo: () => {
-            dispatch(userpageActions.getUserInfo());
-        }
-    }
-};
-
-
-const ConnectedEmptyRepoPage = connect(mapStateToProps, mapDispatchToProps)(EmptyRepoPage);
-
-export default ConnectedEmptyRepoPage;
+export default EmptyRepoPage;

@@ -69,13 +69,32 @@ async function register(user) {
 }
 
 async function update(user) {
-    const requestOptions = {
-        method: 'PUT',
-        headers: {...authHeader(), 'Content-Type': 'application/json'},
-        body: JSON.stringify(user)
-    };
+    // const requestOptions = {
+    //     method: 'PATCH',
+    //     headers: {...authHeader(), enctype: 'multipart/form-data'},
+    //     body: new FormData(user)
+    // };
+    //
+    // return await fetch(`${LIT_URL}/users/${user.id}/`, {...requestOptions}).then(handleResponse);
 
-    return await fetch(`${LIT_URL}/users/${user.id}/`, {...requestOptions}).then(handleResponse);
+    var data = new FormData();
+    data.append("email", "qwerty@mail.ru");
+
+    var xhr = new XMLHttpRequest();
+    // xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+
+    xhr.open("PATCH", "http://127.0.0.1:8000/api/v1/users/14/");
+    xhr.setRequestHeader("authorization", "Token 510f1a6e78372643d2972042e56792c5eb925284");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "b9164155-40b7-340f-3440-4f5bbad193be");
+
+    return await xhr.send(data);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Alert, Button, Form, FormGroup, Input, Label} from 'reactstrap';
-import {Link} from "react-router-dom";
 import {alertActions, repoActions} from "../_actions";
 import {Field, reduxForm} from "redux-form";
 
@@ -45,7 +44,7 @@ class CreateRepoForm extends Component {
                     label="Repository description"
                 />
                 <Button color="primary" type="submit">Confirm</Button>
-                <Link to="/"><Button color="secondary" className="ml-2">Cancel</Button></Link>
+                <Button color="secondary" type="reset" className="ml-2">Cancel</Button>
                 {updating &&
                 <img alt="spinner" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/10607/spinner3.gif"/>}
             </Form>

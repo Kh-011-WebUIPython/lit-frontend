@@ -1,12 +1,9 @@
 import React from 'react';
-import Page from './page';
-import RepositoryForm from './repo-form';
+import RepositoryForm from '../RepoPage/index';
 
 const RepositoryPage = props => {
     return (
-        <Page>
             <RepositoryForm/>
-        </Page>
     );
 }
 

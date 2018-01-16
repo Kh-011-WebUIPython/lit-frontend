@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import {
-    ListGroup, ListGroupItem, Nav, NavItem, NavLink, TabContent,
-    TabPane
-} from 'reactstrap';
+import {ListGroup, ListGroupItem, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import classnames from 'classnames';
 

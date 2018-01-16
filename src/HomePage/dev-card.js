@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Card, CardBody, CardImg, CardText, CardTitle} from 'reactstrap';
+import {Card, CardBody, CardImg, CardTitle} from 'reactstrap';
 
 const DevCard = (props) => {
     return (
@@ -9,8 +9,8 @@ const DevCard = (props) => {
                 <CardBody>
                     <img src={props.avatar} alt="" className="br-50"/>
                     <CardTitle>{props.name}</CardTitle>
-                    <CardText>{props.description}</CardText>
-                    <Button>Button</Button>
+                    {/*<CardText>{props.description}</CardText>*/}
+                    {/*<Button>Button</Button>*/}
                 </CardBody>
             </Card>
         </div>
