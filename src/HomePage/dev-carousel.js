@@ -19,7 +19,7 @@ class DevCarousel extends Component {
         };
         return (
             <Slider {...settings}>
-                {this.props.devs.map((item, index) => <div key={index}><DevCard name={item.name + index}
+                {this.props.devs.map((item, index) => <div key={index}><DevCard name={item.name}
                                                                                 description={item.description}
                                                                                 avatar={item.avatar}
                                                                                 bgimg={item.bgimg}/></div>)}
