@@ -1,36 +1,29 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import RepoTabs from './repo-tabs';
-import {connect} from "react-redux";
-import {repoActions} from "../_actions";
-import LoadingPage from "../_components/loading-page";
+import { repoActions } from '../_actions';
+import LoadingPage from '../_components/loading-page';
 
 class UserPage extends Component {
-    componentDidMount() {
-        const {id} = this.props.userinfo;
-        this.props.getRepos(id);
+  componentDidMount() {
+    const { id } = this.props.userinfo;
+    this.props.getRepos(id);
+  }
+  render() {
+    if (this.props.repos.fetchingRepos) {
+      return (<LoadingPage />);
     }
-    render() {
-        if (this.props.repos.fetchingRepos) {
-            return (<LoadingPage/>)
-        } else {
-            return (<RepoTabs/>);
-        }
-    };
+    return (<RepoTabs />);
+  }
 }
 
-const mapStateToProps = state => {
-    return {
-        userinfo: state.userinfo, repos: state.repos,
-    };
-};
+const mapStateToProps = state => ({
+  userinfo: state.userinfo, repos: state.repos,
+});
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getRepos: (id) => {
-            dispatch(repoActions.getByUser(id))
-        }
-    }
-};
+const mapDispatchToProps = dispatch => ({
+  getRepos: id => dispatch(repoActions.getByUser(id)),
+});
 
 const ConnectedUserPage = connect(mapStateToProps, mapDispatchToProps)(UserPage);
 
