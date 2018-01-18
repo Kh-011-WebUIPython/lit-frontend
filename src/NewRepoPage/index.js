@@ -9,7 +9,7 @@ const NewRepoPage = (props) => {
   const { repo } = props.repoCreation;
 
   if (repo) {
-    this.props.clear();
+    props.clear();
     return <Redirect to={`/${username}/${repo.name}/empty`} push />;
   }
 
