@@ -36,7 +36,7 @@ class RepoPage extends Component {
       <div>
         <NavBarRepo />
         <div>
-          <Link to="/repository"><h2 className="pb-4">{'repoName '}</h2></Link>
+          <Link to="/repository"><h2 className="pb-4">{this.state.name}</h2></Link>
           <div className="border-dark">
             <span className="mr-2">Current branch:</span>
             <BranchDropdown />

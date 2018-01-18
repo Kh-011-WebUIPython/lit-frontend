@@ -13,13 +13,12 @@ const RepoSettings = (props) => {
   if (repo) {
     props.clear();
     const repoPage = props.location.pathname.split('/')
-      .reduce((res, cur, ind) => ind === 0 || ind === 3 ? res : `${res}/${cur}`, '');
+      .reduce((res, cur, ind) => (ind === 0 || ind === 3 ? res : `${res}/${cur}`), '');
 
     return <Redirect to={repoPage} push />;
   }
 
   const repoName = props.location.pathname.split('/')[2];
-  console.log(props.repos);
   const repoId = getIdByName(repoName, props.repos);
 
   return (

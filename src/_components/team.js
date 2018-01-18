@@ -91,7 +91,7 @@ class Team extends Component {
                   </div>))}
                   <img
                     src={crown}
-alt="owner"
+                    alt="owner"
                     className="img-2"
                   />
                 </div>

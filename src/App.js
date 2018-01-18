@@ -43,7 +43,7 @@ class App extends Component {
     if (!this.props.userinfo.id) {
       return null;
     }
-    console.log('here commes die roiter', this.props.userinfo.id);
+
     return (
       <BrowserRouter>
         <div className="flex h-100">
@@ -56,7 +56,6 @@ class App extends Component {
               <Route exact path="/:user/:repo/empty" component={EmptyRepoPage} />
               <Route exact path="/:user/:repo" component={RepoPage} />
               <Route path="/:user/:repo/settings" component={RepositorySettings} />
-              {/*<Route exact path="/404" component={ConnectedNotFoundPage} />*/}
               <Route component={ConnectedNotFoundPage} />
             </Switch>
           </div>
