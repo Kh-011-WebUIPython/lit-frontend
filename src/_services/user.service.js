@@ -77,7 +77,6 @@ async function update(user) {
   return await fetch(`${LIT_URL}/users/${user.id}/`, { ...requestOptions }).then(handleResponse);
 }
 
-// prefixed function name with underscore because delete is a reserved word in javascript
 function deleteUser(id) {
   const requestOptions = {
     method: 'DELETE',

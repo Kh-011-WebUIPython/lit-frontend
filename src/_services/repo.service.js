@@ -5,6 +5,7 @@ export const repoService = {
   create,
   getByUser,
   getById,
+  update,
 };
 
 async function create(name, description) {
@@ -17,6 +18,18 @@ async function create(name, description) {
   return await fetch(`${LIT_URL}/repositories/`, { ...requestOptions })
     .then(handleResponse);
 }
+
+async function update(id, name, description) {
+  const requestOptions = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...authHeader() },
+    body: JSON.stringify({ name, description }),
+  };
+
+  return await fetch(`${LIT_URL}/repositories/${id}`, { ...requestOptions })
+    .then(handleResponse);
+}
+
 
 async function getByUser(id) {
   const requestOptions = {
