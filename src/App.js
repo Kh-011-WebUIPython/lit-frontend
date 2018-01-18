@@ -9,13 +9,14 @@ import UserPage from './UserPage';
 import UserSettingsPage from './UserSettingsPage';
 import NewRepoPage from './NewRepoPage';
 import EmptyRepoPage from './EmptyRepoPage';
-import LoadingPage from './_components/loading-page';
-import Repository from './RepoPage';
+import RepoPage from './RepoPage';
+import RepositorySettings from './RepoSettingsPage/index';
 
 import './_styles/reset.css';
 import './_styles/base.css';
 
 import { userActions, userpageActions } from './_actions';
+import ConnectedNotFoundPage from './_components/not-found';
 
 class App extends Component {
   componentDidMount() {
@@ -39,28 +40,25 @@ class App extends Component {
     const { avatar, username } = this.props.userinfo;
     const { signOut } = this.props;
 
-    if (this.props.userinfo.fetchingUserinfo) {
-      return (<LoadingPage />);
+    if (!this.props.userinfo.id) {
+      return null;
     }
-
+    console.log('here commes die roiter', this.props.userinfo.id);
     return (
       <BrowserRouter>
         <div className="flex h-100">
           <UserInfoBlock avatar={avatar} username={username} signOut={signOut} />
           <div className="container pt-5 w-100">
-            <Route exact path="/" component={UserPage} />
-            <Route exact path="/settings" component={UserSettingsPage} />
-            <Route exact path="/create" component={NewRepoPage} />
-            <Route exact path="/:user/:repo/empty" component={EmptyRepoPage} />
-            <Route exact path="/:user/:repo" component={Repository} />
-            { /* <Route path='/:user' component={UserPage}/> */ }
-            { /* <Route path='/repository_settings' component={RepositorySettings}/> */ }
-            { /* <Route path='/branches' component={ListBranches}/> */ }
-            { /* <Route path='/commits' component={ListCommits}/> */ }
-            { /* <Route path='/commit' component={Commit}/> */ }
-            { /* <Route path='/file' component={File}/> */ }
-            { /* <Route path='/open_pl' component={OpenPullRequest}/> */ }
-            { /* <Route path='/pull_request' component={PullRequest}/> */ }
+            <Switch>
+              <Route exact path="/" component={UserPage} />
+              <Route exact path="/settings" component={UserSettingsPage} />
+              <Route exact path="/create" component={NewRepoPage} />
+              <Route exact path="/:user/:repo/empty" component={EmptyRepoPage} />
+              <Route exact path="/:user/:repo" component={RepoPage} />
+              <Route path="/:user/:repo/settings" component={RepositorySettings} />
+              {/*<Route exact path="/404" component={ConnectedNotFoundPage} />*/}
+              <Route component={ConnectedNotFoundPage} />
+            </Switch>
           </div>
         </div>
       </BrowserRouter>
