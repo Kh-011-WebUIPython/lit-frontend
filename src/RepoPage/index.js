@@ -32,11 +32,16 @@ class RepoPage extends Component {
       );
     }
 
+    const ownerLink = this.state.username === this.props.user ? '/' : `/${this.state.username}`;
+
     return (
       <div>
         <NavBarRepo />
         <div>
-          <Link to="/repository"><h2 className="pb-4">{this.state.name}</h2></Link>
+          <h2 className="pb-4">
+            <Link to={`${ownerLink}`}>{`${this.state.username} `}</Link>
+            / {this.state.name}
+          </h2>
           <div className="border-dark">
             <span className="mr-2">Current branch:</span>
             <BranchDropdown />
@@ -51,7 +56,7 @@ class RepoPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({ check: state.check });
+const mapStateToProps = state => ({ check: state.check, user: state.userinfo.username });
 
 const mapDispatchToProps = dispatch => ({
   checkUserAndRepo: (username, name) => dispatch(checkActions.checkUserAndRepo(username, name)),
