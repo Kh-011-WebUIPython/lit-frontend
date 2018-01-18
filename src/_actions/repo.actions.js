@@ -7,6 +7,8 @@ export const repoActions = {
   create,
   clearCreation,
   getByUser,
+  update,
+  clearUpdate,
 };
 
 
@@ -39,8 +41,42 @@ function create({ name, description }) {
   }
 }
 
+function update({ name, description, id }) {
+  return (dispatch) => {
+    dispatch(request({ name }));
+
+    repoService.update(id, name, description)
+      .then(
+        (repo) => {
+          dispatch(success(repo));
+        },
+        (error) => {
+          dispatch(failure(error));
+          dispatch(alertActions.error(error));
+        },
+      );
+  };
+
+  function request(repo) {
+    return { type: repoConstants.UPDATE_DESCRIPTION_REQUEST, repo };
+  }
+
+  function success(repo) {
+    return { type: repoConstants.UPDATE_DESCRIPTION_SUCCESS, repo };
+  }
+
+  function failure(error) {
+    return { type: repoConstants.UPDATE_DESCRIPTION_FAILURE, error };
+  }
+}
+
+
 function clearCreation() {
   return { type: repoConstants.CREATION_CLEAR };
+}
+
+function clearUpdate() {
+  return { type: repoConstants.UPDATE_DESCRIPTION_CLEAR };
 }
 
 function getByUser(id) {
@@ -54,7 +90,9 @@ function getByUser(id) {
       const reallyNormalized = normalizedRepos.owner.map(r => ({
         name: r.name,
         description: r.description,
+        id: r.id,
       }));
+
       dispatch(success({ owner: reallyNormalized, contributor: [] }));
     } catch (error) {
       dispatch(failure(error));
@@ -76,12 +114,9 @@ function getByUser(id) {
 
   async function handleRepos(repos) {
     const ownerIds = repos.results.filter(user => user.status === 'owner').map(repo => repo.repository_id);
-    // const contributorIds = repos.results.filter(user => user.status !== 'owner').map(repo =>
-    // repo.repository_id);
 
     const oPromises = ownerIds.map(getRepoById);
 
-    // const cPromises = contributorIds.map(getRepoById);
     const owner = await Promise.all(oPromises);
     return ({ owner });
   }
