@@ -3,7 +3,7 @@ import Code from '../_components/code';
 
 const EmptyRepoPage = (props) => {
   const repoName = props.location.pathname.split('/')[2];
-
+  // todo: maybe extract a function that checks if user and repo exists into helpers
   return (
     <div>
       <h2 className="pb-4">{ repoName }</h2>
