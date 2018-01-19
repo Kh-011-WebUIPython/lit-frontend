@@ -22,7 +22,9 @@ const RepoSettings = (props) => {
   const repoId = getIdByName(repoName, props.repos);
 
   // todo: add breadcrumbs
+  // todo: add breadcrumbs when you have created a repo
   // todo: check if it exists before rendering
+  // todo: add confirm before user deletion
   return (
     <div>
       <div className="flex justify-content-between align-items-baseline">

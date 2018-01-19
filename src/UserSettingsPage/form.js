@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { alertActions, userActions } from '../_actions';
+import FieldFileInput from './field-file-input';
 
 const renderField = ({
   id, input, label, type, name,
@@ -20,15 +21,19 @@ class UserSettingsForm extends Component {
   }
 
   submit(values, dispatch) {
-    // todo: check if the form is empty
-    const userData = { avatar: values.avatar, email: values.email, password: values.password };
-    dispatch(userActions.update(userData));
+    const { avatar, email } = values;
+    if (!avatar && !email) {
+      dispatch(alertActions.error('You haven\'t filled in any fields.'));
+      return;
+    }
+    dispatch(userActions.update({ avatar, email }));
   }
-
+  // todo: try to add an initial value
+  // https://github.com/facebook/react/issues/2764
   render() {
     const { handleSubmit, updating, alert } = this.props;
     const message = alert.message && (alert.message.toString() === 'Bad Request' ?
-      'Sorry, password is incorrect' : 'OMG, something\'s got wrong');
+      'Sorry, password is incorrect' : alert.message.toString());
     return (
       <div>
         <Form className="w-50" onSubmit={handleSubmit(this.submit)}>
@@ -43,16 +48,9 @@ class UserSettingsForm extends Component {
           <Field
             id="avatar"
             name="avatar"
-            type="text"
-            component={renderField}
+            type="file"
+            component={FieldFileInput}
             label="Avatar"
-          />
-          <Field
-            id="password"
-            name="password"
-            type="password"
-            component={renderField}
-            label="Please, enter your password"
           />
           <Button color="primary" type="submit">Confirm</Button>
           {updating &&

@@ -26,7 +26,7 @@ class UserInfo extends Component {
             <Link to="/"><img
               src={avatar || 'https://picsum.photos/150/150'}
               alt="Avatar"
-              className="br-50 w-150"
+              className="br-50 w-150 h-150"
             />
             </Link>
             <CardTitle className="mb-0">{username}</CardTitle>
