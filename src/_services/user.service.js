@@ -68,16 +68,19 @@ async function register(user) {
 }
 
 async function update(user) {
+  const { email, avatar } = user;
+  let data = new FormData();
+  if (email) data.append('email', email);
+  if (avatar) data.append('avatar', avatar);
   const requestOptions = {
     method: 'PATCH',
     headers: { ...authHeader(), enctype: 'multipart/form-data' },
-    body: new FormData(user),
+    body: data,
   };
 
   return await fetch(`${LIT_URL}/users/${user.id}/`, { ...requestOptions }).then(handleResponse);
 }
 
-// prefixed function name with underscore because delete is a reserved word in javascript
 function deleteUser(id) {
   const requestOptions = {
     method: 'DELETE',
