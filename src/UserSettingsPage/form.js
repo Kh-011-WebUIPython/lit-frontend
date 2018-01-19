@@ -3,6 +3,7 @@ import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { alertActions, userActions } from '../_actions';
 import FieldFileInput from './field-file-input';
+import ConfirmModal from './confirm-modal';
 
 const renderField = ({
   id, input, label, type, name,
@@ -56,9 +57,7 @@ class UserSettingsForm extends Component {
           {updating &&
           <img alt="spinner" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/10607/spinner3.gif" />}
         </Form>
-        <Button color="danger" className="d-block mt-5" onClick={this.props.delete}>
-          Delete profile
-        </Button>
+        <ConfirmModal delete={this.props.delete} />
       </div>
     );
   }
