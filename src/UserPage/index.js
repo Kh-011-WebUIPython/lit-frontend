@@ -7,7 +7,7 @@ import LoadingPage from '../_components/loading-page';
 class UserPage extends Component {
   componentDidMount() {
     const { id } = this.props.userinfo;
-    this.props.getRepos(id);
+    if (id) this.props.getRepos(id);
   }
   render() {
     if (this.props.repos.fetchingRepos) {
