@@ -1,0 +1,94 @@
+.first-screen
+  display: flex
+  height: 100%
+  background: url(../_img/index-bg.jpg) no-repeat center
+  background-size: cover
+
+.flex
+  display: flex
+
+.flex-grow-2
+  flex-grow: 2
+
+.mb-6
+  margin-bottom: 9rem
+
+.z-999
+  z-index: 999
+
+.w-100vw
+  //hardcoded scrollbar width
+  width: calc(100vw - 17px)
+
+.s-dark
+  background-color: #f1f1f1
+
+//  LOGO
+.logo
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 20px 0
+
+.logo-image
+  width: 50px
+
+// NAV
+.nav-tr
+  transition: all .3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+
+.icon
+  margin: 10px
+  opacity: .7
+  cursor: pointer
+
+.nav-icon
+  width: 25px
+
+.icon:hover
+  opacity: 1
+
+.nav-dark
+  background-color: #0a0e17
+
+// SEARCH FIELD
+.search-field
+  display: inline-block
+  width: 300px
+  transition: width .4s linear, opacity 0s linear
+
+.search-field-invisible
+  width: 0
+  opacity: 0
+  transition: width .4s linear, opacity .14s linear .3s
+
+// DOWN
+.down-icon
+  width: 50px
+
+// CARD
+.card-300
+  max-width: 300px
+  width: 100%
+
+.br-50
+  border-radius: 50%
+  border: solid 5px #ffffff
+
+.card-body
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  margin-top: -100px
+
+// SLICK
+.slick-next:before, .slick-prev:before
+  color: #000
+
+.slick-list
+  text-align: center
+
+// FIRST SCREEN
+.text-cursive
+  font-family: 'Indie Flower', cursive
