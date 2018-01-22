@@ -15,7 +15,7 @@ class BranchDropdown extends Component {
     this.setState({
       isOpen: !this.state.isOpen
     });
-  }
+  };
 
   render() {
     return (

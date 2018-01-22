@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+
 import Search from './search';
 import UserInfo from '../UserInfoBlock/user-info';
 

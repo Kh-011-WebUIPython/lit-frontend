@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+
 import RepoSettingsForm from './form';
 import { checkActions, repoActions, userpageActions } from '../_actions';
 
@@ -67,7 +68,6 @@ class RepoSettings extends Component {
           id={repoId}
           name={this.state.name}
           delete={() => {
-          console.log(repoId);
           _delete(repoId);
         }}
         />
@@ -88,9 +88,7 @@ const mapDispatchToProps = dispatch => ({
   checkUserAndRepo: (username, name) => dispatch(checkActions.checkUserAndRepo(username, name)),
   getReposByUsername: username => dispatch(userpageActions.getReposByUsername(username)),
   clear: () => { dispatch(repoActions.clearUpdate()); dispatch(repoActions.clearDeletion()); },
-  _delete: (id) => {
-    dispatch(repoActions.delete(id));
-  },
+  _delete: id => dispatch(repoActions.delete(id)),
 });
 
 const ConnectedRepoSettings = connect(mapStateToProps, mapDispatchToProps)(RepoSettings);

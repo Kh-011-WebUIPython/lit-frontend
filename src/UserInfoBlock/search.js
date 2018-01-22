@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Input } from 'reactstrap';
+
 import logo from '../logo.svg';
 
 class Search extends Component {

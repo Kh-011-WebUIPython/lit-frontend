@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Alert, Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
+
 import { alertActions, userActions } from '../_actions';
 import FieldFileInput from './field-file-input';
 import ConfirmModal from '../_components/confirm-modal';
-
 import RenderField from '../_components/render-field';
 
 class UserSettingsForm extends Component {
