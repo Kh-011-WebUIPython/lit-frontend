@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Alert, Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { alertActions, userActions } from '../_actions';
 import FieldFileInput from './field-file-input';
-import ConfirmModal from './confirm-modal';
+import ConfirmModal from '../_components/confirm-modal';
 
-const renderField = ({
-  id, input, label, type, name,
-}) => (
-  <FormGroup>
-    <Label for={id}>{label}</Label>
-    <Input name={name} type={type} id={id} {...input} required={false} />
-  </FormGroup>
-);
+import RenderField from '../_components/render-field';
 
 class UserSettingsForm extends Component {
   constructor(props) {
@@ -43,8 +36,9 @@ class UserSettingsForm extends Component {
             id="email"
             name="email"
             type="email"
-            component={renderField}
+            component={RenderField}
             label="E-mail"
+            required="False"
           />
           <Field
             id="avatar"
@@ -52,6 +46,7 @@ class UserSettingsForm extends Component {
             type="file"
             component={FieldFileInput}
             label="Avatar"
+            required="False"
           />
           <Button color="primary" type="submit">Confirm</Button>
           {updating &&

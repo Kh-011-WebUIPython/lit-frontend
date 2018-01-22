@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Alert, Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 import { alertActions, userActions } from '../_actions';
-
-const renderField = ({
-  id, input, label, type, name,
-}) => (
-  <FormGroup>
-    <Label for={id}>{label}</Label>
-    <Input name={name} type={type} id={id} {...input} required="True" />
-  </FormGroup>
-);
+import RenderField from '../_components/render-field';
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -60,29 +52,33 @@ class SignUpForm extends Component {
           id={`username${this.props.id}`}
           name="username"
           type="text"
-          component={renderField}
+          component={RenderField}
           label="Username"
+          required="True"
         />
         <Field
           id={`email${this.props.id}`}
           name="email"
           type="email"
-          component={renderField}
+          component={RenderField}
           label="E-mail"
+          required="True"
         />
         <Field
           id={`password${this.props.id}`}
           name="password"
           type="password"
-          component={renderField}
+          component={RenderField}
           label="Password"
+          required="True"
         />
         <Field
           id={`rPassword${this.props.id}`}
           name="rPassword"
           type="password"
-          component={renderField}
+          component={RenderField}
           label="Password"
+          required="True"
         />
         <Button color="primary" type="submit">Sign Up</Button>
         {registering &&

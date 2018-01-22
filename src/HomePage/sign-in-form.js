@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Alert, Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 import { alertActions, userActions } from '../_actions';
-
-const renderField = ({
-  id, input, label, type, name,
-}) => (
-  <FormGroup>
-    <Label for={id}>{ label }</Label>
-    <Input name={name} type={type} id={id} {...input} required="True" />
-  </FormGroup>
-);
+import RenderField from '../_components/render-field';
 
 class SignInForm extends Component {
   constructor(props) {
@@ -38,15 +30,17 @@ class SignInForm extends Component {
           id="username"
           name="username"
           type="text"
-          component={renderField}
+          component={RenderField}
           label="Username"
+          required="True"
         />
         <Field
           id="password"
           name="password"
           type="password"
-          component={renderField}
+          component={RenderField}
           label="Password"
+          required="True"
         />
         <Button color="primary" type="submit">Sign In</Button>
         { loggingIn &&

@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { alertActions, repoActions } from '../_actions';
-
-
-const renderField = ({
-  id, input, label, type, name,
-}) => (
-  <FormGroup>
-    <Label for={id}>{label}</Label>
-    <Input name={name} type={type} id={id} {...input} required={type === 'text'} />
-  </FormGroup>
-);
+import RenderField from '../_components/render-field';
 
 class CreateRepoForm extends Component {
   constructor(props) {
@@ -35,15 +26,17 @@ class CreateRepoForm extends Component {
           id="name"
           name="name"
           type="text"
-          component={renderField}
+          component={RenderField}
           label="Repository name"
+          required="True"
         />
         <Field
           id="description"
           name="description"
           type="textarea"
-          component={renderField}
+          component={RenderField}
           label="Repository description"
+          required="False"
         />
         <Button color="primary" type="submit">Confirm</Button>
         <Button color="secondary" type="reset" className="ml-2">Cancel</Button>
