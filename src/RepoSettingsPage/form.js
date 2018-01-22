@@ -7,7 +7,7 @@ import ConfirmModal from '../_components/confirm-modal';
 
 import RenderField from '../_components/render-field';
 
-class RepositorySettingsForm extends Component {
+class RepoSettingsForm extends Component {
   submit(values, dispatch, props) {
     const { id, name } = props;
     const { description } = values;
@@ -40,6 +40,6 @@ const mapStateToProps = state => ({
   updating: state.repoUpdate.updating,
 });
 
-const ConnectedRepositorySettingsForm = connect(mapStateToProps)(reduxForm({ form: 'repoSettings' })(RepositorySettingsForm));
+const ConnectedRepoSettingsForm = connect(mapStateToProps)(reduxForm({ form: 'repoSettings' })(RepoSettingsForm));
 
-export default ConnectedRepositorySettingsForm;
+export default ConnectedRepoSettingsForm;

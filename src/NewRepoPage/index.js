@@ -6,7 +6,7 @@ import { repoActions } from '../_actions';
 
 const NewRepoPage = (props) => {
   const { alert, username } = props;
-  const { repo } = props.repoCreation;
+  const { repo } = props.repoCreate;
 
   if (repo) {
     props.clear();
@@ -22,7 +22,7 @@ const NewRepoPage = (props) => {
 };
 
 const mapStateToProps = state => ({
-  username: state.userinfo.username, alert: state.alert, repoCreation: state.repoCreation,
+  username: state.user.username, alert: state.alert, repoCreate: state.repoCreate,
 });
 
 const mapDispatchToProps = dispatch => ({

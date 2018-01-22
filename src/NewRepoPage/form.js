@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Alert, Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { alertActions, repoActions } from '../_actions';
 import RenderField from '../_components/render-field';

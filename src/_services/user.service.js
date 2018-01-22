@@ -69,7 +69,7 @@ async function register(user) {
 
 async function update(user) {
   const { email, avatar } = user;
-  let data = new FormData();
+  const data = new FormData();
   if (email) data.append('email', email);
   if (avatar) data.append('avatar', avatar);
   const requestOptions = {

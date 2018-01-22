@@ -3,12 +3,11 @@ import { repoService, userService } from '../_services';
 import { repoActions } from '.';
 
 export const userpageActions = {
-  getUserInfo,
-  getUserInfoWithRepos,
+  getUser,
   getReposByUsername,
 };
 
-function getUserInfo() {
+function getUser() {
   return (dispatch) => {
     dispatch(request());
 
@@ -33,44 +32,15 @@ function getUserInfo() {
 
 
   function request() {
-    return { type: userpageConstants.USERINFO_REQUEST };
+    return { type: userpageConstants.USER_REQUEST };
   }
 
   function success(userinfo) {
-    return { type: userpageConstants.USERINFO_SUCCESS, userinfo };
+    return { type: userpageConstants.USER_SUCCESS, user: userinfo };
   }
 
   function failure(error) {
-    return { type: userpageConstants.USERINFO_FAILURE, error };
-  }
-}
-
-function getUserInfoWithRepos() {
-  return async (dispatch) => {
-    try {
-      dispatch(request());
-
-      const userinfo = await userService.getByToken();
-      dispatch(repoActions.getByUser(userinfo.pk));
-      const user = await userService.getById(userinfo.pk);
-
-      dispatch(success(user));
-    } catch (e) {
-      dispatch(failure(e));
-    }
-  };
-
-
-  function request() {
-    return { type: userpageConstants.USERINFO_REQUEST };
-  }
-
-  function success(userinfo) {
-    return { type: userpageConstants.USERINFO_SUCCESS, userinfo };
-  }
-
-  function failure(error) {
-    return { type: userpageConstants.USERINFO_FAILURE, error };
+    return { type: userpageConstants.USER_FAILURE, error };
   }
 }
 
@@ -103,7 +73,7 @@ function getReposByUsername(username) {
   }
 
   function success(userinfo) {
-    return { type: userpageConstants.USERID_SUCCESS, userinfo };
+    return { type: userpageConstants.USERID_SUCCESS, user: userinfo };
   }
 
   function failure(error) {

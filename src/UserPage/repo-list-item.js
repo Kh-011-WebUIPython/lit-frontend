@@ -15,6 +15,6 @@ const RepoListItem = ({
   </div>
 );
 
-const mapStateToProps = state => ({ user: state.userinfo.username });
+const mapStateToProps = state => ({ user: state.user.username });
 
 export default connect(mapStateToProps)(RepoListItem);

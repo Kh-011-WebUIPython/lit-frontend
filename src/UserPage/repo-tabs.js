@@ -61,7 +61,7 @@ class RepoTabs extends Component {
   }
 }
 
-const mapStateToProps = state => ({ repos: state.repos });
+const mapStateToProps = state => ({ repos: state.userRepos });
 
 const connectedRepoTabs = connect(mapStateToProps)(RepoTabs);
 

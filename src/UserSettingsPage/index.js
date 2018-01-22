@@ -4,7 +4,7 @@ import UserSettingsForm from './form';
 import { userActions } from '../_actions';
 
 const UserSettingsPage = (props) => {
-  const { pk } = props.userinfo;
+  const { pk } = props.user;
   const { _delete, alert, updating } = props;
   return (
     <div>
@@ -15,7 +15,7 @@ const UserSettingsPage = (props) => {
 };
 
 const mapStateToProps = state => ({
-  userinfo: state.userinfo, alert: state.alert, updating: state.update.updating,
+  user: state.user, alert: state.alert, updating: state.update.updating,
 });
 
 const mapDispatchToProps = dispatch => ({

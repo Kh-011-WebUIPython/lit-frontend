@@ -51,7 +51,7 @@ class RepoPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({ check: state.check, user: state.userinfo.username });
+const mapStateToProps = state => ({ check: state.check, user: state.user.username });
 
 const mapDispatchToProps = dispatch => ({
   checkUserAndRepo: (username, name) => dispatch(checkActions.checkUserAndRepo(username, name)),
