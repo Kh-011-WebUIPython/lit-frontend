@@ -7,7 +7,6 @@ import ModalSign from './modal-sign';
 export default class NavLinks extends Component {
     changeState = () => this.setState({'searchField': !this.state.searchField});
 
-    // todo: focus on input after it opens
     getClassName = () => 'form-control search-field' +
         (this.state.searchField ? '' : ' search-field-invisible');
 

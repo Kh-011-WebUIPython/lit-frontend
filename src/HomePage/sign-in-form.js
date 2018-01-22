@@ -14,7 +14,6 @@ const renderField = ({
   </FormGroup>
 );
 
-// todo: find a spinner
 class SignInForm extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +28,9 @@ class SignInForm extends Component {
 
   render() {
     const { handleSubmit, loggingIn, alert } = this.props;
-    const message = alert.message && (alert.message.toString() === 'Bad Request' ? 'Sorry, login/password are incorrect' : alert.message.toString());
+    const message = alert.message && (alert.message.toString() === 'Bad Request'
+      ? 'Sorry, login/password are incorrect'
+      : alert.message.toString());
     return (
       <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
         { alert.message && <Alert color="danger">{ message }</Alert> }

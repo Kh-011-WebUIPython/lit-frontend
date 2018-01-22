@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 
 import { alertActions, userActions } from '../_actions';
-import { connect } from 'react-redux';
 
 const renderField = ({
   id, input, label, type, name,
@@ -23,9 +23,16 @@ class SignUpForm extends Component {
 
   submit(values, dispatch) {
     const userData = { username: values.username, password: values.password, email: values.email };
+    const loginRegExp = /^[a-z][a-z0-9_\-.]{3,25}$/i;
+    const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (!/^[a-z][a-z0-9_\-.]{3,25}$/i.test(userData.username)) {
+    if (!loginRegExp.test(userData.username)) {
       dispatch(alertActions.error('Your login should start with letter and contain only latin letters, numbers, _-.'));
+      return;
+    }
+
+    if (!emailRegExp.test(userData.email)) {
+      dispatch(alertActions.error('Your email is invalid'));
       return;
     }
 
