@@ -1,6 +1,6 @@
 import { userConstants } from '../_constants';
 
-export function update(state = {}, action) {
+export function userUpdate(state = {}, action) {
   switch (action.type) {
     case userConstants.UPDATE_REQUEST:
       return { updating: true };

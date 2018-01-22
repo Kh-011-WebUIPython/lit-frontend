@@ -15,7 +15,7 @@ export function authentication(state = initialState, action) {
         loggedIn: true,
         user: action.user,
       };
-    case userpageConstants.USERINFO_FAILURE:
+    case userpageConstants.USER_FAILURE:
       return {};
     case userConstants.DELETE_SUCCESS:
       return {};

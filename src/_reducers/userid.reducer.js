@@ -5,7 +5,7 @@ export function userid(state = {}, action) {
     case userpageConstants.USERID_REQUEST:
       return { fetchingUserinfo: true };
     case userpageConstants.USERID_SUCCESS:
-      return { ...action.userinfo };
+      return { ...action.user };
     case userpageConstants.USERID_FAILURE:
       return {};
     default:
