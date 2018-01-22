@@ -9,6 +9,8 @@ export const repoActions = {
   getByUser,
   update,
   clearUpdate,
+  delete: deleteRepo,
+  clearDeletion,
 };
 
 
@@ -70,6 +72,38 @@ function update({ name, description, id }) {
   }
 }
 
+function deleteRepo(id) {
+  return (dispatch) => {
+    dispatch(request());
+
+    repoService.delete(id)
+      .then(
+        () => {
+          dispatch(success());
+        },
+        (error) => {
+          dispatch(failure(error));
+          dispatch(alertActions.error(error));
+        },
+      );
+  };
+
+  function request(repo) {
+    return { type: repoConstants.DELETE_REQUEST, repo };
+  }
+
+  function success() {
+    return { type: repoConstants.DELETE_SUCCESS };
+  }
+
+  function failure(error) {
+    return { type: repoConstants.DELETE_FAILURE, error };
+  }
+}
+
+function clearDeletion() {
+  return { type: repoConstants.DELETE_CLEAR };
+}
 
 function clearCreation() {
   return { type: repoConstants.CREATION_CLEAR };

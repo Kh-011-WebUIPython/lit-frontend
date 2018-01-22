@@ -11,6 +11,7 @@ import { repoUpdate } from './update-repo.reducer';
 import { repos } from './get-repo.reducer';
 import { check } from './check.reducer';
 import { userid } from './userid.reducer';
+import { deleteRepo } from './repo-deletion.reducer';
 
 const rootReducer = combineReducers({
   authentication,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   repoUpdate,
   check,
   userid,
+  deleteRepo,
   form: formReducer,
 });
 
