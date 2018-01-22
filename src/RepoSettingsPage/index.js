@@ -21,12 +21,18 @@ class RepoSettings extends Component {
   }
 
   render() {
+    const { deleted } = this.props.deleteRepo;
+    if (deleted) {
+      this.props.clear();
+      return (<Redirect to="/" push/>);
+    }
+
     const { fetching, failed } = this.props.check;
     if (fetching) {
       return null;
     } else if (failed) {
       return (
-        <Redirect to="/404" push />
+        <Redirect to="/404" push/>
       );
     }
 
@@ -38,14 +44,14 @@ class RepoSettings extends Component {
     const repoLink = `/${this.state.username}/${this.state.name}`;
 
     if (this.props.repoUpdate.updated) {
-      console.log('wtf');
       this.props.clear();
       return (
-        <Redirect to={repoLink} push />
+        <Redirect to={ repoLink } push/>
       );
     }
 
     const repoId = this.props.userid.owner.filter(repo => repo.name === this.state.name)[0].id;
+    const { _delete } = this.props;
     return (
       <div>
         <div className="flex justify-content-between align-items-baseline">
@@ -57,7 +63,10 @@ class RepoSettings extends Component {
             </h2>
           </div>
         </div>
-        <RepositorySettingsForm id={ repoId } name={ this.state.name }/>
+        <RepositorySettingsForm id={ repoId } name={ this.state.name } delete={ () => {
+          console.log(repoId);
+          _delete(repoId);
+        } } />
       </div>
     );
   }
@@ -67,12 +76,17 @@ const mapStateToProps = state => ({
   check: state.check,
   userid: state.userid,
   repoUpdate: state.repoUpdate,
+  user: state.userinfo.username,
+  deleteRepo: state.deleteRepo,
 });
 
 const mapDispatchToProps = dispatch => ({
   checkUserAndRepo: (username, name) => dispatch(checkActions.checkUserAndRepo(username, name)),
   getReposByUsername: username => dispatch(userpageActions.getReposByUsername(username)),
-  clear: () => dispatch(repoActions.clearUpdate()),
+  clear: () => { dispatch(repoActions.clearUpdate()); dispatch(repoActions.clearDeletion()) },
+  _delete: (id) => {
+    dispatch(repoActions.delete(id));
+  },
 });
 
 const ConnectedRepoSettings = connect(mapStateToProps, mapDispatchToProps)(RepoSettings);

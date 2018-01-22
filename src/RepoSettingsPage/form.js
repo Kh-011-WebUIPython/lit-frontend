@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { repoActions } from '../_actions';
+import ConfirmModal from '../UserSettingsPage/confirm-modal';
 
 const renderField = ({
   id, input, label, type, name,
@@ -36,6 +37,7 @@ class RepositorySettingsForm extends Component {
         <Button color="primary" type="submit">Update</Button>
         { updating &&
         <img alt="spinner" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/10607/spinner3.gif" /> }
+        <ConfirmModal delete={this.props.delete} />
       </Form>
     );
   }

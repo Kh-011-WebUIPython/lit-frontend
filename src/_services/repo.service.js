@@ -6,6 +6,7 @@ export const repoService = {
   getByUser,
   getById,
   update,
+  delete: deleteRepo,
 };
 
 async function create(name, description) {
@@ -30,6 +31,14 @@ async function update(id, name, description) {
     .then(handleResponse);
 }
 
+async function deleteRepo(id) {
+  const requestOptions = {
+    method: 'DELETE',
+    headers: authHeader(),
+  };
+
+  return await fetch(`${LIT_URL}/repositories/${id}`, { ...requestOptions });
+}
 
 async function getByUser(id) {
   const requestOptions = {

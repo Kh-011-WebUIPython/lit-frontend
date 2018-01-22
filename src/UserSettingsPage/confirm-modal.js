@@ -20,7 +20,7 @@ class ConfirmModal extends React.Component {
   render() {
     return (
       <div>
-        <Button className="mt-5" color="danger" onClick={this.toggle}>Delete profile</Button>
+        <Button className="mt-5" color="danger" onClick={this.toggle}>Delete</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Are you sure?</ModalHeader>
           <ModalFooter>
