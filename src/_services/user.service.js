@@ -1,4 +1,4 @@
-import { authHeader } from '../_helpers';
+import { authHeader, handleResponse } from '../_helpers';
 import { LIT_URL } from '../_constants';
 
 export const userService = {
@@ -103,12 +103,4 @@ async function getByToken() {
   };
 
   return await fetch(`${LIT_URL}/auth/user/`, { ...requestOptions }).then(handleResponse);
-}
-
-function handleResponse(response) {
-  if (!response.ok) {
-    return Promise.reject(response.statusText);
-  }
-
-  return response.json();
 }

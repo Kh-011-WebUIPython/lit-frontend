@@ -1,3 +1,4 @@
+import { handleResponse } from '../_helpers';
 import { LIT_URL } from '../_constants';
 
 export const getService = {
@@ -28,12 +29,4 @@ async function user(name) {
   let users = await fetch(`${LIT_URL}/users/`, { ...requestOptions }).then(handleResponse);
   users = users.results.filter(u => u.username === name);
   return users[0] ? users[0] : Promise.reject('User not found');
-}
-
-function handleResponse(response) {
-  if (!response.ok) {
-    return Promise.reject(response.statusText);
-  }
-
-  return response.json();
 }

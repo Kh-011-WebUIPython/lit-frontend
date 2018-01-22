@@ -1,4 +1,4 @@
-import { authHeader } from '../_helpers';
+import { authHeader, handleResponse } from '../_helpers';
 import { LIT_URL } from '../_constants';
 
 export const repoService = {
@@ -6,7 +6,7 @@ export const repoService = {
   getByUser,
   getById,
   update,
-  delete: deleteRepo,
+  delete: repoDelete,
 };
 
 async function create(name, description) {
@@ -31,7 +31,7 @@ async function update(id, name, description) {
     .then(handleResponse);
 }
 
-async function deleteRepo(id) {
+async function repoDelete(id) {
   const requestOptions = {
     method: 'DELETE',
     headers: authHeader(),
@@ -46,7 +46,8 @@ async function getByUser(id) {
     headers: { 'Content-Type': 'application/json' },
   };
 
-  return await fetch(`${LIT_URL}/users/${id}/repositories/`, { ...requestOptions }).then(handleResponse);
+  return await fetch(`${LIT_URL}/users/${id}/repositories/`, { ...requestOptions })
+    .then(handleResponse);
 }
 
 async function getById(id) {
@@ -56,12 +57,4 @@ async function getById(id) {
   };
 
   return await fetch(`${LIT_URL}/repositories/${id}`, { ...requestOptions }).then(handleResponse);
-}
-
-function handleResponse(response) {
-  if (!response.ok) {
-    return Promise.reject(response.statusText);
-  }
-
-  return response.json();
 }
