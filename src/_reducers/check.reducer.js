@@ -5,11 +5,9 @@ export function check(state = {}, action) {
     case checkConstants.USER_AND_REPO_REQUEST:
       return { fetching: true };
     case checkConstants.USER_AND_REPO_SUCCESS:
-      return { ...action.data };
+      return {};
     case checkConstants.USER_AND_REPO_FAILURE:
       return { failed: true };
-    case checkConstants.USER_AND_REPO_CLEAR:
-      return { };
     default:
       return state;
   }

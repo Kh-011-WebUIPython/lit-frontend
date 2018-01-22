@@ -10,6 +10,7 @@ import { repoCreation } from './create-repo.reducer';
 import { repoUpdate } from './update-repo.reducer';
 import { repos } from './get-repo.reducer';
 import { check } from './check.reducer';
+import { userid } from './userid.reducer';
 
 const rootReducer = combineReducers({
   authentication,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   repos,
   repoUpdate,
   check,
+  userid,
   form: formReducer,
 });
 

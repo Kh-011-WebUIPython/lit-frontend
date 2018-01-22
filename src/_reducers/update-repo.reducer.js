@@ -5,7 +5,7 @@ export function repoUpdate(state = {}, action) {
     case repoConstants.UPDATE_DESCRIPTION_REQUEST:
       return { updating: true };
     case repoConstants.UPDATE_DESCRIPTION_SUCCESS:
-      return { repo: action.repo };
+      return { updated: true };
     case repoConstants.UPDATE_DESCRIPTION_FAILURE:
       return {};
     case repoConstants.UPDATE_DESCRIPTION_CLEAR:

@@ -1,48 +1,77 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import RepositorySettingsForm from './form';
-import { getIdByName } from '../_helpers';
-import { repoActions } from '../_actions';
+import { checkActions, repoActions, userpageActions } from '../_actions';
 
-const RepoSettings = (props) => {
-  const { repo } = props.repoUpdate;
-
-  // redirect if repo has already been successfully updated
-  if (repo) {
-    props.clear();
-    // 0 is empty and 3 is 'settings', we don't need it
-    const repoPage = props.location.pathname.split('/')
-      .reduce((res, cur, ind) => (ind === 0 || ind === 3 ? res : `${res}/${cur}`), '');
-
-    return <Redirect to={repoPage} push />;
+class RepoSettings extends Component {
+  constructor(props) {
+    super(props);
+    const splittedPath = this.props.location.pathname.split('/');
+    this.state = {
+      name: splittedPath[2],
+      username: splittedPath[1],
+    };
   }
 
-  const repoName = props.location.pathname.split('/')[2];
-  const repoId = getIdByName(repoName, props.repos);
+  componentDidMount() {
+    const { checkUserAndRepo, getReposByUsername } = this.props;
+    checkUserAndRepo(this.state.username, this.state.name);
+    getReposByUsername(this.state.username);
+  }
 
-  // todo: add breadcrumbs
-  // todo: add breadcrumbs when you have created a repo
-  // todo: check if it exists before rendering
-  return (
-    <div>
-      <div className="flex justify-content-between align-items-baseline">
-        {/*<h2 className="pb-4">*/}
-          {/*<Link to={ownerLink}>{`${this.state.username} `}</Link>*/}
-          {/*/ {this.state.name}*/}
-        {/*</h2>*/}
-        <h2 className="pb-2">Update a repository</h2>
-        <span>Settings</span>
+  render() {
+    const { fetching, failed } = this.props.check;
+    if (fetching) {
+      return null;
+    } else if (failed) {
+      return (
+        <Redirect to="/404" push />
+      );
+    }
+
+    if (!this.props.userid.owner) {
+      return null;
+    }
+
+    const ownerLink = this.state.username === this.props.user ? '/' : `/${this.state.username}`;
+    const repoLink = `/${this.state.username}/${this.state.name}`;
+
+    if (this.props.repoUpdate.updated) {
+      console.log('wtf');
+      this.props.clear();
+      return (
+        <Redirect to={repoLink} push />
+      );
+    }
+
+    const repoId = this.props.userid.owner.filter(repo => repo.name === this.state.name)[0].id;
+    return (
+      <div>
+        <div className="flex justify-content-between align-items-baseline">
+          <div className="flex justify-content-between align-items-baseline">
+            <h2 className="pb-4">
+              <Link to={ ownerLink }>{ `${this.state.username} ` }</Link>
+              / <Link to={ repoLink }>{ `${this.state.name} ` }</Link>
+              / Update a repository
+            </h2>
+          </div>
+        </div>
+        <RepositorySettingsForm id={ repoId } name={ this.state.name }/>
       </div>
-      <RepositorySettingsForm id={repoId} name={repoName} />
-    </div>
-  );
-};
+    );
+  }
+}
 
-
-const mapStateToProps = state => ({ repos: state.repos, repoUpdate: state.repoUpdate });
+const mapStateToProps = state => ({
+  check: state.check,
+  userid: state.userid,
+  repoUpdate: state.repoUpdate,
+});
 
 const mapDispatchToProps = dispatch => ({
+  checkUserAndRepo: (username, name) => dispatch(checkActions.checkUserAndRepo(username, name)),
+  getReposByUsername: username => dispatch(userpageActions.getReposByUsername(username)),
   clear: () => dispatch(repoActions.clearUpdate()),
 });
 

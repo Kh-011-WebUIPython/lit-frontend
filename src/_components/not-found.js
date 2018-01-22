@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import { checkActions } from '../_actions';
 
 class NotFoundPage extends Component {
-  componentDidMount() {
-    this.props.dispatch(checkActions.checkUserAndRepoClear());
-  }
-
   render() {
     return (<h1>404</h1>);
   }

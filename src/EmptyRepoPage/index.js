@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Code from '../_components/code';
-import { checkActions } from '../_actions/check.actions';
+import { checkActions } from '../_actions';
 
 class EmptyRepoPage extends Component {
   constructor(props) {

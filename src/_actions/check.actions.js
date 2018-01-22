@@ -3,7 +3,6 @@ import { checkConstants } from '../_constants';
 
 export const checkActions = {
   checkUserAndRepo,
-  checkUserAndRepoClear,
 };
 
 function checkUserAndRepo(username, name) {
@@ -29,8 +28,4 @@ function checkUserAndRepo(username, name) {
   function failure(error) {
     return { type: checkConstants.USER_AND_REPO_FAILURE, error };
   }
-}
-
-function checkUserAndRepoClear() {
-  return { type: checkConstants.USER_AND_REPO_CLEAR };
 }
