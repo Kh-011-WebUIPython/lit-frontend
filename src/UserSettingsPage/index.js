@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import UserSettingsForm from './form';
 import { userActions } from '../_actions';
 
@@ -19,12 +20,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signOut: () => {
-    dispatch(userActions.signOut());
-  },
-  _delete: () => {
-    dispatch(userActions.delete());
-  },
+  _delete: () => dispatch(userActions.delete()),
 });
 
 const ConnectedUserSettingsPage = connect(mapStateToProps, mapDispatchToProps)(UserSettingsPage);
