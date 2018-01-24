@@ -22,8 +22,8 @@ class EmptyRepoPage extends Component {
   }
 
   render() {
-    const { fetching, failed } = this.props.check;
-    if (fetching) {
+    const { failed, repo } = this.props.check;
+    if (!repo) {
       return null;
     } else if (failed) {
       return (
@@ -46,7 +46,7 @@ class EmptyRepoPage extends Component {
             <Code>lit init</Code>
             <Code>lit add file_name</Code>
             <Code>lit commit -m "Your commit for commit"</Code>
-            <Code>lit remote add origin https://litvcs.win/lit-project1.git</Code>
+            <Code>lit remote add origin http://litvcs.win/repositories/{this.props.check.repo.id}</Code>
             <Code>lit push -u origin master</Code>
           </li>
           <li>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 import ListFiles from './list-files';
+import CloneLink from './popover';
 import BranchDropdown from './branch-dropdown';
 import { checkActions } from '../_actions/check.actions';
 
@@ -23,8 +24,8 @@ class RepoPage extends Component {
   }
 
   render() {
-    const { fetching, failed } = this.props.check;
-    if (fetching) {
+    const { repo, failed } = this.props.check;
+    if (!repo) {
       return null;
     } else if (failed) {
       return (
@@ -45,7 +46,10 @@ class RepoPage extends Component {
           <div><span className="mr-2">Current branch:</span>
             <BranchDropdown />
           </div>
-          <Link to={settingsLink}>Settings</Link>
+          <div>
+            <CloneLink id={this.props.check.repo.id} />
+            <Link to={settingsLink}>Settings</Link>
+          </div>
         </div>
         <ListFiles />
       </div>
