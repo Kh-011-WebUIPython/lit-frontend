@@ -38,7 +38,6 @@ class UserSettingsForm extends Component {
             type="email"
             component={RenderField}
             label="E-mail"
-            required="False"
           />
           <Field
             id="avatar"
@@ -46,7 +45,6 @@ class UserSettingsForm extends Component {
             type="file"
             component={FieldFileInput}
             label="Avatar"
-            required="False"
           />
           <Button color="primary" type="submit">Confirm</Button>
           {updating &&

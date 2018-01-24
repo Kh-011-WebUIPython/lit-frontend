@@ -46,7 +46,7 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <div className="flex h-100">
+        <div className="flex flex-column flex-md-row h-100">
           <UserInfoBlock avatar={avatar} username={username} signOut={signOut} />
           <div className="container pt-5 w-100">
             <Switch>

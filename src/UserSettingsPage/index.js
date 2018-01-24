@@ -16,7 +16,7 @@ const UserSettingsPage = (props) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user, alert: state.alert, updating: state.update.updating,
+  user: state.user, alert: state.alert, updating: state.userUpdate.updating,
 });
 
 const mapDispatchToProps = dispatch => ({

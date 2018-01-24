@@ -31,7 +31,7 @@ class RepoTabs extends Component {
               className={ isFirstActive ? 'active' : '' }
               onClick={ () => this.toggle('0') }
             >
-              User's repositories
+              Owner
             </NavLink>
           </NavItem>
 
@@ -40,7 +40,7 @@ class RepoTabs extends Component {
               className={ !isFirstActive ? 'active' : '' }
               onClick={ () => this.toggle('1') }
             >
-              Repositories user contribute to
+              Contributor
             </NavLink>
           </NavItem>
 

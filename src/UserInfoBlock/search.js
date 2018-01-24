@@ -16,7 +16,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="flex w-100 align-items-center justify-content-between mb-4">
+      <div className="flex w-100 d-none d-md-flex align-items-center justify-content-between mb-4">
         <img src={logo} alt="LIT logo" className="logo-image mr-1" />
         <Form className="search">
           <FormGroup>
