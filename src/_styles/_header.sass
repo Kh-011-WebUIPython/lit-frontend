@@ -68,12 +68,19 @@
 
 // CARD
 .card-300
-  max-width: 300px
+  @media only screen and (min-width: 768px)
+    max-width: 300px
   width: 100%
+
+.card-img-overlay
+  @media only screen and (max-width: 768px)
+    position: relative
 
 .br-50
   border-radius: 50%
-  border: solid 5px #ffffff
+  border: solid 2px #ffffff
+  @media only screen and (min-width: 768px)
+    border: solid 5px #ffffff
 
 .card-body
   display: flex
