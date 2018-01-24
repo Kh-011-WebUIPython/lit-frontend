@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Alert, Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 
@@ -40,7 +41,9 @@ class CreateRepoForm extends Component {
           required="False"
         />
         <Button color="primary" type="submit">Confirm</Button>
-        <Button color="secondary" type="reset" className="ml-2">Cancel</Button>
+        <Link to="/">
+          <Button color="secondary" type="reset" className="ml-2">Cancel</Button>
+        </Link>
         {updating &&
         <img alt="spinner" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/10607/spinner3.gif" />}
       </Form>
