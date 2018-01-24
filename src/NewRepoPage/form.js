@@ -22,7 +22,7 @@ class CreateRepoForm extends Component {
     const { handleSubmit, updating, alert } = this.props;
     const message = alert.message && 'OMG, something\'s got wrong';
     return (
-      <Form className="w-50" onSubmit={handleSubmit(this.submit)}>
+      <Form className="w-100 w-md-50" onSubmit={handleSubmit(this.submit)}>
         {alert.message && <Alert color="danger">{message}</Alert>}
         <Field
           id="name"

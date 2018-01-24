@@ -32,7 +32,7 @@ class UserSettingsForm extends Component {
       'Sorry, password is incorrect' : alert.message.toString());
     return (
       <div>
-        <Form className="w-50" onSubmit={handleSubmit(this.submit)}>
+        <Form className="w-100 w-md-50" onSubmit={handleSubmit(this.submit)}>
           {alert.message && <Alert color="danger">{message}</Alert>}
           <Field
             id="email"

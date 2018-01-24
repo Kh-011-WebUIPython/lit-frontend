@@ -18,7 +18,7 @@ class RepoSettingsForm extends Component {
   render() {
     const { handleSubmit, updating, _delete } = this.props;
     return (
-      <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
+      <Form className="w-100 w-md-50" onSubmit={handleSubmit(this.submit)}>
         <Field
           id="description"
           name="description"
