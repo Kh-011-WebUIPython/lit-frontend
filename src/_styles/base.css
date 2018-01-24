@@ -134,6 +134,9 @@ html, body, .App, #root {
 .nav-item {
   cursor: pointer; }
 
+@media only screen and (min-width: 768px) {
+  .w-md-50 {
+    max-width: 50%; } }
 .search .form-group {
   margin: 0 !important; }
 
