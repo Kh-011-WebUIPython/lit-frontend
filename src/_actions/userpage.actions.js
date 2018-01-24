@@ -1,6 +1,5 @@
 import { userpageConstants } from '../_constants';
 import { repoService, userService } from '../_services';
-import { repoActions } from '.';
 
 export const userpageActions = {
   getUser,
