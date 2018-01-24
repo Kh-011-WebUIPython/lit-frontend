@@ -42,7 +42,9 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const { handleSubmit, registering, alert, id } = this.props;
+    const {
+      handleSubmit, registering, alert, id,
+    } = this.props;
     const message = alert.message && (alert.message.toString() === 'Bad Request' ?
       'Sorry, you can\'t use that login' : alert.message.toString());
     return (

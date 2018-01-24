@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+
 import CreateRepoForm from './form';
 import { repoActions } from '../_actions';
 
@@ -15,7 +17,10 @@ const NewRepoPage = (props) => {
 
   return (
     <div>
-      <h1 className="mb-2">New repository</h1>
+      <Breadcrumb>
+        <BreadcrumbItem><Link to="/">{ `${username} ` }</Link></BreadcrumbItem>
+        <BreadcrumbItem active>New repository</BreadcrumbItem>
+      </Breadcrumb>
       <CreateRepoForm alert={alert} />
     </div>
   );

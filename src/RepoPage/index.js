@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+
 import ListFiles from './list-files';
 import BranchDropdown from './branch-dropdown';
 import { checkActions } from '../_actions/check.actions';
@@ -35,18 +37,17 @@ class RepoPage extends Component {
     const settingsLink = `${this.props.location.pathname}/settings`;
     return (
       <div>
+        <Breadcrumb>
+          <BreadcrumbItem><Link to={ownerLink}>{ `${username} ` }</Link></BreadcrumbItem>
+          <BreadcrumbItem active>{ name }</BreadcrumbItem>
+        </Breadcrumb>
         <div className="flex justify-content-between align-items-baseline">
-          <h2 className="pb-4">
-            <Link to={ownerLink}>{`${username} `}</Link>
-            / {name}
-          </h2>
+          <div><span className="mr-2">Current branch:</span>
+            <BranchDropdown />
+          </div>
           <Link to={settingsLink}>Settings</Link>
         </div>
-        <div className="border-dark">
-          <span className="mr-2">Current branch:</span>
-          <BranchDropdown />
-          <ListFiles />
-        </div>
+        <ListFiles />
       </div>
     );
   }

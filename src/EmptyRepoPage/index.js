@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+
 import Code from '../_components/code';
 import { checkActions } from '../_actions';
 
@@ -31,16 +33,12 @@ class EmptyRepoPage extends Component {
 
     const { username, name } = this.state;
     const ownerLink = username === this.props.user ? '/' : `/${username}`;
-    const settingsLink = `/${username}/${name}/settings`;
     return (
       <div>
-        <div className="flex justify-content-between align-items-baseline">
-          <h2 className="pb-4">
-            <Link to={ownerLink}>{`${username} `}</Link>
-            / {name}
-          </h2>
-          <Link to={settingsLink}>Settings</Link>
-        </div>
+        <Breadcrumb>
+          <BreadcrumbItem><Link to={ownerLink}>{ `${username} ` }</Link></BreadcrumbItem>
+          <BreadcrumbItem active>{ name }</BreadcrumbItem>
+        </Breadcrumb>
         <ul className="list-unstyled">
           <li>
             <h4 className="pb-3">Don't know what to do next? We can help you!</h4>

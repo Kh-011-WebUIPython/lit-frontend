@@ -25,7 +25,9 @@ class UserSettingsForm extends Component {
   // todo: try to add an initial value
   // https://github.com/facebook/react/issues/2764
   render() {
-    const { handleSubmit, updating, alert, _delete } = this.props;
+    const {
+      handleSubmit, updating, alert, _delete,
+    } = this.props;
     const message = alert.message && (alert.message.toString() === 'Bad Request' ?
       'Sorry, password is incorrect' : alert.message.toString());
     return (
