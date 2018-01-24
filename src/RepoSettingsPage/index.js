@@ -67,7 +67,7 @@ class RepoSettings extends Component {
         <RepoSettingsForm
           id={repoId}
           name={this.state.name}
-          delete={() => {
+          _delete={() => {
           _delete(repoId);
         }}
         />

@@ -22,6 +22,8 @@ class RepoTabs extends Component {
       return (<LoadingPage/>);
     }
 
+    const { repos } = this.props;
+
     return (
       <div>
         <Nav tabs>
@@ -49,11 +51,11 @@ class RepoTabs extends Component {
         <TabContent activeTab={ this.state.activeTab }>
 
           <TabPane tabId="0" className="border border-top-0 p-2">
-            <RepoList repos={ this.props.repos.owner }/>
+            <RepoList repos={ repos.owner }/>
           </TabPane>
 
           <TabPane tabId="1" className="border border-top-0 p-2">
-            <RepoList repos={ this.props.repos.contributor }/>
+            <RepoList repos={ repos.contributor }/>
           </TabPane>
 
         </TabContent>

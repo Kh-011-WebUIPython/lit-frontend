@@ -16,7 +16,7 @@ class RepoSettingsForm extends Component {
   }
 
   render() {
-    const { handleSubmit, updating } = this.props;
+    const { handleSubmit, updating, _delete } = this.props;
     return (
       <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
         <Field
@@ -30,7 +30,7 @@ class RepoSettingsForm extends Component {
         <Button color="primary" type="submit">Update</Button>
         { updating &&
         <img alt="spinner" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/10607/spinner3.gif" /> }
-        <ConfirmModal delete={this.props.delete} />
+        <ConfirmModal _delete={_delete} />
       </Form>
     );
   }

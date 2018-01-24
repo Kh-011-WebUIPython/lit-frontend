@@ -10,7 +10,7 @@ const UserSettingsPage = (props) => {
   return (
     <div>
       <h1 className="mb-2">Settings</h1>
-      <UserSettingsForm id={pk} delete={_delete} alert={alert} updating={updating} />
+      <UserSettingsForm id={pk} _delete={_delete} alert={alert} updating={updating} />
     </div>
   );
 };

@@ -29,14 +29,15 @@ class EmptyRepoPage extends Component {
       );
     }
 
-    const ownerLink = this.state.username === this.props.user ? '/' : `/${this.state.username}`;
-    const settingsLink = `/${this.state.username}/${this.state.name}/settings`;
+    const { username, name } = this.state;
+    const ownerLink = username === this.props.user ? '/' : `/${username}`;
+    const settingsLink = `/${username}/${name}/settings`;
     return (
       <div>
         <div className="flex justify-content-between align-items-baseline">
           <h2 className="pb-4">
-            <Link to={ownerLink}>{`${this.state.username} `}</Link>
-            / {this.state.name}
+            <Link to={ownerLink}>{`${username} `}</Link>
+            / {name}
           </h2>
           <Link to={settingsLink}>Settings</Link>
         </div>

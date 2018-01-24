@@ -42,14 +42,14 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const { handleSubmit, registering, alert } = this.props;
+    const { handleSubmit, registering, alert, id } = this.props;
     const message = alert.message && (alert.message.toString() === 'Bad Request' ?
       'Sorry, you can\'t use that login' : alert.message.toString());
     return (
       <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
         {alert.message && <Alert color="danger">{message}</Alert>}
         <Field
-          id={`username${this.props.id}`}
+          id={`username${id}`}
           name="username"
           type="text"
           component={RenderField}
@@ -57,7 +57,7 @@ class SignUpForm extends Component {
           required="True"
         />
         <Field
-          id={`email${this.props.id}`}
+          id={`email${id}`}
           name="email"
           type="email"
           component={RenderField}
@@ -65,7 +65,7 @@ class SignUpForm extends Component {
           required="True"
         />
         <Field
-          id={`password${this.props.id}`}
+          id={`password${id}`}
           name="password"
           type="password"
           component={RenderField}
@@ -73,7 +73,7 @@ class SignUpForm extends Component {
           required="True"
         />
         <Field
-          id={`rPassword${this.props.id}`}
+          id={`rPassword${id}`}
           name="rPassword"
           type="password"
           component={RenderField}
