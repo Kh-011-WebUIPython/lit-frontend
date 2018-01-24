@@ -25,10 +25,10 @@ const UserInfo = (props) => {
               </div>
             </div>
           </div>
-          <CardImg top width="100%" src="https://picsum.photos/300/180?image=1045" alt=""/>
+          <CardImg top width="100%" src="https://picsum.photos/300/180?image=1045" alt="" />
           <CardBody>
             <Link to="/"><img
-              src={ avatar || 'https://picsum.photos/150/150' }
+              src={avatar || 'https://picsum.photos/150/150'}
               alt="Avatar"
               className="br-50 w-150 h-150"
             />
