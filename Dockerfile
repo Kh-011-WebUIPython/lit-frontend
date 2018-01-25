@@ -1,22 +1,17 @@
-# You should always specify a full version here to ensure all of your developers
-# are running the same version of Node.
-FROM node:7.8.0
+# base image
+FROM node:9.4
 
-# Override the base log level (info).
-ENV NPM_CONFIG_LOGLEVEL warn
+# set working directory
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
 
-# Install and configure `serve`.
-RUN npm install -g serve
-CMD serve -s --port 8081 build
-EXPOSE 8081
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-# Install all dependencies of the current project.
-COPY package.json package.json
-COPY npm-shrinkwrap.json npm-shrinkwrap.json
-RUN npm install
+# install and cache app dependencies
+ADD package.json /usr/src/app/package.json
+RUN npm install --silent
+RUN npm install react-scripts@1.1.0 -g --silent
 
-# Copy all local files into the image.
-COPY . .
-
-# Build for production.
-RUN npm run build --production
+# start app
+CMD ["npm", "start"]
