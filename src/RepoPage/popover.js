@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Popover, Input, PopoverHeader, PopoverBody } from 'reactstrap';
+import { Button, Popover, Input, PopoverBody } from 'reactstrap';
 
 export default class CloneLink extends React.Component {
   constructor(props) {
