@@ -8,8 +8,8 @@ import { alertActions, userActions } from '../_actions';
 const renderField = ({
   id, input, label, type, name,
 }) => (
-  <FormGroup>
-    <Label for={id}>{ label }</Label>
+  <FormGroup className="text-about">
+    <Label for={id} className="py-2">{ label }</Label>
     <Input name={name} type={type} id={id} {...input} required="True" />
   </FormGroup>
 );
@@ -31,7 +31,7 @@ class SignInForm extends Component {
     const { handleSubmit, loggingIn, alert } = this.props;
     const message = alert.message && (alert.message.toString() === 'Bad Request' ? 'Sorry, login/password are incorrect' : alert.message.toString());
     return (
-      <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
+      <Form className="ml-auto mr-auto text-about" onSubmit={handleSubmit(this.submit)}>
         { alert.message && <Alert color="danger">{ message }</Alert> }
         <Field
           id="username"

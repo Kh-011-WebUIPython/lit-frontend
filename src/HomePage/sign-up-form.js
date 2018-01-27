@@ -9,7 +9,7 @@ const renderField = ({
   id, input, label, type, name,
 }) => (
   <FormGroup>
-    <Label for={id}>{label}</Label>
+    <Label for={id} className="py-2">{label}</Label>
     <Input name={name} type={type} id={id} {...input} required="True" />
   </FormGroup>
 );
@@ -47,7 +47,7 @@ class SignUpForm extends Component {
     const message = alert.message && (alert.message.toString() === 'Bad Request' ?
       'Sorry, you can\'t use that login' : alert.message.toString());
     return (
-      <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
+      <Form className="ml-auto mr-auto text-about" onSubmit={handleSubmit(this.submit)}>
         {alert.message && <Alert color="danger">{message}</Alert>}
         <Field
           id={`username${this.props.id}`}

@@ -1,32 +1,41 @@
+import background from '../_img/softserve.jpg';
+import holub from '../_img/devs/holub.jpg';
+import krivich from '../_img/devs/krivich.jpg';
+import volodin from '../_img/devs/volodin.jpg';
+import pronina from '../_img/devs/pronina.jpg';
+import belousov from '../_img/devs/belousov.jpg';
+import zelenskyi from '../_img/devs/zelenskyi.jpg';
+
+
 export const devs = [
-  {
-    name: 'Dima Volodin',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, sit!',
-    avatar: 'https://picsum.photos/150/150',
-    bgimg: 'https://picsum.photos/300/180',
-  },
-  {
-    name: 'Max Krivich',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, sit!',
-    avatar: 'https://picsum.photos/150/150',
-    bgimg: 'https://picsum.photos/300/180',
-  },
-  {
-    name: 'Pavel Belousov',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, sit!',
-    avatar: 'https://picsum.photos/150/150',
-    bgimg: 'https://picsum.photos/300/180',
-  },
-  {
-    name: 'Lena Holub',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, sit!',
-    avatar: 'https://picsum.photos/150/150',
-    bgimg: 'https://picsum.photos/300/180',
-  },
-  {
-    name: 'Daria Pronina',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, sit!',
-    avatar: 'https://picsum.photos/150/150',
-    bgimg: 'https://picsum.photos/300/180',
-  },
+    {
+        name: 'Olena Holub',
+        avatar: holub,
+        bgimg: background,
+    },
+    {
+        name: 'Maxim Krivich',
+        avatar: krivich,
+        bgimg: background,
+    },
+    {
+        name: 'Dmitriy Volodin',
+        avatar: volodin,
+        bgimg: background,
+    },
+    {
+        name: 'Daria Pronina',
+        avatar: pronina,
+        bgimg: background,
+    },
+    {
+        name: 'Pavel Belousov',
+        avatar: belousov,
+        bgimg: background,
+    },
+    {
+        name: 'Daniil Zelenskyi',
+        avatar: zelenskyi,
+        bgimg: background,
+    },
 ];

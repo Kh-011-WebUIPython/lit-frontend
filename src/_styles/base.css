@@ -91,9 +91,11 @@ html, body, .App, #root {
 .text-cursive {
   font-family: "Indie Flower", cursive; }
 
-.aboutLit p {
+.text-about p {
   font-size: 1.5rem;
   line-height: 2rem; }
+.text-about span, .text-about label, .text-about input, .text-about button {
+  font-size: 1.2rem; }
 
 .monospaced {
   font-family: "SFMono-Regular", monospace;

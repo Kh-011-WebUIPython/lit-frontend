@@ -7,7 +7,7 @@ const DevCard = props => (
       <CardImg top width="100%" src={props.bgimg} alt="Card image cap" />
       <CardBody>
         <img src={props.avatar} alt="" className="br-50" />
-        <CardTitle>{props.name}</CardTitle>
+        <CardTitle className="py-4">{props.name}</CardTitle>
       </CardBody>
     </Card>
   </div>
