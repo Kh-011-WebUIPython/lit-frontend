@@ -1,6 +1,7 @@
-.aboutLit p {
-    font-size: 1.5rem;
-    line-height: 2rem;
-}
+.text-about p {
+  font-size: 1.5rem;
+  line-height: 2rem; }
+.text-about span, .text-about label, .text-about input, .text-about button {
+  font-size: 1.2rem; }
 
 /*# sourceMappingURL=_about_lit.css.map */
