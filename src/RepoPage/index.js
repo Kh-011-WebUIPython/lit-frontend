@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Button, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+
 import ListFiles from './list-files';
+import CloneLink from './popover';
 import BranchDropdown from './branch-dropdown';
 import { checkActions } from '../_actions/check.actions';
 
@@ -21,8 +24,8 @@ class RepoPage extends Component {
   }
 
   render() {
-    const { fetching, failed } = this.props.check;
-    if (fetching) {
+    const { repo, failed } = this.props.check;
+    if (!repo) {
       return null;
     } else if (failed) {
       return (
@@ -30,28 +33,31 @@ class RepoPage extends Component {
       );
     }
 
-    const ownerLink = this.state.username === this.props.user ? '/' : `/${this.state.username}`;
+    const { username, name } = this.state;
+    const ownerLink = username === this.props.user ? '/' : `/${username}`;
     const settingsLink = `${this.props.location.pathname}/settings`;
     return (
       <div>
-        <div className="flex justify-content-between align-items-baseline">
-          <h2 className="pb-4">
-            <Link to={ownerLink}>{`${this.state.username} `}</Link>
-            / {this.state.name}
-          </h2>
-          <Link to={settingsLink}>Settings</Link>
+        <Breadcrumb>
+          <BreadcrumbItem><Link to={ownerLink}>{ `${username} ` }</Link></BreadcrumbItem>
+          <BreadcrumbItem active>{ name }</BreadcrumbItem>
+        </Breadcrumb>
+        <div className="flex flex-column-reverse flex-sm-row justify-content-between align-items-baseline">
+          <div><span className="mr-2">Current branch:</span>
+            <BranchDropdown />
+          </div>
+          <div className="mb-4">
+            <CloneLink id={this.props.check.repo.id} />
+            <Link to={settingsLink}><Button color="primary">Settings</Button></Link>
+          </div>
         </div>
-        <div className="border-dark">
-          <span className="mr-2">Current branch:</span>
-          <BranchDropdown />
-          <ListFiles />
-        </div>
+        <ListFiles />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({ check: state.check, user: state.userinfo.username });
+const mapStateToProps = state => ({ check: state.check, user: state.user.username });
 
 const mapDispatchToProps = dispatch => ({
   checkUserAndRepo: (username, name) => dispatch(checkActions.checkUserAndRepo(username, name)),

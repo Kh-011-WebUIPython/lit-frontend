@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import RepoTabs from './repo-tabs';
 import { repoActions } from '../_actions';
 import LoadingPage from '../_components/loading-page';
 
 class UserPage extends Component {
   componentDidMount() {
-    const { id } = this.props.userinfo;
-    if (id) this.props.getRepos(id);
+    const { id } = this.props.user;
+    if (id) {
+      this.props.getRepos(id);
+    }
   }
+
   render() {
-    if (this.props.repos.fetchingRepos) {
+    if (this.props.repos.fetching) {
       return (<LoadingPage />);
     }
     return (<RepoTabs />);
@@ -18,7 +22,7 @@ class UserPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  userinfo: state.userinfo, repos: state.repos,
+  user: state.user, repos: state.userRepos,
 });
 
 const mapDispatchToProps = dispatch => ({

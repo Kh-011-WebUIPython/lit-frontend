@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+
 import CreateRepoForm from './form';
 import { repoActions } from '../_actions';
 
 const NewRepoPage = (props) => {
   const { alert, username } = props;
-  const { repo } = props.repoCreation;
+  const { repo } = props.repoCreate;
 
   if (repo) {
     props.clear();
@@ -15,14 +17,17 @@ const NewRepoPage = (props) => {
 
   return (
     <div>
-      <h1 className="mb-2">New repository</h1>
+      <Breadcrumb>
+        <BreadcrumbItem><Link to="/">{ `${username} ` }</Link></BreadcrumbItem>
+        <BreadcrumbItem active>New repository</BreadcrumbItem>
+      </Breadcrumb>
       <CreateRepoForm alert={alert} />
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  username: state.userinfo.username, alert: state.alert, repoCreation: state.repoCreation,
+  username: state.user.username, alert: state.alert, repoCreate: state.repoCreate,
 });
 
 const mapDispatchToProps = dispatch => ({

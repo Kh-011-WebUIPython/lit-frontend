@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+
 import Code from '../_components/code';
 import { checkActions } from '../_actions';
 
@@ -20,8 +22,8 @@ class EmptyRepoPage extends Component {
   }
 
   render() {
-    const { fetching, failed } = this.props.check;
-    if (fetching) {
+    const { failed, repo } = this.props.check;
+    if (!repo) {
       return null;
     } else if (failed) {
       return (
@@ -29,17 +31,14 @@ class EmptyRepoPage extends Component {
       );
     }
 
-    const ownerLink = this.state.username === this.props.user ? '/' : `/${this.state.username}`;
-    const settingsLink = `/${this.state.username}/${this.state.name}/settings`;
+    const { username, name } = this.state;
+    const ownerLink = username === this.props.user ? '/' : `/${username}`;
     return (
       <div>
-        <div className="flex justify-content-between align-items-baseline">
-          <h2 className="pb-4">
-            <Link to={ownerLink}>{`${this.state.username} `}</Link>
-            / {this.state.name}
-          </h2>
-          <Link to={settingsLink}>Settings</Link>
-        </div>
+        <Breadcrumb>
+          <BreadcrumbItem><Link to={ownerLink}>{ `${username} ` }</Link></BreadcrumbItem>
+          <BreadcrumbItem active>{ name }</BreadcrumbItem>
+        </Breadcrumb>
         <ul className="list-unstyled">
           <li>
             <h4 className="pb-3">Don't know what to do next? We can help you!</h4>
@@ -47,7 +46,7 @@ class EmptyRepoPage extends Component {
             <Code>lit init</Code>
             <Code>lit add file_name</Code>
             <Code>lit commit -m "Your commit for commit"</Code>
-            <Code>lit remote add origin https://litvcs.win/lit-project1.git</Code>
+            <Code>lit remote add origin http://litvcs.win/repositories/{this.props.check.repo.id}</Code>
             <Code>lit push -u origin master</Code>
           </li>
           <li>
@@ -61,7 +60,7 @@ class EmptyRepoPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({ check: state.check, user: state.userinfo.username });
+const mapStateToProps = state => ({ check: state.check, user: state.user.username });
 
 const mapDispatchToProps = dispatch => ({
   checkUserAndRepo: (username, name) => dispatch(checkActions.checkUserAndRepo(username, name)),

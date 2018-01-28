@@ -14,27 +14,28 @@ export default class ModalSign extends Component {
   toggle = () => this.setState({ modal: !this.state.modal });
 
   render() {
+    const {title, src, alt, className} = this.props;
     return (
       <div className="d-inline-block">
         <img
-          src={this.props.src}
-          alt={this.props.alt}
+          src={src}
+          alt={alt}
           data-toggle="tooltip"
-          title={this.props.title}
+          title={title}
           className="icon nav-icon"
           onClick={this.toggle}
         />
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
-          className={this.props.className}
+          className={className}
         >
           <ModalHeader
             toggle={this.toggle}
-          >{ this.props.title }
+          >{ title }
           </ModalHeader>
           <ModalBody>
-            { this.props.title.indexOf('Up') !== -1 ? <SignUp id="0" /> : <SignIn /> }
+            { title.indexOf('Up') !== -1 ? <SignUp id="0" /> : <SignIn /> }
           </ModalBody>
         </Modal>
       </div>

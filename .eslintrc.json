@@ -19,6 +19,8 @@
     "no-use-before-define": "off",
     "no-return-await": "off",
     "react/no-unescaped-entities": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "no-useless-escape": [0]
   }
 }

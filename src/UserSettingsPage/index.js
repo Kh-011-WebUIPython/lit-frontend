@@ -1,30 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+
 import UserSettingsForm from './form';
 import { userActions } from '../_actions';
 
 const UserSettingsPage = (props) => {
-  const { pk } = props.userinfo;
+  const { pk, username } = props.user;
   const { _delete, alert, updating } = props;
   return (
     <div>
-      <h1 className="mb-2">Settings</h1>
-      <UserSettingsForm id={pk} delete={_delete} alert={alert} updating={updating} />
+      <Breadcrumb>
+        <BreadcrumbItem><Link to="/">{ `${username} ` }</Link></BreadcrumbItem>
+        <BreadcrumbItem active>Settings</BreadcrumbItem>
+      </Breadcrumb>
+      <UserSettingsForm id={pk} _delete={_delete} alert={alert} updating={updating} />
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  userinfo: state.userinfo, alert: state.alert, updating: state.update.updating,
+  user: state.user, alert: state.alert, updating: state.userUpdate.updating,
 });
 
 const mapDispatchToProps = dispatch => ({
-  signOut: () => {
-    dispatch(userActions.signOut());
-  },
-  _delete: () => {
-    dispatch(userActions.delete());
-  },
+  _delete: () => dispatch(userActions.delete()),
 });
 
 const ConnectedUserSettingsPage = connect(mapStateToProps, mapDispatchToProps)(UserSettingsPage);

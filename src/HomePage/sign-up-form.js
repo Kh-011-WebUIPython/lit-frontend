@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Alert, Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-
-import { alertActions, userActions } from '../_actions';
 import { connect } from 'react-redux';
 
-const renderField = ({
-  id, input, label, type, name,
-}) => (
-  <FormGroup>
-    <Label for={id} className="py-2">{label}</Label>
-    <Input name={name} type={type} id={id} {...input} required="True" />
-  </FormGroup>
-);
+import { alertActions, userActions } from '../_actions';
+import RenderField from '../_components/render-field';
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -23,9 +15,17 @@ class SignUpForm extends Component {
 
   submit(values, dispatch) {
     const userData = { username: values.username, password: values.password, email: values.email };
+    const loginRegExp = /^[a-z][a-z0-9_\-.]{3,25}$/i;
+    const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (!/^[a-z][a-z0-9_\-.]{3,25}$/i.test(userData.username)) {
-      dispatch(alertActions.error('Your login should start with letter and contain only latin letters, numbers, _-.'));
+    if (!loginRegExp.test(userData.username)) {
+      dispatch(alertActions.error('Your login should start with letter, be at least 4 characters' +
+        ' long and contain only latin letters, numbers, _-.'));
+      return;
+    }
+
+    if (!emailRegExp.test(userData.email)) {
+      dispatch(alertActions.error('Your email is invalid'));
       return;
     }
 
@@ -43,39 +43,45 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const { handleSubmit, registering, alert } = this.props;
+    const {
+      handleSubmit, registering, alert, id,
+    } = this.props;
     const message = alert.message && (alert.message.toString() === 'Bad Request' ?
       'Sorry, you can\'t use that login' : alert.message.toString());
     return (
-      <Form className="ml-auto mr-auto text-about" onSubmit={handleSubmit(this.submit)}>
+      <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
         {alert.message && <Alert color="danger">{message}</Alert>}
         <Field
-          id={`username${this.props.id}`}
+          id={`username${id}`}
           name="username"
           type="text"
-          component={renderField}
+          component={RenderField}
           label="Username"
+          required="True"
         />
         <Field
-          id={`email${this.props.id}`}
+          id={`email${id}`}
           name="email"
           type="email"
-          component={renderField}
+          component={RenderField}
           label="E-mail"
+          required="True"
         />
         <Field
-          id={`password${this.props.id}`}
+          id={`password${id}`}
           name="password"
           type="password"
-          component={renderField}
+          component={RenderField}
           label="Password"
+          required="True"
         />
         <Field
-          id={`rPassword${this.props.id}`}
+          id={`rPassword${id}`}
           name="rPassword"
           type="password"
-          component={renderField}
+          component={RenderField}
           label="Password"
+          required="True"
         />
         <Button color="primary" type="submit">Sign Up</Button>
         {registering &&

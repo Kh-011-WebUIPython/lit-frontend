@@ -10,17 +10,17 @@ import UserSettingsPage from './UserSettingsPage';
 import NewRepoPage from './NewRepoPage';
 import EmptyRepoPage from './EmptyRepoPage';
 import RepoPage from './RepoPage';
-import RepositorySettings from './RepoSettingsPage/index';
+import RepoSettings from './RepoSettingsPage';
 
 import './_styles/reset.css';
 import './_styles/base.css';
 
 import { userActions, userpageActions } from './_actions';
-import ConnectedNotFoundPage from './_components/not-found';
+import NotFoundPage from './_components/not-found';
 
 class App extends Component {
   componentDidMount() {
-    this.props.getUserInfo();
+    this.props.getUser();
   }
 
   render() {
@@ -37,26 +37,26 @@ class App extends Component {
       );
     }
 
-    const { avatar, username } = this.props.userinfo;
+    const { avatar, username } = this.props.user;
     const { signOut } = this.props;
 
-    if (!this.props.userinfo.id) {
+    if (!this.props.user.id) {
       return null;
     }
 
     return (
       <BrowserRouter>
-        <div className="flex h-100">
+        <div className="flex flex-column flex-md-row h-100-lg">
           <UserInfoBlock avatar={avatar} username={username} signOut={signOut} />
-          <div className="container pt-5 w-100">
+          <div className="container pt-2 pt-md-5 w-100">
             <Switch>
               <Route exact path="/" component={UserPage} />
               <Route exact path="/settings" component={UserSettingsPage} />
               <Route exact path="/create" component={NewRepoPage} />
               <Route exact path="/:user/:repo/empty" component={EmptyRepoPage} />
               <Route exact path="/:user/:repo" component={RepoPage} />
-              <Route path="/:user/:repo/settings" component={RepositorySettings} />
-              <Route component={ConnectedNotFoundPage} />
+              <Route path="/:user/:repo/settings" component={RepoSettings} />
+              <Route component={NotFoundPage} />
             </Switch>
           </div>
         </div>
@@ -65,15 +65,16 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { alert, authentication, userinfo } = state;
-  return { alert, authentication, userinfo };
-}
+const mapStateToProps = (state) => {
+  const { alert, authentication, user } = state;
+  return { alert, authentication, user };
+};
 
 const mapDispatchToProps = dispatch => (
   {
     signOut: () => dispatch(userActions.signOut()),
-    getUserInfo: () => dispatch(userpageActions.getUserInfo()),
-  });
+    getUser: () => dispatch(userpageActions.getUser()),
+  }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

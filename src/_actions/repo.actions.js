@@ -9,7 +9,7 @@ export const repoActions = {
   getByUser,
   update,
   clearUpdate,
-  delete: deleteRepo,
+  delete: repoDelete,
   clearDeletion,
 };
 
@@ -31,15 +31,15 @@ function create({ name, description }) {
   };
 
   function request(repo) {
-    return { type: repoConstants.CREATION_REQUEST, repo };
+    return { type: repoConstants.CREATE_REQUEST, repo };
   }
 
   function success(repo) {
-    return { type: repoConstants.CREATION_SUCCESS, repo };
+    return { type: repoConstants.CREATE_SUCCESS, repo };
   }
 
   function failure(error) {
-    return { type: repoConstants.CREATION_FAILURE, error };
+    return { type: repoConstants.CREATE_FAILURE, error };
   }
 }
 
@@ -60,19 +60,19 @@ function update({ name, description, id }) {
   };
 
   function request(repo) {
-    return { type: repoConstants.UPDATE_DESCRIPTION_REQUEST, repo };
+    return { type: repoConstants.UPDATE_REQUEST, repo };
   }
 
   function success(repo) {
-    return { type: repoConstants.UPDATE_DESCRIPTION_SUCCESS, repo };
+    return { type: repoConstants.UPDATE_SUCCESS, repo };
   }
 
   function failure(error) {
-    return { type: repoConstants.UPDATE_DESCRIPTION_FAILURE, error };
+    return { type: repoConstants.UPDATE_FAILURE, error };
   }
 }
 
-function deleteRepo(id) {
+function repoDelete(id) {
   return (dispatch) => {
     dispatch(request());
 
@@ -101,18 +101,6 @@ function deleteRepo(id) {
   }
 }
 
-function clearDeletion() {
-  return { type: repoConstants.DELETE_CLEAR };
-}
-
-function clearCreation() {
-  return { type: repoConstants.CREATION_CLEAR };
-}
-
-function clearUpdate() {
-  return { type: repoConstants.UPDATE_DESCRIPTION_CLEAR };
-}
-
 function getByUser(id) {
   return async (dispatch) => {
     try {
@@ -139,7 +127,7 @@ function getByUser(id) {
   }
 
   function success(repos) {
-    return { type: repoConstants.GET_BY_USER_SUCCESS, repos };
+    return { type: repoConstants.GET_BY_USER_SUCCESS, userRepos: repos };
   }
 
   function failure(error) {
@@ -158,4 +146,16 @@ function getByUser(id) {
   async function getRepoById(userId) {
     return await repoService.getById(userId);
   }
+}
+
+function clearDeletion() {
+  return { type: repoConstants.DELETE_CLEAR };
+}
+
+function clearCreation() {
+  return { type: repoConstants.CREATE_CLEAR };
+}
+
+function clearUpdate() {
+  return { type: repoConstants.UPDATE_CLEAR };
 }

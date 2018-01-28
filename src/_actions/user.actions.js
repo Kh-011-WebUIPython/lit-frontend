@@ -18,7 +18,7 @@ function signIn(username, password) {
       .then(
         (user) => {
           dispatch(success(user));
-          dispatch(userpageActions.getUserInfo());
+          dispatch(userpageActions.getUser());
         },
         (error) => {
           dispatch(failure(error));
@@ -90,7 +90,7 @@ function update(userData) {
       const updated = await userService.update(userData);
 
       dispatch(success(updated));
-      dispatch(userpageActions.getUserInfo());
+      dispatch(userpageActions.getUser());
     } catch (error) {
       dispatch(failure(error));
       dispatch(alertActions.error(error));

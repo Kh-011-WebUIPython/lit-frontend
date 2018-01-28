@@ -23,7 +23,21 @@ html, body, .App, #root {
   z-index: 999; }
 
 .w-100vw {
-  width: calc(100vw - 17px); }
+  width: 100vw; }
+  @media only screen and (min-width: 1025px) and (orientation: portrait) {
+    .w-100vw {
+      width: calc(100vw - 17px); } }
+
+@media only screen and (max-width: 360px) {
+  .display-1 {
+    font-size: 4rem; } }
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  .display-1 {
+    font-size: 3rem; } }
+
+@media only screen and (min-width: 768px) {
+  .h-100-lg {
+    height: 100%; } }
 
 .s-dark {
   background-color: #f1f1f1; }
@@ -68,12 +82,21 @@ html, body, .App, #root {
   width: 50px; }
 
 .card-300 {
-  max-width: 300px;
   width: 100%; }
+  @media only screen and (min-width: 768px) {
+    .card-300 {
+      max-width: 300px; } }
+
+@media only screen and (max-width: 767px) {
+  .card-img-overlay {
+    position: relative; } }
 
 .br-50 {
   border-radius: 50%;
-  border: solid 5px #ffffff; }
+  border: solid 2px #ffffff; }
+  @media only screen and (min-width: 768px) {
+    .br-50 {
+      border: solid 5px #ffffff; } }
 
 .card-body {
   display: flex;
@@ -127,6 +150,9 @@ html, body, .App, #root {
 .nav-item {
   cursor: pointer; }
 
+@media only screen and (min-width: 768px) {
+  .w-md-50 {
+    max-width: 50%; } }
 .search .form-group {
   margin: 0 !important; }
 
@@ -136,6 +162,9 @@ html, body, .App, #root {
 .w-150 {
   width: 150px; }
 
+@media only screen and (max-width: 767px) {
+  .w-md-100vw {
+    width: 100vw; } }
 .h-150 {
   height: 150px; }
 

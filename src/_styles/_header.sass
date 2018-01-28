@@ -17,8 +17,19 @@
   z-index: 999
 
 .w-100vw
-  //hardcoded scrollbar width
-  width: calc(100vw - 17px)
+  width: 100vw
+  @media only screen and (min-width: 1025px) and (orientation: portrait)
+    width: calc(100vw - 17px)
+
+.display-1
+  @media only screen and (max-width: 360px)
+    font-size: 4rem
+  @media only screen and (max-width: 767px) and (orientation: landscape)
+    font-size: 3rem
+
+.h-100-lg
+  @media only screen and (min-width: 768px)
+    height: 100%
 
 .s-dark
   background-color: #f1f1f1
@@ -68,12 +79,19 @@
 
 // CARD
 .card-300
-  max-width: 300px
+  @media only screen and (min-width: 768px)
+    max-width: 300px
   width: 100%
+
+.card-img-overlay
+  @media only screen and (max-width: 767px)
+    position: relative
 
 .br-50
   border-radius: 50%
-  border: solid 5px #ffffff
+  border: solid 2px #ffffff
+  @media only screen and (min-width: 768px)
+    border: solid 5px #ffffff
 
 .card-body
   display: flex

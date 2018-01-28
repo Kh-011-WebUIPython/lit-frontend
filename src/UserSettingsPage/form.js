@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Alert, Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
+
 import { alertActions, userActions } from '../_actions';
 import FieldFileInput from './field-file-input';
-import ConfirmModal from './confirm-modal';
-
-const renderField = ({
-  id, input, label, type, name,
-}) => (
-  <FormGroup>
-    <Label for={id}>{label}</Label>
-    <Input name={name} type={type} id={id} {...input} required={false} />
-  </FormGroup>
-);
+import ConfirmModal from '../_components/confirm-modal';
+import RenderField from '../_components/render-field';
 
 class UserSettingsForm extends Component {
   constructor(props) {
@@ -32,18 +25,20 @@ class UserSettingsForm extends Component {
   // todo: try to add an initial value
   // https://github.com/facebook/react/issues/2764
   render() {
-    const { handleSubmit, updating, alert } = this.props;
+    const {
+      handleSubmit, updating, alert, _delete,
+    } = this.props;
     const message = alert.message && (alert.message.toString() === 'Bad Request' ?
       'Sorry, password is incorrect' : alert.message.toString());
     return (
       <div>
-        <Form className="w-50" onSubmit={handleSubmit(this.submit)}>
+        <Form className="w-100 w-md-50" onSubmit={handleSubmit(this.submit)}>
           {alert.message && <Alert color="danger">{message}</Alert>}
           <Field
             id="email"
             name="email"
             type="email"
-            component={renderField}
+            component={RenderField}
             label="E-mail"
           />
           <Field
@@ -57,7 +52,7 @@ class UserSettingsForm extends Component {
           {updating &&
           <img alt="spinner" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/10607/spinner3.gif" />}
         </Form>
-        <ConfirmModal delete={this.props.delete} />
+        <ConfirmModal _delete={_delete} />
       </div>
     );
   }

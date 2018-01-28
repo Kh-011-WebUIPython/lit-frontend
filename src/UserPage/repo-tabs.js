@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
+
 import LoadingPage from '../_components/loading-page';
 import RepoList from './repo-list';
 
@@ -21,6 +22,8 @@ class RepoTabs extends Component {
       return (<LoadingPage/>);
     }
 
+    const { repos } = this.props;
+
     return (
       <div>
         <Nav tabs>
@@ -30,7 +33,7 @@ class RepoTabs extends Component {
               className={ isFirstActive ? 'active' : '' }
               onClick={ () => this.toggle('0') }
             >
-              User's repositories
+              Owner
             </NavLink>
           </NavItem>
 
@@ -39,7 +42,7 @@ class RepoTabs extends Component {
               className={ !isFirstActive ? 'active' : '' }
               onClick={ () => this.toggle('1') }
             >
-              Repositories user contribute to
+              Contributor
             </NavLink>
           </NavItem>
 
@@ -48,11 +51,11 @@ class RepoTabs extends Component {
         <TabContent activeTab={ this.state.activeTab }>
 
           <TabPane tabId="0" className="border border-top-0 p-2">
-            <RepoList repos={ this.props.repos.owner }/>
+            <RepoList repos={ repos.owner }/>
           </TabPane>
 
           <TabPane tabId="1" className="border border-top-0 p-2">
-            <RepoList repos={ this.props.repos.contributor }/>
+            <RepoList repos={ repos.contributor }/>
           </TabPane>
 
         </TabContent>
@@ -61,7 +64,7 @@ class RepoTabs extends Component {
   }
 }
 
-const mapStateToProps = state => ({ repos: state.repos });
+const mapStateToProps = state => ({ repos: state.userRepos });
 
 const connectedRepoTabs = connect(mapStateToProps)(RepoTabs);
 

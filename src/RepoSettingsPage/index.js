@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import RepositorySettingsForm from './form';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+
+import RepoSettingsForm from './form';
 import { checkActions, repoActions, userpageActions } from '../_actions';
 
 class RepoSettings extends Component {
@@ -21,10 +23,10 @@ class RepoSettings extends Component {
   }
 
   render() {
-    const { deleted } = this.props.deleteRepo;
+    const { deleted } = this.props.repoDelete;
     if (deleted) {
       this.props.clear();
-      return (<Redirect to="/" push/>);
+      return (<Redirect to="/" push />);
     }
 
     const { fetching, failed } = this.props.check;
@@ -32,7 +34,7 @@ class RepoSettings extends Component {
       return null;
     } else if (failed) {
       return (
-        <Redirect to="/404" push/>
+        <Redirect to="/404" push />
       );
     }
 
@@ -46,7 +48,7 @@ class RepoSettings extends Component {
     if (this.props.repoUpdate.updated) {
       this.props.clear();
       return (
-        <Redirect to={ repoLink } push/>
+        <Redirect to={repoLink} push />
       );
     }
 
@@ -54,19 +56,22 @@ class RepoSettings extends Component {
     const { _delete } = this.props;
     return (
       <div>
-        <div className="flex justify-content-between align-items-baseline">
-          <div className="flex justify-content-between align-items-baseline">
-            <h2 className="pb-4">
-              <Link to={ ownerLink }>{ `${this.state.username} ` }</Link>
-              / <Link to={ repoLink }>{ `${this.state.name} ` }</Link>
-              / Update a repository
-            </h2>
-          </div>
-        </div>
-        <RepositorySettingsForm id={ repoId } name={ this.state.name } delete={ () => {
-          console.log(repoId);
-          _delete(repoId);
-        } } />
+        <Breadcrumb>
+          <BreadcrumbItem><Link
+            to={ownerLink}
+          >{ `${this.state.username} ` }
+          </Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem><Link to={repoLink}>{ this.state.name }</Link></BreadcrumbItem>
+          <BreadcrumbItem active>Update a repository</BreadcrumbItem>
+        </Breadcrumb>
+        <RepoSettingsForm
+          id={repoId}
+          name={this.state.name}
+          _delete={() => {
+            _delete(repoId);
+          }}
+        />
       </div>
     );
   }
@@ -76,17 +81,18 @@ const mapStateToProps = state => ({
   check: state.check,
   userid: state.userid,
   repoUpdate: state.repoUpdate,
-  user: state.userinfo.username,
-  deleteRepo: state.deleteRepo,
+  user: state.user.username,
+  repoDelete: state.repoDelete,
 });
 
 const mapDispatchToProps = dispatch => ({
   checkUserAndRepo: (username, name) => dispatch(checkActions.checkUserAndRepo(username, name)),
   getReposByUsername: username => dispatch(userpageActions.getReposByUsername(username)),
-  clear: () => { dispatch(repoActions.clearUpdate()); dispatch(repoActions.clearDeletion()) },
-  _delete: (id) => {
-    dispatch(repoActions.delete(id));
+  clear: () => {
+    dispatch(repoActions.clearUpdate());
+    dispatch(repoActions.clearDeletion());
   },
+  _delete: id => dispatch(repoActions.delete(id)),
 });
 
 const ConnectedRepoSettings = connect(mapStateToProps, mapDispatchToProps)(RepoSettings);

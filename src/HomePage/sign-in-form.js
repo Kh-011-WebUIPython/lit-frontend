@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
-import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Alert, Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 import { alertActions, userActions } from '../_actions';
+import RenderField from '../_components/render-field';
 
-const renderField = ({
-  id, input, label, type, name,
-}) => (
-  <FormGroup className="text-about">
-    <Label for={id} className="py-2">{ label }</Label>
-    <Input name={name} type={type} id={id} {...input} required="True" />
-  </FormGroup>
-);
-
-// todo: find a spinner
 class SignInForm extends Component {
   constructor(props) {
     super(props);
@@ -29,23 +20,27 @@ class SignInForm extends Component {
 
   render() {
     const { handleSubmit, loggingIn, alert } = this.props;
-    const message = alert.message && (alert.message.toString() === 'Bad Request' ? 'Sorry, login/password are incorrect' : alert.message.toString());
+    const message = alert.message && (alert.message.toString() === 'Bad Request'
+      ? 'Sorry, login/password are incorrect'
+      : alert.message.toString());
     return (
-      <Form className="ml-auto mr-auto text-about" onSubmit={handleSubmit(this.submit)}>
+      <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
         { alert.message && <Alert color="danger">{ message }</Alert> }
         <Field
           id="username"
           name="username"
           type="text"
-          component={renderField}
+          component={RenderField}
           label="Username"
+          required="True"
         />
         <Field
           id="password"
           name="password"
           type="password"
-          component={renderField}
+          component={RenderField}
           label="Password"
+          required="True"
         />
         <Button color="primary" type="submit">Sign In</Button>
         { loggingIn &&

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import Author from './author';
 
 const RepoListItem = ({
@@ -15,6 +16,6 @@ const RepoListItem = ({
   </div>
 );
 
-const mapStateToProps = state => ({ user: state.userinfo.username });
+const mapStateToProps = state => ({ user: state.user.username });
 
 export default connect(mapStateToProps)(RepoListItem);

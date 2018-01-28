@@ -18,13 +18,14 @@ class ConfirmModal extends React.Component {
   }
 
   render() {
+    const { className, _delete } = this.props;
     return (
       <div>
         <Button className="mt-5" color="danger" onClick={this.toggle}>Delete</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={className}>
           <ModalHeader toggle={this.toggle}>Are you sure?</ModalHeader>
           <ModalFooter>
-            <Button color="primary" onClick={this.props.delete}>Yes, delete</Button>{' '}
+            <Button color="primary" onClick={_delete}>Yes, delete</Button>{' '}
             <Button color="secondary" onClick={this.toggle}>No, cancel</Button>
           </ModalFooter>
         </Modal>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import crown from '../_img/crown.svg';
 
 const Author = props => (

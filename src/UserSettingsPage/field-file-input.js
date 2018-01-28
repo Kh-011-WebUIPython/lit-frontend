@@ -16,6 +16,7 @@ export default class FieldFileInput extends Component {
     const {
       id, label, type, name,
     } = this.props;
+
     return (
       <FormGroup><Label for={id}>{label}</Label>
         <Input
