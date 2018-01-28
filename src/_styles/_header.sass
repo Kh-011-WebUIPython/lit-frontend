@@ -17,8 +17,15 @@
   z-index: 999
 
 .w-100vw
-  //hardcoded scrollbar width
-  width: calc(100vw - 17px)
+  width: 100vw
+  @media only screen and (min-width: 1025px) and (orientation: portrait)
+    width: calc(100vw - 17px)
+
+.display-1
+  @media only screen and (max-width: 360px)
+    font-size: 4rem
+  @media only screen and (max-width: 768px) and (orientation: landscape)
+    font-size: 3rem
 
 .s-dark
   background-color: #f1f1f1
