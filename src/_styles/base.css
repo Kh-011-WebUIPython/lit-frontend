@@ -24,7 +24,7 @@ html, body, .App, #root {
 
 .w-100vw {
   width: 100vw; }
-  @media only screen and (min-width: 1025px) and (orientation: portrait) {
+  @media only screen and (min-width: 1367px) {
     .w-100vw {
       width: calc(100vw - 17px); } }
 

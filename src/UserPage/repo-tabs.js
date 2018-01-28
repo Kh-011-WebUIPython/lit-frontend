@@ -25,7 +25,7 @@ class RepoTabs extends Component {
     const { repos } = this.props;
 
     return (
-      <div>
+      <div className="pb-2">
         <Nav tabs>
 
           <NavItem>

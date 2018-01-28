@@ -4,7 +4,7 @@ import RepoListItem from './repo-list-item';
 
 const RepoList = (props) => {
   if (!props.repos.length) {
-    return (<h1>Nothing here yet :(</h1>);
+    return (<h2>Nothing here yet :(</h2>);
   }
   return (
     <div>
