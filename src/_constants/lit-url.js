@@ -1,1 +1,1 @@
-export const LIT_URL = 'http://api:8000/api/v1';
+export const LIT_URL = 'http://exceedcat.pythonanywhere.com/api/v1';
