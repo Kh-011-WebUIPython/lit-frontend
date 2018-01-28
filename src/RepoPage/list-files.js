@@ -23,7 +23,7 @@ const ListFiles = () => {
   ];
 
   return (
-    <ListGroup className="container pre-scrollable">
+    <ListGroup className="container pre-scrollable mb-2 pr-0">
       { files.map(item => (<ListFoldersFiles
         key={item.title}
         title={item.title}

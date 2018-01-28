@@ -46,9 +46,9 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <div className="flex flex-column flex-md-row h-100">
+        <div className="flex flex-column flex-md-row h-100-lg">
           <UserInfoBlock avatar={avatar} username={username} signOut={signOut} />
-          <div className="container pt-5 w-100">
+          <div className="container pt-2 pt-md-5 w-100">
             <Switch>
               <Route exact path="/" component={UserPage} />
               <Route exact path="/settings" component={UserSettingsPage} />

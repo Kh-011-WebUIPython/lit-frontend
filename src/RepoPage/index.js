@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Button, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 import ListFiles from './list-files';
 import CloneLink from './popover';
@@ -42,13 +42,13 @@ class RepoPage extends Component {
           <BreadcrumbItem><Link to={ownerLink}>{ `${username} ` }</Link></BreadcrumbItem>
           <BreadcrumbItem active>{ name }</BreadcrumbItem>
         </Breadcrumb>
-        <div className="flex justify-content-between align-items-baseline">
+        <div className="flex flex-column-reverse flex-sm-row justify-content-between align-items-baseline">
           <div><span className="mr-2">Current branch:</span>
             <BranchDropdown />
           </div>
-          <div>
+          <div className="mb-4">
             <CloneLink id={this.props.check.repo.id} />
-            <Link to={settingsLink}>Settings</Link>
+            <Link to={settingsLink}><Button color="primary">Settings</Button></Link>
           </div>
         </div>
         <ListFiles />

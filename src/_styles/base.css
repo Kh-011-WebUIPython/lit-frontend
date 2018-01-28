@@ -31,9 +31,13 @@ html, body, .App, #root {
 @media only screen and (max-width: 360px) {
   .display-1 {
     font-size: 4rem; } }
-@media only screen and (max-width: 768px) and (orientation: landscape) {
+@media only screen and (max-width: 767px) and (orientation: landscape) {
   .display-1 {
     font-size: 3rem; } }
+
+@media only screen and (min-width: 768px) {
+  .h-100-lg {
+    height: 100%; } }
 
 .s-dark {
   background-color: #f1f1f1; }
@@ -83,7 +87,7 @@ html, body, .App, #root {
     .card-300 {
       max-width: 300px; } }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .card-img-overlay {
     position: relative; } }
 
@@ -158,7 +162,7 @@ html, body, .App, #root {
 .w-150 {
   width: 150px; }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .w-md-100vw {
     width: 100vw; } }
 .h-150 {

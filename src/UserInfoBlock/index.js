@@ -12,7 +12,7 @@ const UserInfoBlock = (props) => {
       <Search />
       <UserInfo username={username} avatar={avatar} signOut={signOut} />
       <Link to="/create">
-        <Button color="primary" className="w-100">Create a new repo</Button>
+        <Button color="primary" className="w-100 card-300">Create a new repo</Button>
       </Link>
     </aside>
   );
