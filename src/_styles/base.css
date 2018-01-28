@@ -22,9 +22,6 @@ html, body, .App, #root {
 .z-999 {
   z-index: 999; }
 
-.o-x-h {
-  overflow-x: hidden; }
-
 .w-100vw {
   width: 100vw; }
   @media only screen and (min-width: 1367px) {
