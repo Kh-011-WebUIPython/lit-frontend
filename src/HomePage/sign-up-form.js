@@ -19,7 +19,8 @@ class SignUpForm extends Component {
     const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (!loginRegExp.test(userData.username)) {
-      dispatch(alertActions.error('Your login should start with letter and contain only latin letters, numbers, _-.'));
+      dispatch(alertActions.error('Your login should start with letter, be at least 4 characters' +
+        ' long and contain only latin letters, numbers, _-.'));
       return;
     }
 
