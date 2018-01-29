@@ -22,8 +22,7 @@ class UserSettingsForm extends Component {
     }
     dispatch(userActions.update({ avatar, email }));
   }
-  // todo: try to add an initial value
-  // https://github.com/facebook/react/issues/2764
+
   render() {
     const {
       handleSubmit, updating, alert, _delete,
