@@ -1,7 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './styles/base.css';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from './App';
+import { store } from './_helpers';
+
+ReactDOM.render(
+  (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  ), document.getElementById('root'),
+);
+

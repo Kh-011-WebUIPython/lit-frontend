@@ -1,0 +1,26 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/prop-types": [
+      0
+    ],
+    "import/prefer-default-export": [
+      0
+    ],
+    "no-use-before-define": "off",
+    "no-return-await": "off",
+    "react/no-unescaped-entities": "off",
+    "class-methods-use-this": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "no-useless-escape": [0]
+  }
+}
