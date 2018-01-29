@@ -58,6 +58,7 @@ class SignUpForm extends Component {
           component={RenderField}
           label="Username"
           required="True"
+          autoFocus="True"
         />
         <Field
           id={`email${id}`}

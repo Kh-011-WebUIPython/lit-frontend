@@ -26,6 +26,7 @@ class RepoSettingsForm extends Component {
           component={RenderField}
           label="Repository description"
           required="True"
+          autoFocus="True"
         />
         <Button color="primary" type="submit">Update</Button>
         { updating &&

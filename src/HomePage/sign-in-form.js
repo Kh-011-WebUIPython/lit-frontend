@@ -21,7 +21,7 @@ class SignInForm extends Component {
   render() {
     const { handleSubmit, loggingIn, alert } = this.props;
     const message = alert.message && (alert.message.toString() === 'Bad Request'
-      ? 'Sorry, login/password are incorrect'
+      ? 'Sorry, something wrong with your login'
       : alert.message.toString());
     return (
       <Form className="ml-auto mr-auto" onSubmit={handleSubmit(this.submit)}>
@@ -33,6 +33,7 @@ class SignInForm extends Component {
           component={RenderField}
           label="Username"
           required="True"
+          autoFocus="True"
         />
         <Field
           id="password"
