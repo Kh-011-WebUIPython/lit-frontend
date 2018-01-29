@@ -31,6 +31,7 @@ class CreateRepoForm extends Component {
           component={RenderField}
           label="Repository name"
           required="True"
+          autoFocus="True"
         />
         <Field
           id="description"
@@ -38,7 +39,6 @@ class CreateRepoForm extends Component {
           type="textarea"
           component={RenderField}
           label="Repository description"
-          required="False"
         />
         <Button color="primary" type="submit">Confirm</Button>
         <Link to="/">

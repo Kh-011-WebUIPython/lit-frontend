@@ -21,7 +21,7 @@ class Search extends Component {
         <Form className="search">
           <FormGroup>
             <Input
-              name="seacrh"
+              name="search"
               type="text"
               className="mt-2"
               placeholder="search"

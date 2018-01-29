@@ -29,7 +29,7 @@ class UserSettingsForm extends Component {
       handleSubmit, updating, alert, _delete,
     } = this.props;
     const message = alert.message && (alert.message.toString() === 'Bad Request' ?
-      'Sorry, password is incorrect' : alert.message.toString());
+      'Sorry, something wrong with data' : alert.message.toString());
     return (
       <div>
         <Form className="w-100 w-md-50" onSubmit={handleSubmit(this.submit)}>
@@ -40,6 +40,7 @@ class UserSettingsForm extends Component {
             type="email"
             component={RenderField}
             label="E-mail"
+            autoFocus="True"
           />
           <Field
             id="avatar"

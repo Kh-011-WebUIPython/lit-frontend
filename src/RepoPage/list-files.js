@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const ListFoldersFiles = props => (
   <ListGroupItem className="mt-2">
-    <Link to="/repository">{ props.title }</Link>
+    <Link to="#">{ props.title }</Link>
   </ListGroupItem>
 );
 

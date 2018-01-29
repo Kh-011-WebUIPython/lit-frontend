@@ -23,10 +23,10 @@ class BranchDropdown extends Component {
         <DropdownToggle caret> Master </DropdownToggle>
         <DropdownMenu>
           <DropdownItem>
-            <Link to="/repository">dev</Link>
+            <Link to="#">dev</Link>
           </DropdownItem>
           <DropdownItem>
-            <Link to="/repository">feature/khwup-188/change_architecture</Link>
+            <Link to="#">feature/khwup-188/change_architecture</Link>
           </DropdownItem>
         </DropdownMenu>
       </ButtonDropdown>
