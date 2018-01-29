@@ -1,3 +1,4 @@
 # LIT front end
 
-Create new react components into `components` folder & write your own styles inside `styles` folder
+Front end for LIT project.
+Developed with love and usage of React and Redux.
